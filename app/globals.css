@@ -1,0 +1,537 @@
+/*
+ * ──────────────────────────────────────────────────────────────────────────
+ *  FIELD NOTES — design tokens and base styles
+ *  Saumya Kumarasinghe · portfolio
+ *
+ *  1. Palette     named colours taken from the Sri Lankan landscape
+ *  2. Themes      semantic tokens for Mist (light) and Night (dark)
+ *  3. Tailwind    semantic tokens + fonts exposed as utilities
+ *  4. Scale       fluid type, layout, radius and motion tokens
+ *  5. Base        document defaults, focus, selection, view transitions
+ *  6. Utilities   container-page, eyebrow, emphasis, hatch, grain
+ *
+ *  Tailwind v4 is configured here (CSS-first). There is no tailwind.config.ts.
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+@import "tailwindcss";
+
+/* `dark:` follows the theme chosen on <html data-theme>, not the OS setting.
+   The inline script in app/layout.tsx picks the initial theme before paint. */
+@custom-variant dark (&:where([data-theme="night"], [data-theme="night"] *));
+
+/* ── 1. PALETTE ─────────────────────────────────────────────────────────────
+ * Raw, named colours. Components use the semantic tokens in section 2;
+ * the raw names stay available for illustration work (diagrams, botanicals).
+ * Tailwind's default palette is removed so only this palette exists.
+ * `static` keeps every variable in the output, because the theme blocks
+ * below reference them with var() rather than through utilities.          */
+@theme static {
+  --color-*: initial;
+
+  /* Mist — hill-country morning */
+  --color-tea-mist: #eceedf;
+  --color-lichen-pale: #dfe4ce;
+  --color-lichen: #ced8b8;
+  --color-lichen-line: #c4ccb0;
+  --color-pine: #15281c;
+  --color-moss-shade: #4a5a45;
+  --color-moss-subtle: #5a6b55;
+  --color-fern: #3d6b35;
+  --color-moss: #6f7f52;
+  --color-tea-bud: #c2de5a;
+  --color-monsoon: #3f6f78;
+  --color-laterite: #a24f2c;
+  --color-bark: #5b4a3a;
+  --color-soil: #e4ddcb;
+  --color-sapwood: #e9ddc2;
+  --color-sage-line: #8db09a;
+
+  /* Night — Sinharaja after dark */
+  --color-canopy: #0d1912;
+  --color-canopy-deep: #081009;
+  --color-undergrowth: #13241a;
+  --color-moss-night: #1b3124;
+  --color-night-line: #253b2c;
+  --color-moonlight: #e3e8d6;
+  --color-lichen-grey: #a8b49c;
+  --color-lichen-dim: #8e9c84;
+  --color-fern-glow: #8fbf6e;
+  --color-firefly: #d9f26b;
+  --color-monsoon-glow: #78aeb5;
+  --color-laterite-glow: #e0875c;
+  --color-bark-pale: #c9a98a;
+  --color-deep-sage: #2e5440;
+
+  /* Monsoon band — the one cool, wet section on a warm green page */
+  --color-storm: #1f383c;
+  --color-storm-deep: #0a1416;
+  --color-storm-line: #35575b;
+  --color-storm-mist: #a9c1c0;
+  --color-storm-foam: #e6ede4;
+  --color-rain: #cfe3e2;
+}
+
+/* ── 2. THEMES ──────────────────────────────────────────────────────────────
+ * One semantic token set, two moods. Contrast ratios are measured against
+ * --canvas unless noted. Lime/firefly is a fill on Mist (1.3:1 as text)
+ * and may be used as text on Night (14.5:1).                               */
+:root,
+[data-theme="mist"] {
+  color-scheme: light;
+
+  --canvas: var(--color-tea-mist);
+  --surface: var(--color-lichen-pale);
+  --surface-2: var(--color-lichen);
+
+  --ink: var(--color-pine); /* 13.2:1 */
+  --ink-muted: var(--color-moss-shade); /* 6.3:1 · 5.0:1 on surface-2 */
+  --ink-subtle: var(--color-moss-subtle); /* 4.9:1 · canvas only */
+
+  --line: var(--color-lichen-line);
+  --line-strong: var(--color-pine);
+
+  --emphasis: var(--color-fern); /* italic words · 5.3:1 */
+  --accent: var(--color-tea-bud); /* fills only on Mist */
+  --on-accent: var(--color-pine); /* 10.3:1 on tea bud */
+  --focus: var(--color-fern);
+
+  --diagram: var(--color-fern);
+  --diagram-soft: var(--color-sage-line);
+  --water: var(--color-monsoon); /* 4.8:1 */
+  --earth: var(--color-laterite); /* 4.8:1 */
+  --wood: var(--color-bark);
+
+  /* The page ends at night in both themes: dusk band → contact section. */
+  --inverse: var(--color-canopy);
+  --on-inverse: var(--color-moonlight);
+  --inverse-muted: var(--color-lichen-grey);
+  --inverse-line: var(--color-night-line);
+  --spark: var(--color-firefly);
+
+  /* Illustration materials: soil, wood and the tree cross-section */
+  --ground: var(--color-soil);
+  --trunk: #6b5643;
+  --ring-outer: var(--color-sapwood);
+  --ring-mid: #dcc9a8;
+  --ring-core: #c9ae8c;
+
+  --grain-opacity: 0.07;
+  --shadow-plate: 0 34px 60px -30px rgb(21 40 28 / 0.45);
+}
+
+[data-theme="night"] {
+  color-scheme: dark;
+
+  --canvas: var(--color-canopy);
+  --surface: var(--color-undergrowth);
+  --surface-2: var(--color-moss-night);
+
+  --ink: var(--color-moonlight); /* 14.4:1 */
+  --ink-muted: var(--color-lichen-grey); /* 8.3:1 */
+  --ink-subtle: var(--color-lichen-dim); /* 6.2:1 */
+
+  --line: var(--color-night-line);
+  --line-strong: var(--color-moonlight);
+
+  --emphasis: var(--color-firefly); /* 14.5:1 */
+  --accent: var(--color-firefly);
+  --on-accent: var(--color-canopy);
+  --focus: var(--color-firefly);
+
+  --diagram: var(--color-fern-glow); /* 8.5:1 */
+  --diagram-soft: var(--color-deep-sage);
+  --water: var(--color-monsoon-glow); /* 7.3:1 */
+  --earth: var(--color-laterite-glow); /* 6.7:1 */
+  --wood: var(--color-bark-pale);
+
+  --inverse: var(--color-canopy-deep);
+  --on-inverse: var(--color-moonlight);
+  --inverse-muted: var(--color-lichen-grey);
+  --inverse-line: var(--color-night-line);
+  --spark: var(--color-firefly);
+
+  --ground: #172619;
+  --trunk: #8a6f55;
+  --ring-outer: #2c2a1f;
+  --ring-mid: #3a3426;
+  --ring-core: #4d412f;
+
+  --grain-opacity: 0.045;
+  --shadow-plate: 0 34px 60px -24px rgb(0 0 0 / 0.7);
+}
+
+/* Theme-independent motion timings, shared with GSAP via lib/motion.ts */
+:root {
+  --duration-respond: 200ms;
+  --duration-settle: 900ms;
+  --duration-draw: 1200ms;
+  --stagger: 60ms;
+}
+
+/* ── 3. TAILWIND MAPPING ────────────────────────────────────────────────────
+ * `inline` makes utilities read the live variable, so `bg-canvas`,
+ * `text-ink`, `border-line`… switch with the theme automatically.         */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-emphasis: var(--emphasis);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-focus: var(--focus);
+  --color-diagram: var(--diagram);
+  --color-diagram-soft: var(--diagram-soft);
+  --color-water: var(--water);
+  --color-earth: var(--earth);
+  --color-wood: var(--wood);
+  --color-inverse: var(--inverse);
+  --color-on-inverse: var(--on-inverse);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-inverse-line: var(--inverse-line);
+  --color-spark: var(--spark);
+  --color-ground: var(--ground);
+  --color-trunk: var(--trunk);
+  --color-ring-outer: var(--ring-outer);
+  --color-ring-mid: var(--ring-mid);
+  --color-ring-core: var(--ring-core);
+
+  /* Families come from next/font (app/fonts) with metric-matched fallbacks */
+  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ── 4. SCALE ───────────────────────────────────────────────────────────────
+ * Fluid sizes carry their own leading and tracking, so `text-hero` is the
+ * whole typographic decision. Values match the Field Guide artboard.      */
+@theme {
+  /* Display — Instrument Serif */
+  --text-hero: clamp(4rem, 1.2rem + 11.2vw, 12.5rem); /* 64 → 200px */
+  --text-hero--line-height: 0.86;
+  --text-hero--letter-spacing: -0.035em;
+  --text-section: clamp(3.5rem, 1.5rem + 7.4vw, 8.5rem); /* 56 → 136px */
+  --text-section--line-height: 0.9;
+  --text-section--letter-spacing: -0.03em;
+  --text-note: clamp(2.5rem, 1.25rem + 4.6vw, 5.25rem); /* 40 → 84px, field-note titles */
+  --text-note--line-height: 1;
+  --text-note--letter-spacing: -0.02em;
+  --text-figure: clamp(4rem, 2rem + 6vw, 7.25rem); /* 64 → 116px, readouts */
+  --text-figure--line-height: 0.9;
+  --text-figure--letter-spacing: -0.03em;
+  --text-title: clamp(1.875rem, 1.2rem + 1.6vw, 2.75rem); /* 30 → 44px */
+  --text-title--line-height: 1.05;
+  --text-title--letter-spacing: -0.01em;
+
+  /* Text — Instrument Sans */
+  --text-lead: clamp(1.125rem, 1rem + 0.45vw, 1.375rem); /* 18 → 22px */
+  --text-lead--line-height: 1.5;
+  --text-body: 1.0625rem; /* 17px */
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem; /* 15px */
+  --text-small--line-height: 1.55;
+
+  /* Labels — DM Mono, uppercase */
+  --text-label: 0.75rem; /* 12px */
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.06em;
+  --tracking-label: 0.06em;
+
+  /* Layout */
+  --container-page: 100rem; /* 1600px content width */
+  --spacing-gutter: clamp(1.25rem, 4.4vw, 4rem); /* 20 → 64px page margin */
+  --spacing-section: clamp(6rem, 11vw, 11rem); /* 96 → 176px section rhythm */
+
+  /* Shape: pills for actions and tags, pebbles for plates and media */
+  --radius-pebble: 1.5rem;
+  --radius-plate: 1.75rem;
+
+  /* Motion */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1); /* reveals, 900ms */
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1); /* strokes, theme wipe, 1200ms */
+  --ease-respond: cubic-bezier(0.2, 0, 0, 1); /* hover and press, 200ms */
+  --ease-sine: cubic-bezier(0.37, 0, 0.63, 1); /* ambient loops */
+
+  /* Ambient loops — all switched off under prefers-reduced-motion */
+  --animate-sway: sway 5.2s var(--ease-sine) infinite;
+  --animate-drift: drift 28s var(--ease-sine) infinite alternate;
+  --animate-breathe: breathe 18s var(--ease-sine) infinite;
+  --animate-firefly: firefly 9s var(--ease-sine) infinite;
+  --animate-pulse-soft: pulse-soft 2s var(--ease-sine) infinite;
+  --animate-bob: bob 2.6s var(--ease-sine) infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-flow: flow 2.4s linear infinite;
+  --animate-rain: rain 1.1s linear infinite;
+
+  /* One-off entrances (CSS, so they run before JavaScript arrives) */
+  --animate-rise: rise 1.1s var(--ease-settle) both;
+  --animate-fade: fade 1.2s var(--ease-settle) both;
+
+  @keyframes sway {
+    0%,
+    100% {
+      transform: rotate(-2.5deg);
+    }
+    50% {
+      transform: rotate(2.5deg);
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: translate3d(-6%, 0, 0);
+    }
+    to {
+      transform: translate3d(6%, 0, 0);
+    }
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.04) rotate(1.4deg);
+    }
+  }
+  @keyframes firefly {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    50% {
+      transform: translate(28px, -36px);
+      opacity: 0.85;
+    }
+    85% {
+      opacity: 0.9;
+    }
+    100% {
+      transform: translate(-18px, -78px);
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(22px);
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes flow {
+    to {
+      stroke-dashoffset: -240;
+    }
+  }
+  @keyframes rain {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(210px);
+      opacity: 0;
+    }
+  }
+  @keyframes rise {
+    from {
+      transform: translateY(108%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ── 5. BASE ────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1.5px;
+  }
+
+  /* Anchored sections clear the floating navigation */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  /* Theme switch: the new theme is revealed by a clip-path circle that
+     components/theme/theme-toggle.tsx animates. Disable the default fade. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+}
+
+/* Lenis owns smooth scrolling; native smooth scroll would fight it. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+/* Everything still, nothing hidden. JS-driven motion checks the same query. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 6. UTILITIES ───────────────────────────────────────────────────────── */
+
+/* Page-width container with the fluid gutter */
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+/* Field label: small, mono, uppercase */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* The italic word in a headline: "Calm systems", "From root to canopy" */
+@utility emphasis {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--emphasis);
+}
+
+/* Drafting hatch for placeholder frames (screenshots still to come) */
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--surface) 0 9px,
+    var(--surface-2) 9px 10px
+  );
+}
+
+/* Paper grain. On a positioned parent, or fixed full-screen via grain-overlay. */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px;
+    opacity: var(--grain-opacity);
+  }
+}
+
+@utility grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
+  opacity: var(--grain-opacity);
+}
+
+/* A line of display type that rises out of its own baseline */
+@utility line-mask {
+  display: block;
+  overflow: clip;
+  overflow-clip-margin: 0.2em;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+/* Outlined display type, used for the name at the very bottom of the page */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+}
