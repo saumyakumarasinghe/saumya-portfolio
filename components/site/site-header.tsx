@@ -71,7 +71,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={`${base}${item.href}`}
-                className="relative no-underline after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
+                className="relative py-2.5 no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
               >
                 {item.label}
               </Link>
@@ -105,8 +105,10 @@ export function SiteHeader() {
         </div>
       </header>
 
+      {/* data-lenis-prevent: Lenis is stopped while the menu is open and would otherwise swallow scrolling inside it. */}
       <dialog
         ref={dialogRef}
+        data-lenis-prevent
         aria-label="Menu"
         onClose={() => lenis?.start()}
         onClick={(event) => {
@@ -129,13 +131,13 @@ export function SiteHeader() {
               Close
             </button>
           </div>
-          <nav aria-label="Menu" className="mt-12 flex flex-col border-t border-line-strong">
+          <nav aria-label="Menu" className="mt-[min(3rem,5svh)] flex flex-col border-t border-line-strong">
             {[...nav, { href: "#contact", label: "Contact" }].map((item, index) => (
               <Link
                 key={item.href}
                 href={`${base}${item.href}`}
                 onClick={closeMenu}
-                className="flex items-baseline justify-between border-b border-line py-4 font-display text-[clamp(2.5rem,11vw,4rem)] leading-none no-underline"
+                className="flex items-baseline justify-between border-b border-line py-[min(1rem,2svh)] font-display text-[clamp(2.25rem,min(11vw,7svh),4rem)] leading-none no-underline"
               >
                 {item.label}
                 <span className="eyebrow text-ink-muted">0{index + 1}</span>

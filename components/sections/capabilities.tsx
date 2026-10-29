@@ -121,14 +121,15 @@ export function Capabilities() {
 
   return (
     <div ref={sectionRef} className="flex flex-wrap items-start gap-x-[clamp(2.5rem,6vw,7rem)] gap-y-12">
-      <figure className="m-0 max-w-[34rem] flex-[1_1_22rem] lg:sticky lg:top-24">
+      {/* Width follows viewport height (viewBox is 520×760) so the whole plant and caption fit on screen, sticky or not. */}
+      <figure className="m-0 max-w-[min(34rem,calc(70svh*0.684))] flex-[1_1_22rem] max-lg:basis-full lg:sticky lg:top-24 lg:max-w-[min(34rem,calc((100svh-10.5rem)*0.684))]">
         <div className="overflow-hidden rounded-plate border border-line bg-surface">
           <svg
             ref={svgRef}
             viewBox="0 0 520 760"
             role="img"
             aria-label="Botanical diagram of the stack as a plant: 1 roots, 2 trunk, 3 sap, 4 branches, 5 canopy, 6 growth rings"
-            className="block h-auto w-full max-lg:max-h-[70svh]"
+            className="block h-auto w-full"
           >
             <defs>
               <pattern id="soil-grain" width="14" height="14" patternUnits="userSpaceOnUse">

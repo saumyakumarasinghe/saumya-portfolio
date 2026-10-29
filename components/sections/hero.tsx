@@ -77,7 +77,7 @@ export function Hero() {
             <a
               href="#work"
               aria-label="Scroll to work"
-              className="flex flex-col items-center gap-2.5 font-mono text-[0.69rem] tracking-[0.08em] text-ink-muted no-underline"
+              className="-mx-3 flex flex-col items-center gap-2.5 px-3 font-mono text-[0.69rem] tracking-[0.08em] text-ink-muted no-underline"
             >
               <span className="[writing-mode:vertical-rl]">SCROLL</span>
               <span className="relative block h-[4.5rem] w-px bg-ink">

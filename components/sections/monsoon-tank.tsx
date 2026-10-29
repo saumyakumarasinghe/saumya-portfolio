@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Drop } from "@/components/ui/icons";
 import { paddySprouts } from "@/lib/art";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -278,7 +278,8 @@ export function MonsoonTank() {
           ))}
           <path d="M972 374 l2 -7 M984 374 l-1 -8 M996 374 l2 -6 M1008 374 l-2 -7 M1020 374 l1 -8" />
         </g>
-        <g fontFamily="var(--font-mono)" fontSize="12" letterSpacing="1" className="fill-storm-mist">
+        {/* Too small to read below lg; the legend under the drawing takes over there. */}
+        <g fontFamily="var(--font-mono)" fontSize="12" letterSpacing="1" className="fill-storm-mist max-lg:hidden">
           <text x="40" y="36">MONSOON · REQUESTS</text>
           <text x="168" y="412">TANK · QUEUE (SQS)</text>
           <text x="546" y="318">SLUICE · WORKERS (LAMBDA)</text>
@@ -290,11 +291,30 @@ export function MonsoonTank() {
           )}
         </g>
       </svg>
+      <ul className="flex flex-wrap gap-x-5 gap-y-1.5 border-t border-storm-line px-5 py-3 font-mono text-[0.69rem] tracking-[0.06em] whitespace-nowrap text-storm-mist uppercase lg:hidden">
+        <li>Monsoon · requests</li>
+        <li>Tank · queue (SQS)</li>
+        <li>Sluice · workers (Lambda)</li>
+        <li>Fields · processed</li>
+        {mode === "none" && <li className="text-laterite-glow">Run-off · dropped</li>}
+      </ul>
 
-      <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] border-t border-storm-line">
+      {/* 2 × 2 on phones, one row of four from md: rules only between cells, never on the outer edge. */}
+      <dl className="grid grid-cols-2 border-t border-storm-line md:grid-cols-4">
         {readouts.map((item) => (
-          <div key={item.label} className="border-storm-line px-5 py-4 [&:not(:last-child)]:border-r">
-            <dt className="eyebrow text-[0.69rem] text-storm-mist">{item.label}</dt>
+          <div
+            key={item.label}
+            className="min-w-0 border-storm-line px-4 py-4 odd:border-r sm:px-5 max-md:[&:nth-child(-n+2)]:border-b md:border-r md:last:border-r-0"
+          >
+            <dt className="eyebrow text-[0.69rem] text-storm-mist">
+              {/* Wrap at spaces only, never at the hyphen in "run-off" */}
+              {item.label.split(" ").map((word, index) => (
+                <Fragment key={word}>
+                  {index > 0 && " "}
+                  <span className="whitespace-nowrap">{word}</span>
+                </Fragment>
+              ))}
+            </dt>
             <dd className={`font-display text-[2.25rem] leading-[1.1] tabular-nums ${item.alert ? "text-laterite-glow" : ""}`}>
               {item.value}
             </dd>

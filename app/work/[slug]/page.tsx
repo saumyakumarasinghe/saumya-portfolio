@@ -37,11 +37,11 @@ function TitleText({ item }: { item: Work }) {
 function Block({ number, title, children }: { number: string; title: React.ReactNode; children: React.ReactNode }) {
   return (
     <Reveal as="section" className="flex flex-wrap gap-x-[clamp(2rem,5vw,6rem)] gap-y-4 border-t border-line py-11 first:border-line-strong">
-      <h2 className="max-w-[21rem] flex-[1_1_15rem] font-display text-[2.75rem] leading-none font-normal">
+      <h2 className="max-w-[21rem] min-w-0 flex-[1_1_15rem] font-display text-[2.75rem] leading-none font-normal">
         <span className="eyebrow mb-2.5 block text-ink-muted">{number}</span>
         {title}
       </h2>
-      <div data-reveal className="max-w-[57.5rem] flex-[999_1_32rem]">
+      <div data-reveal className="max-w-[57.5rem] min-w-0 flex-[999_1_32rem]">
         {children}
       </div>
     </Reveal>
@@ -221,8 +221,8 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
             <p className="pt-4 pr-4">© 2026 {site.name}</p>
             <a href={`mailto:${site.email}`} className="pt-4 pr-4 normal-case no-underline hover:text-spark">{site.email}</a>
             <p className="pt-4 pr-4">
-              <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="no-underline hover:text-spark">LinkedIn ↗</a> ·{" "}
-              <a href={site.links.github} target="_blank" rel="noreferrer" className="no-underline hover:text-spark">GitHub ↗</a>
+              <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">LinkedIn ↗</a> ·{" "}
+              <a href={site.links.github} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">GitHub ↗</a>
             </p>
             <a href="#cs-title" className="pt-4 text-on-inverse no-underline hover:text-spark">Back to the top ↑</a>
           </div>

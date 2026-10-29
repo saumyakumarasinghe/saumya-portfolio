@@ -319,30 +319,40 @@ export function ContactSection() {
                 <CopyEmail />
               </div>
             </div>
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(11.25rem,100%),1fr))] border-b border-inverse-line">
-              {(
+            {(
+              [
                 [
-                  ["LinkedIn", site.links.linkedin],
-                  ["GitHub", site.links.github],
-                ] as const
-              ).map(([label, href], index) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`group flex items-center justify-between gap-3 py-5.5 font-display text-[1.75rem] text-on-inverse no-underline ${
-                    index === 0 ? "pr-4 sm:border-r sm:border-inverse-line" : "sm:px-4"
-                  }`}
-                >
-                  {label}
-                  <span className="transition-transform duration-300 ease-settle group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <ArrowUpRight />
-                  </span>
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
-              ))}
-            </div>
+                  ["LinkedIn", site.links.linkedin, true],
+                  ["GitHub", site.links.github, true],
+                ],
+                [
+                  ["WhatsApp", site.links.whatsapp, true],
+                  ["Call", `tel:${site.phoneE164}`, false],
+                ],
+              ] as const
+            ).map((row) => (
+              <div
+                key={row[0][0]}
+                className="grid grid-cols-[repeat(auto-fit,minmax(min(11.25rem,100%),1fr))] border-b border-inverse-line"
+              >
+                {row.map(([label, href, external], index) => (
+                  <a
+                    key={label}
+                    href={href}
+                    {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+                    className={`group flex items-center justify-between gap-3 py-5.5 font-display text-[1.75rem] text-on-inverse no-underline ${
+                      index === 0 ? "pr-4 sm:border-r sm:border-inverse-line" : "sm:px-4"
+                    }`}
+                  >
+                    {label}
+                    <span className="transition-transform duration-300 ease-settle group-hover:translate-x-1 group-hover:-translate-y-1">
+                      <ArrowUpRight />
+                    </span>
+                    {external && <span className="sr-only"> (opens in a new tab)</span>}
+                  </a>
+                ))}
+              </div>
+            ))}
             <p className="py-5.5 font-mono text-label tracking-[0.04em] text-inverse-muted">
               <LocalTime /> in Colombo · UTC+05:30
               <SkyNote />
@@ -361,9 +371,12 @@ export function ContactSection() {
       </Reveal>
       <div
         aria-hidden="true"
-        className="relative mt-[clamp(1.75rem,4vw,3rem)] h-[0.74em] overflow-hidden px-gutter text-[clamp(4.5rem,14vw,14.5rem)]"
+        className="relative mt-[clamp(1.75rem,4vw,3rem)] px-gutter [container-type:inline-size]"
       >
-        <div className="text-outline font-display leading-[0.9] tracking-[-0.03em] whitespace-nowrap text-on-inverse italic">{site.name}</div>
+        {/* Name is ~8em wide: size from container width so it always fits. */}
+        <div className="h-[0.74em] overflow-hidden text-[min(14.5rem,12.2cqw)]">
+          <div className="text-outline font-display leading-[0.9] tracking-[-0.03em] whitespace-nowrap text-on-inverse italic">{site.name}</div>
+        </div>
       </div>
     </footer>
   );
