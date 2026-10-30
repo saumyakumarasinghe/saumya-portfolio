@@ -1,15 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useState } from "react";
 import { ringBands, ringLines } from "@/lib/art";
 import { roles } from "@/lib/content";
-import { prefersReducedMotion } from "@/lib/motion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useGsap } from "@/lib/use-gsap";
 
 /** Role index (0 = current, outermost) → ring group, callout anchor and label position. */
 const callouts = [
@@ -27,9 +21,9 @@ export function GrowthRings() {
   const ref = useRef<SVGSVGElement>(null);
   const [focus, setFocus] = useState<number | null>(null);
 
-  useLayoutEffect(() => {
+  useGsap(({ gsap }) => {
     const svg = ref.current;
-    if (!svg || prefersReducedMotion()) return;
+    if (!svg) return;
 
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline({
@@ -45,7 +39,7 @@ export function GrowthRings() {
     }, svg);
 
     return () => ctx.revert();
-  }, []);
+  });
 
   const groups = [ringLines.intern, ringLines.associate, ringLines.engineer] as const;
   const groupRole = [2, 1, 0]; // ringLines order (core first) → roles index

@@ -1,28 +1,23 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import { Leaf } from "@/components/ui/icons";
 import { readouts } from "@/lib/content";
-import { prefersReducedMotion } from "@/lib/motion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useGsap } from "@/lib/use-gsap";
 
 const format = (value: number, decimals: number) => value.toFixed(decimals);
 
 /**
  * "Measured in the field": four CV figures that count up once, the first
- * time they scroll into view. The real numbers are in the server HTML.
+ * time they scroll into view. The real numbers are in the server HTML, and
+ * stay as they are if the section is already on screen when motion is ready.
  */
 export function Readouts() {
   const ref = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  useGsap(({ gsap }) => {
     const root = ref.current;
-    if (!root || prefersReducedMotion()) return;
+    if (!root || root.getBoundingClientRect().top < window.innerHeight * 0.8) return;
 
     const ctx = gsap.context(() => {
       const figures = root.querySelectorAll<HTMLElement>("[data-count]");
@@ -53,7 +48,7 @@ export function Readouts() {
     }, root);
 
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section ref={ref} aria-labelledby="readouts-title" className="border-b border-line">

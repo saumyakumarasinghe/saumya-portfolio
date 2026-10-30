@@ -1,14 +1,8 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import { ridgeContours, valleyContours } from "@/lib/art";
-import { prefersReducedMotion } from "@/lib/motion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useGsap } from "@/lib/use-gsap";
 
 /**
  * The hero's topographic map. The contour lines breathe on their own (CSS);
@@ -20,11 +14,11 @@ export function HeroField() {
   const ridgeRef = useRef<SVGGElement>(null);
   const valleyRef = useRef<SVGGElement>(null);
 
-  useLayoutEffect(() => {
+  useGsap(({ gsap }) => {
     const root = rootRef.current;
     const ridge = ridgeRef.current;
     const valley = valleyRef.current;
-    if (!root || !ridge || !valley || prefersReducedMotion()) return;
+    if (!root || !ridge || !valley) return;
 
     const ctx = gsap.context(() => {
       const ridgeX = gsap.quickTo(ridge, "x", { duration: 1.6, ease: "power3.out" });
@@ -56,7 +50,7 @@ export function HeroField() {
     }, root);
 
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <div ref={rootRef} aria-hidden="true" className="pointer-events-none absolute inset-0">

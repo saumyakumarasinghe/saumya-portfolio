@@ -31,3 +31,35 @@ export const cssEase = {
 export function prefersReducedMotion(): boolean {
   return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
+
+/**
+ * Runs `callback` once the main thread is idle. Safari has no requestIdleCallback,
+ * so it falls back to a short timeout. Returns a function that cancels it.
+ */
+export function whenIdle(callback: () => void, timeout = 1500): () => void {
+  if (typeof window.requestIdleCallback === "function") {
+    const id = window.requestIdleCallback(callback, { timeout });
+    return () => window.cancelIdleCallback(id);
+  }
+  const id = window.setTimeout(callback, 200);
+  return () => window.clearTimeout(id);
+}
+
+/**
+ * Runs `callback` after the page has loaded and gone quiet, so decoration never
+ * competes with hydration or the first paint. Returns a function that cancels it.
+ */
+export function afterLoad(callback: () => void): () => void {
+  let cancelled = false;
+  let cancelIdle = () => {};
+  const run = () => {
+    if (!cancelled) cancelIdle = whenIdle(callback);
+  };
+  if (document.readyState === "complete") run();
+  else window.addEventListener("load", run, { once: true });
+  return () => {
+    cancelled = true;
+    cancelIdle();
+    window.removeEventListener("load", run);
+  };
+}

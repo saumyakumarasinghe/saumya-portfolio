@@ -1,14 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useState } from "react";
 import { capabilities, type PlantPart } from "@/lib/content";
 import { prefersReducedMotion } from "@/lib/motion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useGsap } from "@/lib/use-gsap";
 
 const roots = [
   "M262 434 C258 482 250 532 238 588 C228 632 208 670 184 706",
@@ -78,44 +73,48 @@ export function Capabilities() {
   const svgRef = useRef<SVGSVGElement>(null);
   const [active, setActive] = useState(0);
 
-  useLayoutEffect(() => {
-    const section = sectionRef.current;
-    const svg = svgRef.current;
-    if (!section || !svg) return;
+  // Not gated on reduced motion: ScrollTrigger also drives which capability is lit.
+  useGsap(
+    ({ gsap, ScrollTrigger }) => {
+      const section = sectionRef.current;
+      const svg = svgRef.current;
+      if (!section || !svg) return;
 
-    const ctx = gsap.context(() => {
-      section.querySelectorAll<HTMLElement>("[data-capability]").forEach((item, index) => {
-        ScrollTrigger.create({
-          trigger: item,
-          start: "top 60%",
-          end: "bottom 60%",
-          onToggle: (self) => self.isActive && setActive(index),
+      const ctx = gsap.context(() => {
+        section.querySelectorAll<HTMLElement>("[data-capability]").forEach((item, index) => {
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top 60%",
+            end: "bottom 60%",
+            onToggle: (self) => self.isActive && setActive(index),
+          });
         });
-      });
 
-      if (prefersReducedMotion()) return;
+        if (prefersReducedMotion()) return;
 
-      const desktop = window.matchMedia("(min-width: 64rem)").matches;
-      const growth = gsap.timeline({
-        defaults: { ease: "none" },
-        scrollTrigger: desktop
-          ? { trigger: section.querySelector("ol"), start: "top 70%", end: "bottom 75%", scrub: 0.8 }
-          : { trigger: svg, start: "top 85%", end: "bottom 60%", scrub: 0.8 },
-      });
-      growth
-        .from(svg.querySelectorAll(".p-root"), { strokeDashoffset: 1, stagger: 0.04, duration: 0.3 }, 0)
-        .from(svg.querySelector(".p-trunk-reveal"), { attr: { y: 434, height: 0 }, duration: 0.3 }, 0.18)
-        .from(svg.querySelectorAll(".p-branch"), { strokeDashoffset: 1, stagger: 0.04, duration: 0.25 }, 0.42)
-        .from(
-          svg.querySelectorAll(".p-leaf"),
-          { scale: 0, transformOrigin: "0% 50%", stagger: 0.015, duration: 0.18, ease: "back.out(2)" },
-          0.62,
-        )
-        .from(svg.querySelector(".p-knot"), { scale: 0, transformOrigin: "50% 50%", duration: 0.1 }, 0.8);
-    }, section);
+        const desktop = window.matchMedia("(min-width: 64rem)").matches;
+        const growth = gsap.timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: desktop
+            ? { trigger: section.querySelector("ol"), start: "top 70%", end: "bottom 75%", scrub: 0.8 }
+            : { trigger: svg, start: "top 85%", end: "bottom 60%", scrub: 0.8 },
+        });
+        growth
+          .from(svg.querySelectorAll(".p-root"), { strokeDashoffset: 1, stagger: 0.04, duration: 0.3 }, 0)
+          .from(svg.querySelector(".p-trunk-reveal"), { attr: { y: 434, height: 0 }, duration: 0.3 }, 0.18)
+          .from(svg.querySelectorAll(".p-branch"), { strokeDashoffset: 1, stagger: 0.04, duration: 0.25 }, 0.42)
+          .from(
+            svg.querySelectorAll(".p-leaf"),
+            { scale: 0, transformOrigin: "0% 50%", stagger: 0.015, duration: 0.18, ease: "back.out(2)" },
+            0.62,
+          )
+          .from(svg.querySelector(".p-knot"), { scale: 0, transformOrigin: "50% 50%", duration: 0.1 }, 0.8);
+      }, section);
 
-    return () => ctx.revert();
-  }, []);
+      return () => ctx.revert();
+    },
+    () => true,
+  );
 
   const activePart = capabilities[active]?.part;
 

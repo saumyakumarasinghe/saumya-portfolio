@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+import { useRef, useState } from "react";
 import { ArrowUpRight, Plus, Seedling } from "@/components/ui/icons";
 import { prefersReducedMotion } from "@/lib/motion";
+import { useGsap } from "@/lib/use-gsap";
 import type { Work } from "@/lib/work";
 
 type Row = Pick<Work, "slug" | "number" | "title" | "kind" | "badge" | "summary" | "readout" | "cover" | "url">;
@@ -40,35 +40,37 @@ export function WorkList({ items }: { items: Row[] }) {
   const previewRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<number | null>(null);
 
-  useLayoutEffect(() => {
-    const list = listRef.current;
-    const preview = previewRef.current;
-    if (!list || !preview) return;
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!canHover) return;
+  // Only fine pointers get the preview plate, so touch visitors never load GSAP for it.
+  useGsap(
+    ({ gsap }) => {
+      const list = listRef.current;
+      const preview = previewRef.current;
+      if (!list || !preview) return;
 
-    const reduced = prefersReducedMotion();
-    const ctx = gsap.context(() => {
-      gsap.set(preview, { xPercent: -50, yPercent: -50, rotate: -4 });
-      const x = gsap.quickTo(preview, "x", { duration: reduced ? 0 : 0.7, ease: "power3.out" });
-      const y = gsap.quickTo(preview, "y", { duration: reduced ? 0 : 0.7, ease: "power3.out" });
-      const rotate = gsap.quickTo(preview, "rotate", { duration: 0.9, ease: "power3.out" });
-      let lastX = 0;
+      const reduced = prefersReducedMotion();
+      const ctx = gsap.context(() => {
+        gsap.set(preview, { xPercent: -50, yPercent: -50, rotate: -4 });
+        const x = gsap.quickTo(preview, "x", { duration: reduced ? 0 : 0.7, ease: "power3.out" });
+        const y = gsap.quickTo(preview, "y", { duration: reduced ? 0 : 0.7, ease: "power3.out" });
+        const rotate = gsap.quickTo(preview, "rotate", { duration: 0.9, ease: "power3.out" });
+        let lastX = 0;
 
-      const onMove = (event: PointerEvent) => {
-        const rect = list.getBoundingClientRect();
-        const px = event.clientX - rect.left;
-        x(px);
-        y(event.clientY - rect.top);
-        if (!reduced) rotate(gsap.utils.clamp(-12, 8, -4 + (px - lastX) * 0.6));
-        lastX = px;
-      };
-      list.addEventListener("pointermove", onMove);
-      return () => list.removeEventListener("pointermove", onMove);
-    }, list);
+        const onMove = (event: PointerEvent) => {
+          const rect = list.getBoundingClientRect();
+          const px = event.clientX - rect.left;
+          x(px);
+          y(event.clientY - rect.top);
+          if (!reduced) rotate(gsap.utils.clamp(-12, 8, -4 + (px - lastX) * 0.6));
+          lastX = px;
+        };
+        list.addEventListener("pointermove", onMove);
+        return () => list.removeEventListener("pointermove", onMove);
+      }, list);
 
-    return () => ctx.revert();
-  }, []);
+      return () => ctx.revert();
+    },
+    () => window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+  );
 
   return (
     <div className="relative">

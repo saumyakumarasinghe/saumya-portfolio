@@ -1,20 +1,16 @@
 "use client";
 
-import { useLayoutEffect, useRef, type ElementType, type ReactNode } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { duration, ease, prefersReducedMotion, stagger as staggerStep } from "@/lib/motion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useRef, type ElementType, type ReactNode } from "react";
+import { duration, ease, stagger as staggerStep } from "@/lib/motion";
+import { useGsap } from "@/lib/use-gsap";
 
 /**
  * Scroll-triggered entrance for a block.
  *
  * Content is fully visible in the server HTML; the entrance is added only
- * after hydration and only when motion is allowed, so nothing is ever hidden
- * from readers without JavaScript or with reduced motion.
+ * after the page has loaded and only when motion is allowed, so nothing is ever
+ * hidden from readers without JavaScript or with reduced motion. A block that is
+ * already on screen by then (a deep link, a restored scroll position) is left as it is.
  *
  * Children marked `data-reveal` animate in sequence; children wrapped in
  * `.line-mask` rise out of their baseline like set type.
@@ -38,9 +34,12 @@ export function Reveal({
 }) {
   const ref = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  useGsap(({ gsap }) => {
     const root = ref.current;
-    if (!root || prefersReducedMotion()) return;
+    if (!root) return;
+
+    const triggerAt = (Number(/(\d+)%/.exec(start)?.[1]) || 82) / 100;
+    if (root.getBoundingClientRect().top < window.innerHeight * triggerAt) return;
 
     const ctx = gsap.context(() => {
       const lines = root.querySelectorAll<HTMLElement>(".line-mask > *");
@@ -61,7 +60,7 @@ export function Reveal({
     }, root);
 
     return () => ctx.revert();
-  }, [start, y]);
+  });
 
   return (
     <Tag ref={ref} className={className} {...rest}>
