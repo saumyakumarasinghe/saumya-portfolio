@@ -418,6 +418,16 @@
     text-decoration-thickness: 1.5px;
   }
 
+  /* Sinhala: no web font is shipped, so name the system faces that carry it and give the
+     stacked vowel signs and conjuncts room. Inside a mono label this also swaps the missing
+     mono glyphs for a proper sans. */
+  :lang(si) {
+    font-family: var(--font-sans), "Noto Sans Sinhala", "Iskoola Pota", "Nirmala UI", "Sinhala MN", "Sinhala Sangam MN", sans-serif;
+    line-height: 1.75;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
   /* Anchored sections clear the floating navigation */
   [id] {
     scroll-margin-top: 6rem;

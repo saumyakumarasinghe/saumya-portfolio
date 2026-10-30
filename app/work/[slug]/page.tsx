@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Reveal } from "@/components/motion/reveal";
+import { MixedScript } from "@/components/ui/mixed-script";
 import { Arrow, ArrowLeft, ArrowUpRight, Leaf } from "@/components/ui/icons";
 import { Fireflies, Placeholder, PillLink } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
@@ -86,7 +87,7 @@ function Media({ screen, className }: { screen: Screen; className: string }) {
         ) : null}
       </div>
       <figcaption className="font-mono text-label text-ink-muted">
-        {screen.label} · {screen.caption}
+        {screen.label} · <MixedScript text={screen.caption} />
       </figcaption>
     </figure>
   );
@@ -234,7 +235,9 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
                 className="object-cover"
               />
             </div>
-            <figcaption className="pt-3 font-mono text-label text-ink-muted">{item.cover.caption}</figcaption>
+            <figcaption className="pt-3 font-mono text-label text-ink-muted">
+              <MixedScript text={item.cover.caption} />
+            </figcaption>
           </figure>
         ) : (
           <Placeholder
@@ -242,16 +245,22 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
             shape="rounded-plate"
             className="mt-[clamp(3rem,6vw,5.5rem)] aspect-[21/9] max-sm:aspect-[4/3]"
           >
-            <span className="max-w-[46ch] font-display text-[clamp(1.375rem,2.4vw,1.875rem)] leading-[1.15]">{item.cover.caption}</span>
+            <span className="max-w-[46ch] font-display text-[clamp(1.375rem,2.4vw,1.875rem)] leading-[1.15]">
+              <MixedScript text={item.cover.caption} />
+            </span>
           </Placeholder>
         )}
 
         <div className="mt-[clamp(4.5rem,9vw,8.75rem)] flex flex-col">
           <Block number="01" title="Overview">
-            <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.65]">{item.overview}</p>
+            <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.65]">
+              <MixedScript text={item.overview} />
+            </p>
           </Block>
           <Block number="02" title="The problem">
-            <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.65]">{item.problem}</p>
+            <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.65]">
+              <MixedScript text={item.problem} />
+            </p>
           </Block>
           {item.myPart && (
             <Block
@@ -262,7 +271,9 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
                 </>
               }
             >
-              <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.65]">{item.myPart}</p>
+              <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.65]">
+                <MixedScript text={item.myPart} />
+              </p>
             </Block>
           )}
           <Block
