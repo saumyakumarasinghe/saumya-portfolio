@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Reveal } from "@/components/motion/reveal";
 import { Arrow, ArrowLeft, ArrowUpRight, Leaf } from "@/components/ui/icons";
 import { Fireflies, Placeholder, PillLink } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
-import { getWork, nextWork, work, type Work } from "@/lib/work";
+import { getWork, nextWork, work, type Screen, type Work } from "@/lib/work";
 
 export function generateStaticParams() {
   return work.map((item) => ({ slug: item.slug }));
@@ -48,6 +50,45 @@ function Block({ number, title, children }: { number: string; title: React.React
         {children}
       </div>
     </Reveal>
+  );
+}
+
+/** A screenshot, recording or design piece; falls back to a dashed placeholder until the file exists. */
+function Media({ screen, className }: { screen: Screen; className: string }) {
+  if (!screen.src && !screen.video) {
+    return <Placeholder label={screen.label} caption={screen.caption} className={className} />;
+  }
+  return (
+    <figure className={`m-0 flex flex-col gap-2.5 ${screen.wide ? "col-span-full" : ""}`}>
+      <div
+        className={`relative overflow-hidden rounded-pebble border border-line ${screen.tone === "paper" ? "bg-[#f4ecdd]" : "bg-surface"} ${className}`}
+        style={screen.ratio ? { aspectRatio: screen.ratio } : undefined}
+      >
+        {screen.video ? (
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            poster={screen.poster}
+            aria-label={screen.alt ?? screen.label}
+            className="size-full object-contain"
+          >
+            <source src={screen.video} />
+          </video>
+        ) : screen.src ? (
+          <Image
+            src={screen.src}
+            alt={screen.alt ?? screen.label}
+            fill
+            sizes="(min-width: 1024px) 26vw, (min-width: 640px) 44vw, 100vw"
+            className={screen.tone === "paper" ? "object-contain p-6" : "object-contain"}
+          />
+        ) : null}
+      </div>
+      <figcaption className="font-mono text-label text-ink-muted">
+        {screen.label} — {screen.caption}
+      </figcaption>
+    </figure>
   );
 }
 
@@ -109,7 +150,18 @@ function OrderFlow() {
   );
 }
 
-export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
+export default function CaseStudy({ params }: PageProps<"/work/[slug]">) {
+  return (
+    <>
+      <Suspense fallback={<div aria-hidden="true" className="container-page min-h-svh pt-28 md:pt-36" />}>
+        <CaseStudyArticle params={params} />
+      </Suspense>
+      <CaseStudyFooter />
+    </>
+  );
+}
+
+async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">["params"] }) {
   const { slug } = await params;
   const item = getWork(slug);
   if (!item) notFound();
@@ -170,13 +222,29 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           </div>
         </div>
 
-        <Placeholder
-          label={item.cover.label}
-          shape="rounded-plate"
-          className="mt-[clamp(3rem,6vw,5.5rem)] aspect-[21/9] max-sm:aspect-[4/3]"
-        >
-          <span className="max-w-[46ch] font-display text-[clamp(1.375rem,2.4vw,1.875rem)] leading-[1.15]">{item.cover.caption}</span>
-        </Placeholder>
+        {item.cover.src ? (
+          <figure className="m-0 mt-[clamp(3rem,6vw,5.5rem)]">
+            <div className="relative aspect-[21/9] overflow-hidden rounded-plate border border-line bg-surface">
+              <Image
+                src={item.cover.src}
+                alt={item.cover.alt ?? item.cover.caption}
+                fill
+                preload
+                sizes="(min-width: 1280px) 1200px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="pt-3 font-mono text-label text-ink-muted">{item.cover.caption}</figcaption>
+          </figure>
+        ) : (
+          <Placeholder
+            label={item.cover.label}
+            shape="rounded-plate"
+            className="mt-[clamp(3rem,6vw,5.5rem)] aspect-[21/9] max-sm:aspect-[4/3]"
+          >
+            <span className="max-w-[46ch] font-display text-[clamp(1.375rem,2.4vw,1.875rem)] leading-[1.15]">{item.cover.caption}</span>
+          </Placeholder>
+        )}
 
         <div className="mt-[clamp(4.5rem,9vw,8.75rem)] flex flex-col">
           <Block number="01" title="Overview">
@@ -236,10 +304,26 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           <Block number="05" title="Screens">
             <div className="grid grid-cols-[repeat(auto-fit,minmax(min(16.25rem,100%),1fr))] gap-4">
               {item.screens.map((screen) => (
-                <Placeholder key={screen.label} label={screen.label} caption={screen.caption} className="aspect-[16/10]" />
+                <Media key={screen.label} screen={screen} className="aspect-[16/10]" />
               ))}
             </div>
           </Block>
+          {item.design && item.design.length > 0 && (
+            <Block
+              number="05b"
+              title={
+                <>
+                  Design <em className="emphasis">work</em>
+                </>
+              }
+            >
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(min(14rem,100%),1fr))] gap-4">
+                {item.design.map((piece) => (
+                  <Media key={piece.src ?? piece.caption} screen={piece} className="aspect-[4/5]" />
+                ))}
+              </div>
+            </Block>
+          )}
           <Block number="06" title="Outcome">
             <div className="flex flex-col gap-5">
               <p className="font-display text-[clamp(4rem,9vw,9rem)] leading-[0.85] tracking-[-0.04em]">
@@ -294,43 +378,42 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           </span>
         </Link>
       </article>
-
-      <footer className="relative overflow-hidden bg-inverse text-on-inverse">
-        <Fireflies count={3} />
-        <div className="relative container-page pt-[clamp(5rem,9vw,8.75rem)] pb-9">
-          <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-8">
-            <h2 className="max-w-[14ch] font-display text-[clamp(3rem,7vw,7rem)] leading-[0.9] font-normal tracking-[-0.03em]">
-              Need a site like this for your <em className="text-spark italic">business</em>?
-            </h2>
-            <PillLink href="/#contact" tone="spark">
-              Let&apos;s discuss your project
-            </PillLink>
-          </div>
-          <div className="mt-[clamp(4rem,8vw,7rem)] grid grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] border-t border-inverse-line font-mono text-label tracking-[0.04em] text-inverse-muted uppercase">
-            <p className="pt-4 pr-4">© 2026 {site.name}</p>
-            <a
-              href={`mailto:${site.email}`}
-              target="_blank"
-              rel="noreferrer"
-              className="pt-4 pr-4 normal-case no-underline hover:text-spark"
-            >
-              {site.email}
-            </a>
-            <p className="pt-4 pr-4">
-              <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">
-                LinkedIn ↗
-              </a>{" "}
-              ·{" "}
-              <a href={site.links.github} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">
-                GitHub ↗
-              </a>
-            </p>
-            <a href="#cs-title" className="pt-4 text-on-inverse no-underline hover:text-spark">
-              Back to the top ↑
-            </a>
-          </div>
-        </div>
-      </footer>
     </>
+  );
+}
+
+function CaseStudyFooter() {
+  return (
+    <footer className="relative overflow-hidden bg-inverse text-on-inverse">
+      <Fireflies count={3} />
+      <div className="relative container-page pt-[clamp(5rem,9vw,8.75rem)] pb-9">
+        <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-8">
+          <h2 className="max-w-[14ch] font-display text-[clamp(3rem,7vw,7rem)] leading-[0.9] font-normal tracking-[-0.03em]">
+            Need a site like this for your <em className="text-spark italic">business</em>?
+          </h2>
+          <PillLink href="/#contact" tone="spark">
+            Let&apos;s discuss your project
+          </PillLink>
+        </div>
+        <div className="mt-[clamp(4rem,8vw,7rem)] grid grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] border-t border-inverse-line font-mono text-label tracking-[0.04em] text-inverse-muted uppercase">
+          <p className="pt-4 pr-4">© 2026 {site.name}</p>
+          <a href={`mailto:${site.email}`} target="_blank" rel="noreferrer" className="pt-4 pr-4 normal-case no-underline hover:text-spark">
+            {site.email}
+          </a>
+          <p className="pt-4 pr-4">
+            <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">
+              LinkedIn ↗
+            </a>{" "}
+            ·{" "}
+            <a href={site.links.github} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">
+              GitHub ↗
+            </a>
+          </p>
+          <a href="#cs-title" className="pt-4 text-on-inverse no-underline hover:text-spark">
+            Back to the top ↑
+          </a>
+        </div>
+      </div>
+    </footer>
   );
 }

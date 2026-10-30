@@ -1,7 +1,7 @@
 /**
  * Field notes: the work shown on the home page and at /work/[slug].
  *
- * Every claim comes from the CV or from the live client site. Anything that
+ * Every claim comes from the CV, the live client site or the project's own source. Anything that
  * still needs confirming is written as a visible "[ … ]" placeholder, so it
  * can't slip through as fact. Replace placeholders here; the pages follow.
  */
@@ -15,6 +15,16 @@ export type Screen = {
   /** Path under /public once a real screenshot exists, e.g. "/work/sayaru/checkout.webp". */
   src?: string;
   alt?: string;
+  /** Path under /public to a short screen recording, e.g. "/work/sayaru/checkout.mp4". Takes the place of `src`. */
+  video?: string;
+  /** Still frame shown before the video plays. */
+  poster?: string;
+  /** "paper" sits the image on a paper-coloured plate, for logos with a transparent background. */
+  tone?: "paper";
+  /** CSS aspect-ratio of the frame, e.g. "1440 / 832". Defaults to 16 / 10 for screens and 4 / 5 for design work. */
+  ratio?: string;
+  /** Spans the full width of the grid, for a video. */
+  wide?: boolean;
 };
 
 export type Work = {
@@ -44,6 +54,8 @@ export type Work = {
   diagram: "flow" | "placeholder";
   diagramCaption: string;
   screens: Screen[];
+  /** Design work made for the project — logo, covers, layouts. Shown under the screens when present. */
+  design?: Screen[];
   outcome: { headline: string; emphasis: string; text: string; placeholders: string[] };
   forYou: { text: string; tags: string[] };
 };
@@ -101,51 +113,150 @@ export const work: Work[] = [
     title: "Sayaru Publishers",
     emphasis: "Publishers",
     kind: "client",
-    badge: "Client · Live",
+    badge: "Co-founder · Live",
     summary: "A bilingual bookshop and publishing website — from catalogue to doorstep. Live at sayarupublishers.lk.",
     readout: { value: "In bloom" },
     url: "https://sayarupublishers.lk/",
-    lead: "A bilingual bookshop and publishing website for a Sri Lankan publisher that sells its own titles directly — from catalogue to doorstep.",
+    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house I co-founded — it sells its own titles directly, from catalogue to doorstep.",
     facts: [
-      { label: "Client", value: "Sayaru Publishers" },
-      { label: "Role", value: "[ Design & build — confirm ]", confirm: true },
-      { label: "Stack", value: "Next.js · Supabase" },
+      { label: "Business", value: "Sayaru Publishers — one of six co-founders" },
+      { label: "Role", value: "Co-founder and sole developer — site design, build and launch" },
+      { label: "Stack", value: "Next.js 14 · TypeScript · PostgreSQL · Prisma · Supabase · Auth.js · Tailwind · Netlify" },
       { label: "Languages", value: "English · Sinhala" },
-      { label: "Status", value: "Live, taking orders" },
+      // TODO(verify): CARD_PAYMENTS_ENABLED is still false on `staging`. Card checkout is described as arriving with the next release;
+      // update this row and the "built" line once the flag is on and the PayHere merchant account is live.
+      { label: "Payments", value: "Bank transfer · branch deposit · cards via PayHere from the next release" },
+      // TODO(verify): launch date. Git history starts 2026-10-09, but the database migrations start 2026-09-07 and there is an
+      // `archive/landing-page` tag, so the real start is earlier. Add a "Launched" row once the date is confirmed.
+      { label: "Status", value: "Live at sayarupublishers.lk" },
     ],
     cover: {
       label: "COVER · 21:9",
-      caption: "The live home page — book of the month with its countdown, new on the shelf.",
+      caption: "Three titles from the Sayaru shelf — White Camellia, Limerence and යදම්.",
+      src: "/work/sayaru/cover-montage.webp",
+      alt: "Three Sayaru Publishers book covers side by side: White Camellia, Limerence and යදම්.",
     },
     overview:
-      "Sayaru Publishers edits, designs, prints and publishes books, and sells every title directly through its own online bookshop. The site carries both sides of the business: a shop for readers and a services page for authors with a manuscript.",
+      "Sayaru Publishers is a book-selling and publishing business started by six co-founders, me included. It edits, designs, prints and publishes books, and sells every title directly through its own online bookshop. The site carries both sides of the business: a shop for readers and a services page for authors with a manuscript. Behind it sits an admin console the team runs the shop from.",
     problem:
-      "A publisher selling direct needs more than a catalogue. Readers browse in English or Sinhala, new titles take pre-orders before release, and payments arrive as bank transfers that someone has to check before a book ships.",
+      "A publisher selling direct needs more than a catalogue. Readers browse in English or Sinhala, new titles take pre-orders before release, and payments arrive as bank transfers that someone has to check before a book ships. Pre-orders also tell the publisher how many copies to print, so every copy owed has to be counted and held back for the buyer who paid.",
+    myPart:
+      "I designed and built the whole website on my own — storefront, admin console, database, email and hosting — and took it to production. Beyond the site, I designed the සයරු Publishers logo, and I do the book layout and cover design for Sayaru's titles.",
+    // TODO(verify): everything below is read from the `staging` branch (3d243d2, 2026-10-20), which goes to production on 2026-10-30.
+    // Confirm the release has shipped before this site goes live.
     built: [
-      "Catalogue with categories, and search on a keyboard shortcut (/ to open, esc to close)",
-      "Wishlist, cart, customer accounts and order history",
-      "Pre-orders with a release countdown for the book of the month",
-      "Checkout by bank transfer or branch deposit, with receipt upload for manual verification",
+      "Catalogue with categories, search on a keyboard shortcut (/ to open, esc to close), and a one-row filter rail on phones",
+      "Wishlist, cart, customer accounts, saved addresses and order history; customers can delete their own account, and sign-up catches misspelled email providers",
+      "Pre-orders that open and close at set times in Sri Lanka time, with a release countdown, a release calendar, and a pre-order or sale discount per book",
+      "Pre-orders counted as print-run demand: copies owed to paid pre-orders are held back, and stock can run below zero while a title is still being printed",
+      "Checkout by bank transfer or branch deposit, with the receipt size checked in the browser before upload and verified by hand",
+      "Card and online-banking checkout through PayHere, built alongside the deposit flow and switching on with the next release",
       "English and Sinhala throughout, with a language toggle",
       "Publishing services — editing, design, printing, publishing — with a manuscript enquiry",
+      "Admin dashboard with week, month, quarter and year history against the previous period, and a strip of what needs attention today",
+      "Payments queue for deposit slips; orders with permanent numbers, Excel export and a printable A5 parcel label with packing slip",
+      "Stock ledger: every change logged against a note or an order, with per-book history and an Excel stock report",
+      "Home banners the team schedules, themes and writes in Sinhala themselves, for a book of the month or any announcement",
+      "Order-confirmation emails through Resend, password reset, and book covers uploaded straight to Supabase Storage",
+      "Error tracking with Sentry and 35 test files; deployed to Netlify through GitHub Actions, with database migrations applied before every release",
     ],
     diagram: "flow",
     diagramCaption: "A receipt is checked by hand before an order ships; pre-orders wait for release day.",
+    // Captured from the live site on 2026-10-30, before the staging release. The phone numbers in the top bar are hidden.
+    // TODO(verify): re-capture after the release so the screens match what is live. Checkout, order and admin screens need an
+    // account and an order, so they are not captured yet.
     screens: [
-      { label: "BOOK PAGE", caption: "Price, stock, wishlist" },
-      { label: "CHECKOUT", caption: "Transfer and receipt upload" },
-      { label: "SINHALA VIEW", caption: "Same page, other language" },
-      { label: "PHONE", caption: "Mobile layout" },
+      {
+        label: "WALKTHROUGH",
+        caption: "Home, catalogue and a book page",
+        video: "/work/sayaru/walkthrough.mp4",
+        poster: "/work/sayaru/shot-home.webp",
+        alt: "Screen recording of sayarupublishers.lk: scrolling the home page, opening the catalogue, then a book page.",
+        ratio: "1280 / 760",
+        wide: true,
+      },
+      {
+        label: "HOME",
+        caption: "The book of the month and its pre-order status",
+        src: "/work/sayaru/shot-home.webp",
+        alt: "Sayaru home page showing White Camellia as the October book of the month, with a closed pre-order notice.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "CATALOGUE",
+        caption: "Search, categories and stock labels",
+        src: "/work/sayaru/shot-catalogue.webp",
+        alt: "Sayaru catalogue page with a search box, category chips and book cards.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "BOOK PAGE",
+        caption: "Price, stock, wishlist",
+        src: "/work/sayaru/shot-book.webp",
+        alt: "Limerence book page showing the cover, description, price and a sold-out label.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "SINHALA VIEW",
+        caption: "Same page, other language",
+        src: "/work/sayaru/shot-book-si.webp",
+        alt: "The Limerence book page with the whole interface switched to Sinhala.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "PHONE · BOOK",
+        caption: "Mobile layout",
+        src: "/work/sayaru/shot-mobile-book.webp",
+        alt: "White Camellia book page on a phone.",
+        ratio: "780 / 1688",
+      },
+      {
+        label: "PHONE · CATALOGUE",
+        caption: "Mobile catalogue with a search button",
+        src: "/work/sayaru/shot-mobile-catalogue.webp",
+        alt: "Sayaru catalogue on a phone, with category chips and two book cards.",
+        ratio: "780 / 1688",
+      },
+    ],
+    // TODO(verify): the captions below name the titles only. Say which covers and layouts are yours before claiming them one by one.
+    design: [
+      {
+        label: "LOGO",
+        caption: "The සයරු Publishers mark",
+        src: "/work/sayaru/logo.webp",
+        alt: "The සයරු Publishers logo: a gold fountain pen rising from an open book, framed by crimson petals.",
+        tone: "paper",
+      },
+      {
+        label: "COVER",
+        caption: "White Camellia · Aurora Writes",
+        src: "/work/sayaru/cover-white-camellia.webp",
+        alt: "White Camellia book cover: a young couple holding white camellias against a plum background with falling petals.",
+      },
+      {
+        label: "COVER",
+        caption: "Limerence · M.N.K. Sathsarani",
+        src: "/work/sayaru/cover-limerence.webp",
+        alt: "Limerence book cover: a silhouetted woman beneath a crescent moon, with the title in gold lettering on a dusk-purple ground.",
+      },
+      {
+        label: "COVER",
+        caption: "යදම් · Mihiranga Lakmal",
+        src: "/work/sayaru/cover-yadam.webp",
+        alt: "යදම් book cover: the title in gold Sinhala lettering, with a gold chain and red roses on cream paper.",
+      },
     ],
     outcome: {
       headline: "In",
       emphasis: "bloom",
-      text: "Live and taking orders and pre-orders at sayarupublishers.lk.",
-      placeholders: ["A result you can share — orders, titles listed, time saved", "Client quote — only with their permission"],
+      text: "Live at sayarupublishers.lk, selling direct with pre-orders and bank-transfer checkout, with card payments to follow. Behind the shop: 13 database models, 25 migrations, 46 API routes and 35 test files.",
+      // TODO(verify): no orders, sales or traffic figures are in the code or on the site, so none are claimed. Add one only if you
+      // are happy to share it.
+      placeholders: ["A result you can share — orders, titles listed, time saved"],
     },
     forYou: {
-      text: "For businesses that want their own online shop rather than a marketplace listing — with the payment methods their customers already use, and content in more than one language.",
-      tags: ["Online shops", "Pre-orders & launches", "Bilingual sites", "Local payment flows"],
+      text: "For businesses that want their own online shop rather than a marketplace listing — with the payment methods their customers already use, content in more than one language, and an admin side that keeps orders and stock under control.",
+      tags: ["Online shops", "Pre-orders & launches", "Bilingual sites", "Local payment flows", "Admin & stock tools"],
     },
   },
   {

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
@@ -132,14 +133,24 @@ export function WorkList({ items }: { items: Row[] }) {
           {items.map((item, index) => (
             <div
               key={item.slug}
-              className={`hatch flex aspect-[4/3] flex-col justify-between p-4 transition-opacity duration-300 ${
+              className={`${item.cover.src ? "overflow-hidden bg-surface" : "hatch"} flex aspect-[4/3] flex-col justify-between p-4 transition-opacity duration-300 ${
                 index === 0 ? "relative" : "absolute inset-0"
               } ${active === index ? "opacity-100" : "opacity-0"}`}
             >
-              <span className="eyebrow text-ink-muted">[ Screenshot ]</span>
-              <span className="font-display text-[1.65rem] leading-[1.05]">
+              {item.cover.src && (
+                <>
+                  <Image src={item.cover.src} alt="" fill sizes="304px" className="object-cover" />
+                  <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                </>
+              )}
+              <span className={`eyebrow relative ${item.cover.src ? "text-white/80" : "text-ink-muted"}`}>
+                {item.cover.src ? item.badge : "[ Screenshot ]"}
+              </span>
+              <span className={`relative font-display text-[1.65rem] leading-[1.05] ${item.cover.src ? "text-white" : ""}`}>
                 {item.url ? item.url.replace(/^https?:\/\/|\/$/g, "") : item.title}
-                <span className="mt-1 block font-sans text-[0.8rem] text-ink-muted">{item.cover.caption}</span>
+                <span className={`mt-1 block font-sans text-[0.8rem] ${item.cover.src ? "text-white/80" : "text-ink-muted"}`}>
+                  {item.cover.caption}
+                </span>
               </span>
             </div>
           ))}
