@@ -31,12 +31,19 @@ export function SiteHeader() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const lenis = useLenis();
 
+  // The header lives in the layout, so the menu would survive a navigation (back button, a link
+  // in another tab of the same app): close it whenever the route changes.
+  useEffect(() => {
+    dialogRef.current?.close();
+  }, [pathname]);
+
   useEffect(() => {
     let last = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 24);
-      setHidden(y > 480 && y > last + 2 ? true : y < last - 2 ? false : (prev) => prev);
+      if (y > 480 && y > last + 2) setHidden(true);
+      else if (y < last - 2) setHidden(false);
       last = y;
     };
     onScroll();
@@ -61,17 +68,19 @@ export function SiteHeader() {
         } ${scrolled ? "border-b border-line bg-canvas/80 backdrop-blur-md" : "border-b border-transparent"}`}
       >
         <div className="container-page flex items-center justify-between gap-4 py-3.5 lg:py-4">
-          <Link href={`${base}#top`} className="flex items-center gap-3 no-underline" aria-label={`${site.name}, home`}>
+          <Link href={`${base}#top`} className="flex min-h-11 items-center gap-3 no-underline" aria-label={`${site.name}, home`}>
             <LeafMark />
-            <span className="font-display text-[1.5rem] leading-none tracking-[-0.01em] max-[380px]:hidden">{site.name}</span>
+            <span className="font-display text-[1.5rem] leading-none tracking-[-0.01em] whitespace-nowrap max-[380px]:hidden">
+              {site.name}
+            </span>
           </Link>
 
-          <nav aria-label="Primary" className="hidden items-center gap-7 text-small font-medium lg:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-5 text-small font-medium whitespace-nowrap lg:flex xl:gap-7">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={`${base}${item.href}`}
-                className="relative py-2.5 no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
+                className="relative flex min-h-11 items-center no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
               >
                 {item.label}
               </Link>
@@ -82,7 +91,7 @@ export function SiteHeader() {
             <ThemeToggle className="max-sm:hidden" />
             <Link
               href={`${base}#contact`}
-              className="group hidden min-h-11 items-center gap-3 rounded-full bg-ink py-1 pr-1 pl-5 text-small font-medium text-canvas no-underline md:inline-flex"
+              className="group hidden min-h-11 items-center gap-3 rounded-full bg-ink py-1 pr-1 pl-5 text-small font-medium whitespace-nowrap text-canvas no-underline md:inline-flex"
             >
               Start a project
               <span className="grid size-9 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-300 ease-settle group-hover:translate-x-0.5">
@@ -114,7 +123,7 @@ export function SiteHeader() {
         onClick={(event) => {
           if (event.target === event.currentTarget) closeMenu();
         }}
-        className="m-0 h-dvh max-h-none w-full max-w-none bg-canvas p-0 text-ink backdrop:bg-ink/40 open:flex"
+        className="m-0 h-dvh max-h-none w-full max-w-none overscroll-contain bg-canvas p-0 text-ink backdrop:bg-ink/40 open:flex"
       >
         <div className="container-page flex w-full flex-col py-3.5">
           <div className="flex items-center justify-between gap-4">
@@ -131,7 +140,10 @@ export function SiteHeader() {
               Close
             </button>
           </div>
-          <nav aria-label="Menu" className="mt-[min(3rem,5svh)] flex flex-col border-t border-line-strong">
+          <nav
+            aria-label="Menu"
+            className="mt-[min(3rem,5svh)] flex flex-col border-t border-line-strong [@media(max-height:30rem)]:grid [@media(max-height:30rem)]:grid-cols-2 [@media(max-height:30rem)]:gap-x-10"
+          >
             {[...nav, { href: "#contact", label: "Contact" }].map((item, index) => (
               <Link
                 key={item.href}
