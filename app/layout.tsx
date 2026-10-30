@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { fontVariables } from "./fonts";
+import { AmbientMotion } from "@/components/motion/ambient-motion";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { SiteHeader } from "@/components/site/site-header";
 import { site } from "@/lib/site";
@@ -62,6 +63,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
         </SmoothScroll>
+
+        <AmbientMotion />
 
         {/* Paper grain over everything; decorative, never interactive. */}
         <div aria-hidden="true" className="grain-overlay" />

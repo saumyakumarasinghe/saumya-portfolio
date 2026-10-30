@@ -458,6 +458,27 @@ html.lenis body {
   height: auto;
 }
 
+/* Ambient loops wait for components/motion/ambient-motion.tsx, which starts them after load and
+   pauses the ones off screen. Unlayered on purpose: the animate-* utilities set the animation
+   shorthand, and only unlayered CSS outranks them. Without scripting nothing would ever start
+   them, so the rule is scoped to browsers that report scripting as enabled. */
+@media (scripting: enabled) {
+  :root:not([data-motion="on"])
+    :is(
+      .animate-sway,
+      .animate-drift,
+      .animate-breathe,
+      .animate-firefly,
+      .animate-pulse-soft,
+      .animate-bob,
+      .animate-marquee,
+      .animate-flow,
+      .animate-rain
+    ) {
+    animation-play-state: paused;
+  }
+}
+
 /* Everything still, nothing hidden. JS-driven motion checks the same query. */
 @media (prefers-reduced-motion: reduce) {
   *,
