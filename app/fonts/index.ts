@@ -21,12 +21,12 @@ export const instrumentSerif = localFont({
   fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
-/** Body & UI — Instrument Sans, variable weight (400–700) and width (75–100%). */
+/**
+ * Body & UI — Instrument Sans, variable weight (400–700) and width (75–100%).
+ * Upright only: every italic on the site is set in the display serif.
+ */
 export const instrumentSans = localFont({
-  src: [
-    { path: "./instrument-sans-latin-standard-normal.woff2", weight: "400 700", style: "normal" },
-    { path: "./instrument-sans-latin-standard-italic.woff2", weight: "400 700", style: "italic" },
-  ],
+  src: [{ path: "./instrument-sans-latin-standard-normal.woff2", weight: "400 700", style: "normal" }],
   variable: "--font-instrument-sans",
   display: "swap",
   adjustFontFallback: "Arial",
@@ -34,12 +34,9 @@ export const instrumentSans = localFont({
   declarations: [{ prop: "font-stretch", value: "75% 100%" }],
 });
 
-/** Field labels & annotations — DM Mono. Used sparingly, always small. */
+/** Field labels & annotations — DM Mono. Used sparingly, always small, always regular weight. */
 export const dmMono = localFont({
-  src: [
-    { path: "./dm-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./dm-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
-  ],
+  src: [{ path: "./dm-mono-latin-400-normal.woff2", weight: "400", style: "normal" }],
   variable: "--font-dm-mono",
   display: "swap",
   adjustFontFallback: false,
