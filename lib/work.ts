@@ -243,8 +243,7 @@ export const work: Work[] = [
     title: "[ Cat boarding ] website",
     kind: "demo",
     badge: "Seedling · in progress",
-    summary:
-      "Demo entry — a booking-first site for a cat boarding service. Swap in the real story, screens and link at launch.",
+    summary: "Demo entry — a booking-first site for a cat boarding service. Swap in the real story, screens and link at launch.",
     readout: { value: "Soon" },
     lead: "[ Demo entry ] A booking-first website for a cat boarding service. Replace this note with the real project when it launches.",
     facts: [

@@ -487,11 +487,7 @@ html.lenis body {
 
 /* Drafting hatch for placeholder frames (screenshots still to come) */
 @utility hatch {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    var(--surface) 0 9px,
-    var(--surface-2) 9px 10px
-  );
+  background-image: repeating-linear-gradient(-45deg, var(--surface) 0 9px, var(--surface-2) 9px 10px);
 }
 
 /* Paper grain. On a positioned parent, or fixed full-screen via grain-overlay. */

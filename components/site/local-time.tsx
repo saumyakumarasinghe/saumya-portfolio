@@ -31,13 +31,6 @@ export function LocalTime({ fallback = "--:--" }: { fallback?: string }) {
 export function SkyNote() {
   const hour = useSyncExternalStore(subscribe, getHour, () => -1);
   if (hour < 0) return null;
-  const note =
-    hour >= 19 || hour < 5
-      ? "fireflies out"
-      : hour < 9
-        ? "mist lifting"
-        : hour < 16
-          ? "sun on the tea"
-          : "dusk coming in";
+  const note = hour >= 19 || hour < 5 ? "fireflies out" : hour < 9 ? "mist lifting" : hour < 16 ? "sun on the tea" : "dusk coming in";
   return <span> · {note}</span>;
 }

@@ -54,21 +54,21 @@ lib/
 
 ## Using the tokens
 
-| Need | Utility |
-| --- | --- |
-| Page / plate / hover backgrounds | `bg-canvas`, `bg-surface`, `bg-surface-2` |
-| Text | `text-ink`, `text-ink-muted`, `text-ink-subtle` |
-| Hairlines / strong rules | `border-line`, `border-line-strong` |
-| Italic headline word | `emphasis` (or `text-emphasis`) |
-| Spark fill (tea bud / firefly) | `bg-accent` with `text-on-accent` |
-| Diagram strokes, water, earth, wood | `stroke-diagram`, `bg-water`, `bg-earth`, `bg-wood` |
-| Night band in both themes | `bg-inverse`, `text-on-inverse`, `text-inverse-muted` |
-| Display sizes | `text-hero`, `text-section`, `text-note`, `text-figure`, `text-title` |
-| Text sizes | `text-lead`, `text-body`, `text-small`, `eyebrow` |
-| Layout | `container-page`, `px-gutter`, `py-section`, `max-w-page` |
-| Shapes | `rounded-full` (actions, tags), `rounded-pebble`, `rounded-plate` (media) |
-| Motion | `ease-settle`, `ease-draw`, `ease-respond`, `animate-sway`, `animate-firefly`, `animate-breathe`, `animate-flow`, `animate-marquee` |
-| Texture | `grain` (section), `grain-overlay` (full screen), `hatch` (placeholder frames) |
+| Need                                | Utility                                                                                                                             |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Page / plate / hover backgrounds    | `bg-canvas`, `bg-surface`, `bg-surface-2`                                                                                           |
+| Text                                | `text-ink`, `text-ink-muted`, `text-ink-subtle`                                                                                     |
+| Hairlines / strong rules            | `border-line`, `border-line-strong`                                                                                                 |
+| Italic headline word                | `emphasis` (or `text-emphasis`)                                                                                                     |
+| Spark fill (tea bud / firefly)      | `bg-accent` with `text-on-accent`                                                                                                   |
+| Diagram strokes, water, earth, wood | `stroke-diagram`, `bg-water`, `bg-earth`, `bg-wood`                                                                                 |
+| Night band in both themes           | `bg-inverse`, `text-on-inverse`, `text-inverse-muted`                                                                               |
+| Display sizes                       | `text-hero`, `text-section`, `text-note`, `text-figure`, `text-title`                                                               |
+| Text sizes                          | `text-lead`, `text-body`, `text-small`, `eyebrow`                                                                                   |
+| Layout                              | `container-page`, `px-gutter`, `py-section`, `max-w-page`                                                                           |
+| Shapes                              | `rounded-full` (actions, tags), `rounded-pebble`, `rounded-plate` (media)                                                           |
+| Motion                              | `ease-settle`, `ease-draw`, `ease-respond`, `animate-sway`, `animate-firefly`, `animate-breathe`, `animate-flow`, `animate-marquee` |
+| Texture                             | `grain` (section), `grain-overlay` (full screen), `hatch` (placeholder frames)                                                      |
 
 `dark:` variants follow the theme on `<html data-theme>`, not the operating system.
 All ambient animation stops under `prefers-reduced-motion`, and Lenis turns its

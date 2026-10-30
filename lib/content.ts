@@ -3,8 +3,20 @@
  */
 
 export const readouts = [
-  { value: 99.99, decimals: 2, prefix: "", unit: "%", text: "Success rate on event-driven Adyen and Stripe payments, with 40% more throughput." },
-  { value: 100, decimals: 0, prefix: "<", unit: "ms", text: "API latency on the DineTap wallet platform at high weekly transaction volume." },
+  {
+    value: 99.99,
+    decimals: 2,
+    prefix: "",
+    unit: "%",
+    text: "Success rate on event-driven Adyen and Stripe payments, with 40% more throughput.",
+  },
+  {
+    value: 100,
+    decimals: 0,
+    prefix: "<",
+    unit: "ms",
+    text: "API latency on the DineTap wallet platform at high weekly transaction volume.",
+  },
   { value: 45, decimals: 0, prefix: "", unit: "%", text: "Faster reporting queries after MySQL schema optimizations." },
   { value: 94, decimals: 0, prefix: "", unit: "%", text: "Test coverage with Jest, Cypress and JUnit; deploys in under 15 minutes." },
 ] as const;

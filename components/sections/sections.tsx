@@ -55,11 +55,18 @@ export function WorkSection() {
         <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-10">
           <div>
             <SectionLabel className="mb-5">01 — Field notes</SectionLabel>
-            <Title id="work-title" lines={[<>Selected <em className="emphasis">work</em></>]} />
+            <Title
+              id="work-title"
+              lines={[
+                <>
+                  Selected <em className="emphasis">work</em>
+                </>,
+              ]}
+            />
           </div>
           <p data-reveal className="max-w-[42ch] text-ink-muted">
-            Product engineering at Dinetap, live client work, and selected projects. Hover a note to preview it. On team
-            projects I describe my part, not the whole product.
+            Product engineering at Dinetap, live client work, and selected projects. Hover a note to preview it. On team projects I describe
+            my part, not the whole product.
           </p>
         </div>
         <WorkList items={work} />
@@ -91,8 +98,8 @@ export function TankSection() {
           </div>
           <div data-reveal className="flex max-w-[32.5rem] flex-[1_1_24rem] flex-col gap-3.5 text-storm-mist">
             <p>
-              Sri Lanka&apos;s ancient tanks caught the monsoon and released it slowly to the paddy fields. A message queue does
-              the same for traffic: it catches a burst, and workers drain it at a pace they can handle.
+              Sri Lanka&apos;s ancient tanks caught the monsoon and released it slowly to the paddy fields. A message queue does the same
+              for traffic: it catches a burst, and workers drain it at a pace they can handle.
             </p>
             <p className="text-storm-foam">It&apos;s the pattern behind the event-driven payment flows I built on AWS SQS and Lambda.</p>
           </div>
@@ -114,7 +121,15 @@ export function CapabilitiesSection() {
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
             <SectionLabel className="mb-5">03 — Capabilities</SectionLabel>
-            <Title id="cap-title" lines={[<>From <em className="emphasis">root</em></>, "to canopy."]} />
+            <Title
+              id="cap-title"
+              lines={[
+                <>
+                  From <em className="emphasis">root</em>
+                </>,
+                "to canopy.",
+              ]}
+            />
           </div>
           <p data-reveal className="max-w-[42ch] text-ink-muted">
             Six ways I can help, drawn as one plant. The parts your users never see are the ones holding up the parts they do.
@@ -135,7 +150,15 @@ export function ExperienceSection() {
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
             <SectionLabel className="mb-5">04 — Experience</SectionLabel>
-            <Title id="exp-title" lines={["Three rings,", <><em className="emphasis">one</em> tree.</>]} />
+            <Title
+              id="exp-title"
+              lines={[
+                "Three rings,",
+                <>
+                  <em className="emphasis">one</em> tree.
+                </>,
+              ]}
+            />
           </div>
           <div data-reveal className="max-w-[44ch]">
             <p className="font-display text-[2.25rem] leading-none">Dinetap</p>
@@ -178,7 +201,15 @@ export function ApproachSection() {
     <section id="approach" aria-labelledby="approach-title" className="border-b border-line bg-surface">
       <Reveal className="container-page py-section">
         <SectionLabel className="mb-5">05 — Approach</SectionLabel>
-        <Title id="approach-title" className="mb-14" lines={[<>How I <em className="emphasis">work</em>.</>]} />
+        <Title
+          id="approach-title"
+          className="mb-14"
+          lines={[
+            <>
+              How I <em className="emphasis">work</em>.
+            </>,
+          ]}
+        />
         <ol className="grid grid-cols-[repeat(auto-fit,minmax(min(14.5rem,100%),1fr))] border-t border-line-strong">
           {approach.map((item, index) => (
             <li
@@ -209,7 +240,15 @@ export function AboutSection() {
         <div className="flex max-w-[27.5rem] flex-[1_1_18rem] flex-col gap-8">
           <div>
             <SectionLabel className="mb-5">06 — About</SectionLabel>
-            <Title id="about-title" lines={["Rooted in", <><em className="emphasis">Colombo</em>.</>]} />
+            <Title
+              id="about-title"
+              lines={[
+                "Rooted in",
+                <>
+                  <em className="emphasis">Colombo</em>.
+                </>,
+              ]}
+            />
           </div>
           {/* Replace with <Image> of a real portrait, or delete this block — the layout closes up. */}
           <Placeholder
@@ -217,7 +256,9 @@ export function AboutSection() {
             shape="rounded-[58%_42%_48%_52%/46%_54%_46%_54%]"
             className="aspect-[4/5] max-w-[22.5rem] items-center justify-center p-6 text-center"
           >
-            <span className="max-w-[22ch] text-small text-ink-muted">A real photo builds trust. Leave it out and the layout closes up.</span>
+            <span className="max-w-[22ch] text-small text-ink-muted">
+              A real photo builds trust. Leave it out and the layout closes up.
+            </span>
           </Placeholder>
         </div>
         <div className="flex max-w-[47.5rem] flex-[999_1_32rem] flex-col gap-10">
@@ -226,16 +267,16 @@ export function AboutSection() {
           </p>
           <div data-reveal className="flex flex-col gap-4.5 text-[clamp(1.0625rem,1.3vw,1.1875rem)] leading-[1.65]">
             <p>
-              I joined Dinetap — then EatMe Global Lanka — as an intern in June 2022 and have grown with the product since: from
-              associate engineer to backend lead on the DineTap application and code owner for several of its services.
+              I joined Dinetap — then EatMe Global Lanka — as an intern in June 2022 and have grown with the product since: from associate
+              engineer to backend lead on the DineTap application and code owner for several of its services.
             </p>
             <p>
-              Over the same years I completed a BEng (Hons) in Software Engineering with the University of Westminster, studying
-              part-time alongside my work.
+              Over the same years I completed a BEng (Hons) in Software Engineering with the University of Westminster, studying part-time
+              alongside my work.
             </p>
             <p>
-              My work tends to sit where the details matter — payments, data and performance. Alongside the code I write the
-              documentation, and I&apos;ve run system-design workshops for newer engineers.
+              My work tends to sit where the details matter — payments, data and performance. Alongside the code I write the documentation,
+              and I&apos;ve run system-design workshops for newer engineers.
             </p>
           </div>
           <dl data-reveal className="border-t border-line-strong">
@@ -299,8 +340,8 @@ export function ContactSection() {
         <div className="mt-[clamp(3rem,6vw,5.5rem)] flex flex-wrap gap-x-[clamp(2.5rem,6vw,7.5rem)] gap-y-12">
           <div data-reveal className="flex max-w-[32.5rem] flex-[1_1_21rem] flex-col gap-7">
             <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.55] text-inverse-muted">
-              A new product, a business website, a backend that needs to scale, or a codebase that needs care — send a few
-              lines about what you&apos;re building and where it hurts. Freelance and contract enquiries welcome.
+              A new product, a business website, a backend that needs to scale, or a codebase that needs care — send a few lines about what
+              you&apos;re building and where it hurts. Freelance and contract enquiries welcome.
             </p>
             {site.availability && <p className="eyebrow text-spark">{site.availability}</p>}
             <EnquiryPicker />
@@ -312,9 +353,12 @@ export function ContactSection() {
               <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
                 <a
                   href={`mailto:${site.email}`}
+                  target="_blank"
+                  rel="noreferrer"
                   className="font-display text-[clamp(1.625rem,3vw,2.875rem)] tracking-[-0.01em] [overflow-wrap:anywhere] text-on-inverse decoration-spark decoration-2 underline-offset-8"
                 >
                   {site.email}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
                 <CopyEmail />
               </div>
@@ -369,16 +413,14 @@ export function ContactSection() {
           </a>
         </div>
       </Reveal>
-      <div
-        aria-hidden="true"
-        className="relative mt-[clamp(1.75rem,4vw,3rem)] px-gutter [container-type:inline-size]"
-      >
+      <div aria-hidden="true" className="relative mt-[clamp(1.75rem,4vw,3rem)] px-gutter [container-type:inline-size]">
         {/* Name is ~8em wide: size from container width so it always fits. */}
         <div className="h-[0.74em] overflow-hidden text-[min(14.5rem,12.2cqw)]">
-          <div className="text-outline font-display leading-[0.9] tracking-[-0.03em] whitespace-nowrap text-on-inverse italic">{site.name}</div>
+          <div className="text-outline font-display leading-[0.9] tracking-[-0.03em] whitespace-nowrap text-on-inverse italic">
+            {site.name}
+          </div>
         </div>
       </div>
     </footer>
   );
 }
-

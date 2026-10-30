@@ -80,9 +80,7 @@ export function Placeholder({
   children?: ReactNode;
 }) {
   return (
-    <div
-      className={`hatch flex flex-col justify-between gap-3 border border-dashed border-ink-subtle p-4 sm:p-5 ${shape} ${className}`}
-    >
+    <div className={`hatch flex flex-col justify-between gap-3 border border-dashed border-ink-subtle p-4 sm:p-5 ${shape} ${className}`}>
       <span className="eyebrow text-ink-muted">[ {label} ]</span>
       {children ?? (caption ? <span className="text-small text-ink-muted">{caption}</span> : null)}
     </div>

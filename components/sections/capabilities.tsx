@@ -213,7 +213,14 @@ export function Capabilities() {
                 return (
                   <g key={item.part}>
                     {on && (
-                      <circle cx={cx} cy={cy} r="15" className="animate-pulse-soft fill-none stroke-emphasis" strokeWidth="6" strokeOpacity="0.4" />
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r="15"
+                        className="animate-pulse-soft fill-none stroke-emphasis"
+                        strokeWidth="6"
+                        strokeOpacity="0.4"
+                      />
                     )}
                     <circle
                       cx={cx}
@@ -254,9 +261,7 @@ export function Capabilities() {
               </span>
               <div>
                 <p className="eyebrow text-[0.72rem] tracking-[0.08em] text-ink-muted">{item.label}</p>
-                <h3
-                  className={`mt-1.5 font-display text-title transition-colors duration-300 ${on ? "text-emphasis italic" : ""}`}
-                >
+                <h3 className={`mt-1.5 font-display text-title transition-colors duration-300 ${on ? "text-emphasis italic" : ""}`}>
                   {item.title}
                 </h3>
                 <p className="mt-2.5 text-lg leading-snug font-medium">{item.problem}</p>

@@ -26,9 +26,7 @@ function Badge({ kind, children }: { kind: Row["kind"]; children: string }) {
       </span>
     );
   }
-  return (
-    <span className="rounded-full border border-line-strong px-3 py-1 font-mono text-[0.72rem] tracking-[0.04em]">{children}</span>
-  );
+  return <span className="rounded-full border border-line-strong px-3 py-1 font-mono text-[0.72rem] tracking-[0.04em]">{children}</span>;
 }
 
 /**
@@ -87,10 +85,7 @@ export function WorkList({ items }: { items: Row[] }) {
                 aria-hidden="true"
                 className="absolute inset-y-0 -inset-x-[var(--spacing-gutter)] origin-bottom scale-y-0 bg-surface transition-transform duration-500 ease-settle group-hover:scale-y-100 max-md:hidden"
               />
-              <Link
-                href={`/work/${item.slug}`}
-                className="relative flex flex-wrap items-center gap-x-8 gap-y-3 py-7 no-underline md:py-8"
-              >
+              <Link href={`/work/${item.slug}`} className="relative flex flex-wrap items-center gap-x-8 gap-y-3 py-7 no-underline md:py-8">
                 <span className="w-14 flex-none font-mono text-label text-ink-subtle group-hover:text-ink">{item.number}</span>
                 <span className="min-w-0 flex-[1_1_22rem]">
                   <span

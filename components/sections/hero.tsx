@@ -32,7 +32,11 @@ export function Hero() {
             <span className="block animate-rise" style={d(0.15)}>
               <em className="emphasis">
                 {"Calm".split("").map((letter, index) => (
-                  <span key={index} className="inline-block origin-[50%_85%] animate-sway" style={{ animationDelay: `${index * -0.6 - 0.3}s` }}>
+                  <span
+                    key={index}
+                    className="inline-block origin-[50%_85%] animate-sway"
+                    style={{ animationDelay: `${index * -0.6 - 0.3}s` }}
+                  >
                     {letter}
                   </span>
                 ))}
@@ -50,8 +54,8 @@ export function Hero() {
         <div className="mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-10 md:mt-14">
           <div className="flex max-w-[31rem] flex-[1_1_21rem] animate-fade flex-col gap-6" style={d(0.55)}>
             <p className="text-lead">
-              I&apos;m Saumya, a software engineer in Colombo. I build web applications, APIs and event-driven backends with
-              deep roots — fast, dependable, and calm when traffic pours in.
+              I&apos;m Saumya, a software engineer in Colombo. I build web applications, APIs and event-driven backends with deep roots —
+              fast, dependable, and calm when traffic pours in.
             </p>
             <div className="flex flex-wrap gap-3">
               <PillLink href="#contact">Let&apos;s discuss your project</PillLink>

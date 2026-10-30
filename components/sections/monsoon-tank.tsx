@@ -232,7 +232,16 @@ export function MonsoonTank() {
           ))}
         </g>
         <g clipPath="url(#tank-clip)" style={{ opacity: mode === "tank" ? 1 : 0.25 }}>
-          <rect ref={waterRef} x="120" y="0" width="440" height="180" className="fill-monsoon-glow" fillOpacity="0.9" transform="translate(0 376) scale(1 0.02)" />
+          <rect
+            ref={waterRef}
+            x="120"
+            y="0"
+            width="440"
+            height="180"
+            className="fill-monsoon-glow"
+            fillOpacity="0.9"
+            transform="translate(0 376) scale(1 0.02)"
+          />
         </g>
         <path d="M100 197 H 580" className="stroke-fern-glow" strokeWidth="6" strokeLinecap="round" />
         <path
@@ -280,10 +289,18 @@ export function MonsoonTank() {
         </g>
         {/* Too small to read below lg; the legend under the drawing takes over there. */}
         <g fontFamily="var(--font-mono)" fontSize="12" letterSpacing="1" className="fill-storm-mist max-lg:hidden">
-          <text x="40" y="36">MONSOON · REQUESTS</text>
-          <text x="168" y="412">TANK · QUEUE (SQS)</text>
-          <text x="546" y="318">SLUICE · WORKERS (LAMBDA)</text>
-          <text x="760" y="292">FIELDS · PROCESSED</text>
+          <text x="40" y="36">
+            MONSOON · REQUESTS
+          </text>
+          <text x="168" y="412">
+            TANK · QUEUE (SQS)
+          </text>
+          <text x="546" y="318">
+            SLUICE · WORKERS (LAMBDA)
+          </text>
+          <text x="760" y="292">
+            FIELDS · PROCESSED
+          </text>
           {mode === "none" && (
             <text x="20" y="160" className="fill-laterite-glow">
               RUN-OFF · DROPPED
@@ -327,9 +344,8 @@ export function MonsoonTank() {
           : `Storm passed ${mode === "tank" ? "with" : "without"} a tank: ${Math.round(stats.caught)} caught, ${Math.round(stats.lost)} lost to run-off.`}
       </p>
       <figcaption className="border-t border-storm-line px-5 py-4 text-small text-storm-mist">
-        Without a tank, rain beyond what the fields can take runs off and is lost — those are dropped requests. With one,
-        the burst becomes a level that drains at a steady rate.{" "}
-        <span className="font-mono text-label">Illustrative simulation, not production data.</span>
+        Without a tank, rain beyond what the fields can take runs off and is lost — those are dropped requests. With one, the burst becomes
+        a level that drains at a steady rate. <span className="font-mono text-label">Illustrative simulation, not production data.</span>
       </figcaption>
     </figure>
   );

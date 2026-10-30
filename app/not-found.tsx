@@ -7,7 +7,9 @@ export default function NotFound() {
       <h1 className="font-display text-section font-normal">
         This path is <em className="emphasis">overgrown</em>.
       </h1>
-      <PillLink href="/" className="self-start">Back to the field notes</PillLink>
+      <PillLink href="/" className="self-start">
+        Back to the field notes
+      </PillLink>
     </section>
   );
 }

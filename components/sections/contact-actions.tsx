@@ -9,16 +9,7 @@ type Topic = (typeof enquiryTopics)[number];
 
 function mailto(topic: Topic | null) {
   const subject = topic ? `Project enquiry — ${topic}` : "Project enquiry";
-  const body = [
-    "Hi Saumya,",
-    "",
-    "What I'm building:",
-    "",
-    "Where it hurts right now:",
-    "",
-    "Timeline:",
-    "",
-  ].join("\n");
+  const body = ["Hi Saumya,", "", "What I'm building:", "", "Where it hurts right now:", "", "Timeline:", ""].join("\n");
   return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
