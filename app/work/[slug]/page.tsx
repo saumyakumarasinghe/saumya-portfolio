@@ -79,7 +79,7 @@ function Media({ screen, className }: { screen: Screen; className: string }) {
           <video
             controls
             playsInline
-            preload="metadata"
+            preload="none"
             poster={posterUrl(screen.poster)}
             aria-label={screen.alt ?? screen.label}
             className="size-full object-contain"
