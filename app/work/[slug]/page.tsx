@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -54,6 +54,16 @@ function Block({ number, title, children }: { number: string; title: React.React
   );
 }
 
+/**
+ * A video poster is a plain attribute, so it bypasses <Image>. Asking the image optimizer for it
+ * serves AVIF or WebP instead of the raw file. getImageProps returns the largest srcset entry,
+ * which for a 540px-wide request is the 1080px variant: enough for a poster shown at up to 920px.
+ */
+function posterUrl(src?: string) {
+  if (!src) return undefined;
+  return getImageProps({ src, alt: "", width: 540, height: 321 }).props.src;
+}
+
 /** A screenshot, recording or design piece; falls back to a dashed placeholder until the file exists. */
 function Media({ screen, className }: { screen: Screen; className: string }) {
   if (!screen.src && !screen.video) {
@@ -70,7 +80,7 @@ function Media({ screen, className }: { screen: Screen; className: string }) {
             controls
             playsInline
             preload="metadata"
-            poster={screen.poster}
+            poster={posterUrl(screen.poster)}
             aria-label={screen.alt ?? screen.label}
             className="size-full object-contain"
           >
