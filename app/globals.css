@@ -564,6 +564,22 @@ html.lenis body {
   margin-bottom: -0.06em;
 }
 
+/* A 1440 x 900 drawing scaled to cover its container and centred in it, as a real box. Used by the
+   hero's contour layers so their transforms are element transforms, not SVG-internal ones. The
+   first width is a fallback for browsers without container query units. Overflow stays visible so
+   a rotating layer never shows a straight cut inside the viewport. */
+@utility hero-contours {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  aspect-ratio: 1440 / 900;
+  width: max(100%, 160vh);
+  width: max(100cqw, 160cqh);
+  height: auto;
+  overflow: visible;
+}
+
 /* Outlined display type, used for the name at the very bottom of the page */
 @utility text-outline {
   color: transparent;
