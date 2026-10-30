@@ -344,8 +344,9 @@ export function MonsoonTank() {
           : `Storm passed ${mode === "tank" ? "with" : "without"} a tank: ${Math.round(stats.caught)} caught, ${Math.round(stats.lost)} lost to run-off.`}
       </p>
       <figcaption className="border-t border-storm-line px-5 py-4 text-small text-storm-mist">
-        Without a tank, rain beyond what the fields can take runs off and is lost — those are dropped requests. With one, the burst becomes
-        a level that drains at a steady rate. <span className="font-mono text-label">Illustrative simulation, not production data.</span>
+        Without a tank, rain beyond what the fields can take runs off and is lost, and those are dropped requests. With one, the burst
+        becomes a level that drains at a steady rate.{" "}
+        <span className="font-mono text-label">Illustrative simulation, not production data.</span>
       </figcaption>
     </figure>
   );

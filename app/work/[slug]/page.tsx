@@ -86,7 +86,7 @@ function Media({ screen, className }: { screen: Screen; className: string }) {
         ) : null}
       </div>
       <figcaption className="font-mono text-label text-ink-muted">
-        {screen.label} — {screen.caption}
+        {screen.label} · {screen.caption}
       </figcaption>
     </figure>
   );
@@ -290,14 +290,14 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
                 </div>
               ) : (
                 <Placeholder
-                  label="Architecture diagram — only if permitted"
+                  label="Architecture diagram, only if permitted"
                   caption={item.diagramCaption}
                   shape="rounded-plate"
                   className="aspect-[17/6] max-sm:aspect-[4/3]"
                 />
               )}
               {item.diagram === "flow" && (
-                <figcaption className="pt-3 font-mono text-label text-ink-muted">Fig. 05 — {item.diagramCaption}</figcaption>
+                <figcaption className="pt-3 font-mono text-label text-ink-muted">Fig. 05: {item.diagramCaption}</figcaption>
               )}
             </figure>
           </Block>
@@ -364,7 +364,7 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
         >
           <span className="flex flex-col gap-3">
             <span className="eyebrow text-ink-muted">
-              Next field note — {next.number} · {next.badge}
+              Next field note {next.number} · {next.badge}
             </span>
             <span className="font-display text-section transition-transform duration-500 ease-settle group-hover:translate-x-4">
               {next.title}

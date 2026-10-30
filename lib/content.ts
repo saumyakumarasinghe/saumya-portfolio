@@ -61,7 +61,7 @@ export const capabilities: {
     part: "sap",
     label: "Sap",
     title: "Cloud, events & modernization",
-    problem: "Your app slows down — or drops work — when traffic spikes, and it's grown hard to change.",
+    problem: "Your app slows down or drops work when traffic spikes, and it's grown hard to change.",
     offer: "I move bursty work onto queues and serverless workers, and break monoliths into services that scale on their own.",
     evidence: "Led the migration of legacy Node.js APIs to TypeScript microservices; event-driven flows on AWS SQS and Lambda.",
   },
@@ -87,15 +87,15 @@ export const capabilities: {
     label: "Rings",
     title: "Testing, CI/CD & reliability",
     problem: "Releases are slow, manual and a little scary.",
-    offer: "I set up automated tests and pipelines so small, frequent releases become the safe default — each one another ring.",
+    offer: "I set up automated tests and pipelines so small, frequent releases become the safe default and each one adds another ring.",
     evidence: "GitHub Actions and Docker pipelines with deploys under 15 minutes; Jest, Cypress and JUnit suites at 94% coverage.",
   },
 ];
 
 export const roles = [
-  { title: "Software Engineer", dates: "Jul 2025 — Present", note: "Growing" },
-  { title: "Associate Software Engineer", dates: "Jul 2023 — Jul 2025" },
-  { title: "Software Engineer Intern", dates: "Jun 2022 — Jun 2023", note: "The core" },
+  { title: "Software Engineer", dates: "Jul 2025 to Present", note: "Growing" },
+  { title: "Associate Software Engineer", dates: "Jul 2023 to Jul 2025" },
+  { title: "Software Engineer Intern", dates: "Jun 2022 to Jun 2023", note: "The core" },
 ] as const;
 
 /** Highlights across all three roles. `**x**` marks a figure to highlight. */
@@ -150,8 +150,8 @@ export const approach = [
 ] as const;
 
 export const education = [
-  { title: "BEng (Hons) Software Engineering", detail: "University of Westminster, London · 2020 — 2025 · part-time" },
-  { title: "Foundation Certificate in Higher Education", detail: "Institute of Technology, Sri Lanka · 2019 — 2020" },
+  { title: "BEng (Hons) Software Engineering", detail: "University of Westminster, London · 2020 to 2025 · part-time" },
+  { title: "Foundation Certificate in Higher Education", detail: "Institute of Technology, Sri Lanka · 2019 to 2020" },
 ] as const;
 
 export const enquiryTopics = [

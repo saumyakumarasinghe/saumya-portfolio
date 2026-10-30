@@ -239,7 +239,7 @@ export function Capabilities() {
           </svg>
         </div>
         <figcaption className="pt-3 font-mono text-label text-ink-muted">
-          Fig. 03 — The stack, as a plant. Scroll the list and the plant grows with it.
+          Fig. 03: The stack, as a plant. Scroll the list and the plant grows with it.
         </figcaption>
       </figure>
 
@@ -267,7 +267,7 @@ export function Capabilities() {
                 <p className="mt-2.5 text-lg leading-snug font-medium">{item.problem}</p>
                 <p className="mt-1.5 text-ink-muted">{item.offer}</p>
                 <p className="mt-2.5 text-small">
-                  <span className="font-mono text-[0.69rem] tracking-[0.06em] text-ink-muted">EVIDENCE — </span>
+                  <span className="font-mono text-[0.69rem] tracking-[0.06em] text-ink-muted">EVIDENCE: </span>
                   {item.evidence}
                 </p>
               </div>

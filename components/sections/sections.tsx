@@ -54,7 +54,7 @@ export function WorkSection() {
       <Reveal className="container-page py-section">
         <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-10">
           <div>
-            <SectionLabel className="mb-5">01 — Field notes</SectionLabel>
+            <SectionLabel className="mb-5">01 · Field notes</SectionLabel>
             <Title
               id="work-title"
               lines={[
@@ -84,7 +84,7 @@ export function TankSection() {
         <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-7">
           <div className="flex-[1_1_32rem]">
             <SectionLabel className="mb-5 !text-storm-mist" icon={<Drop className="text-monsoon-glow" />}>
-              02 — The tank
+              02 · The tank
             </SectionLabel>
             <Title
               id="tank-title"
@@ -120,7 +120,7 @@ export function CapabilitiesSection() {
       <div className="container-page py-section">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
-            <SectionLabel className="mb-5">03 — Capabilities</SectionLabel>
+            <SectionLabel className="mb-5">03 · Capabilities</SectionLabel>
             <Title
               id="cap-title"
               lines={[
@@ -149,7 +149,7 @@ export function ExperienceSection() {
       <div className="container-page py-section">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
-            <SectionLabel className="mb-5">04 — Experience</SectionLabel>
+            <SectionLabel className="mb-5">04 · Experience</SectionLabel>
             <Title
               id="exp-title"
               lines={[
@@ -172,7 +172,7 @@ export function ExperienceSection() {
           <figure className="m-0 max-w-[47.5rem] flex-[1_1_26rem]">
             <GrowthRings />
             <figcaption className="pt-3 font-mono text-label text-ink-muted">
-              Fig. 04 — Career as growth rings: ring width follows time in each role. Point at a ring to bring it forward.
+              Fig. 04: Career as growth rings, where ring width follows time in each role. Point at a ring to bring it forward.
             </figcaption>
           </figure>
           <Reveal className="flex-[1_1_26rem]">
@@ -200,7 +200,7 @@ export function ApproachSection() {
   return (
     <section id="approach" aria-labelledby="approach-title" className="border-b border-line bg-surface">
       <Reveal className="container-page py-section">
-        <SectionLabel className="mb-5">05 — Approach</SectionLabel>
+        <SectionLabel className="mb-5">05 · Approach</SectionLabel>
         <Title
           id="approach-title"
           className="mb-14"
@@ -239,7 +239,7 @@ export function AboutSection() {
       <Reveal className="container-page flex flex-wrap items-start gap-x-[clamp(2.5rem,6vw,7.5rem)] gap-y-12 py-section">
         <div className="flex max-w-[27.5rem] flex-[1_1_18rem] flex-col gap-8">
           <div>
-            <SectionLabel className="mb-5">06 — About</SectionLabel>
+            <SectionLabel className="mb-5">06 · About</SectionLabel>
             <Title
               id="about-title"
               lines={[
@@ -252,7 +252,7 @@ export function AboutSection() {
           </div>
           {/* Replace with <Image> of a real portrait, or delete this block — the layout closes up. */}
           <Placeholder
-            label="Portrait — optional"
+            label="Portrait (optional)"
             shape="rounded-[58%_42%_48%_52%/46%_54%_46%_54%]"
             className="aspect-[4/5] max-w-[22.5rem] items-center justify-center p-6 text-center"
           >
@@ -263,11 +263,11 @@ export function AboutSection() {
         </div>
         <div className="flex max-w-[47.5rem] flex-[999_1_32rem] flex-col gap-10">
           <p data-reveal className="font-display text-[clamp(2rem,3vw,2.875rem)] leading-[1.15]">
-            Hi, I&apos;m Saumya — a software engineer who likes the parts of a product that have to hold.
+            Hi, I&apos;m Saumya, a software engineer who likes the parts of a product that have to hold.
           </p>
           <div data-reveal className="flex flex-col gap-4.5 text-[clamp(1.0625rem,1.3vw,1.1875rem)] leading-[1.65]">
             <p>
-              I joined Dinetap — then EatMe Global Lanka — as an intern in June 2022 and have grown with the product since: from associate
+              I joined Dinetap (then EatMe Global Lanka) as an intern in June 2022 and have grown with the product since: from associate
               engineer to backend lead on the DineTap application and code owner for several of its services.
             </p>
             <p>
@@ -275,7 +275,7 @@ export function AboutSection() {
               alongside my work.
             </p>
             <p>
-              My work tends to sit where the details matter — payments, data and performance. Alongside the code I write the documentation,
+              My work tends to sit where the details matter: payments, data and performance. Alongside the code I write the documentation,
               and I&apos;ve run system-design workshops for newer engineers.
             </p>
           </div>
@@ -324,7 +324,7 @@ export function ContactSection() {
       <Reveal className="relative container-page pt-[clamp(5rem,9vw,8.75rem)]">
         <p className="eyebrow mb-5 flex items-center gap-2.5 text-inverse-muted">
           <span aria-hidden="true" className="size-2 rounded-full bg-spark shadow-[0_0_10px_3px_rgb(217_242_107/0.5)]" />
-          07 — Contact
+          07 · Contact
         </p>
         <h2 id="contact-title" className="font-display text-[clamp(3.75rem,10vw,10.5rem)] leading-[0.88] font-normal tracking-[-0.035em]">
           <span className="line-mask">
@@ -340,8 +340,8 @@ export function ContactSection() {
         <div className="mt-[clamp(3rem,6vw,5.5rem)] flex flex-wrap gap-x-[clamp(2.5rem,6vw,7.5rem)] gap-y-12">
           <div data-reveal className="flex max-w-[32.5rem] flex-[1_1_21rem] flex-col gap-7">
             <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.55] text-inverse-muted">
-              A new product, a business website, a backend that needs to scale, or a codebase that needs care — send a few lines about what
-              you&apos;re building and where it hurts. Freelance and contract enquiries welcome.
+              Got a new product, a business website, a backend that needs to scale, or a codebase that needs care? Send a few lines about
+              what you&apos;re building and where it hurts. Freelance and contract enquiries welcome.
             </p>
             {site.availability && <p className="eyebrow text-spark">{site.availability}</p>}
             <EnquiryPicker />

@@ -68,7 +68,7 @@ export const work: Work[] = [
     emphasis: "Wallet",
     kind: "professional",
     badge: "Professional · Dinetap",
-    summary: "Distributed wallet platform — ledger mechanics and wallet workflows with strict concurrency controls.",
+    summary: "Distributed wallet platform with ledger mechanics and wallet workflows under strict concurrency controls.",
     readout: { value: "<100", unit: "ms" },
     lead: "Transactional ledger mechanics and secure wallet workflows for the DineTap platform, built to keep every balance correct under load.",
     facts: [
@@ -91,7 +91,7 @@ export const work: Work[] = [
       "MongoDB data model for high-volume weekly transactions",
     ],
     diagram: "placeholder",
-    diagramCaption: "Architecture diagram — add one only if Dinetap permits it.",
+    diagramCaption: "Architecture diagram: add one only if Dinetap permits it.",
     screens: [
       { label: "PERMITTED SCREEN", caption: "Wallet view, if it can be shown" },
       { label: "DIAGRAM", caption: "Ledger flow, if permitted" },
@@ -103,7 +103,7 @@ export const work: Work[] = [
       placeholders: [],
     },
     forYou: {
-      text: "For products that move money or credits — wallets, loyalty points, prepaid balances — where every transaction has to add up.",
+      text: "For products that move money or credits, such as wallets, loyalty points and prepaid balances, where every transaction has to add up.",
       tags: ["Wallets & ledgers", "Payments", "Event-driven AWS", "Concurrency"],
     },
   },
@@ -114,13 +114,13 @@ export const work: Work[] = [
     emphasis: "Publishers",
     kind: "client",
     badge: "Co-founder · Live",
-    summary: "A bilingual bookshop and publishing website — from catalogue to doorstep. Live at sayarupublishers.lk.",
+    summary: "A bilingual bookshop and publishing website, from catalogue to doorstep. Live at sayarupublishers.lk.",
     readout: { value: "In bloom" },
     url: "https://sayarupublishers.lk/",
-    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house I co-founded — it sells its own titles directly, from catalogue to doorstep.",
+    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house I co-founded. It sells its own titles directly, from catalogue to doorstep.",
     facts: [
-      { label: "Business", value: "Sayaru Publishers — one of six co-founders" },
-      { label: "Role", value: "Co-founder and sole developer — site design, build and launch" },
+      { label: "Business", value: "Sayaru Publishers, co-founded with five others" },
+      { label: "Role", value: "Co-founder and sole developer: site design, build and launch" },
       { label: "Stack", value: "Next.js 14 · TypeScript · PostgreSQL · Prisma · Supabase · Auth.js · Tailwind · Netlify" },
       { label: "Languages", value: "English · Sinhala" },
       // TODO(verify): CARD_PAYMENTS_ENABLED is still false on `staging`. Card checkout is described as arriving with the next release;
@@ -132,7 +132,7 @@ export const work: Work[] = [
     ],
     cover: {
       label: "COVER · 21:9",
-      caption: "Three titles from the Sayaru shelf — White Camellia, Limerence and යදම්.",
+      caption: "Three titles from the Sayaru shelf: White Camellia, Limerence and යදම්.",
       src: "/work/sayaru/cover-montage.webp",
       alt: "Three Sayaru Publishers book covers side by side: White Camellia, Limerence and යදම්.",
     },
@@ -141,7 +141,7 @@ export const work: Work[] = [
     problem:
       "A publisher selling direct needs more than a catalogue. Readers browse in English or Sinhala, new titles take pre-orders before release, and payments arrive as bank transfers that someone has to check before a book ships. Pre-orders also tell the publisher how many copies to print, so every copy owed has to be counted and held back for the buyer who paid.",
     myPart:
-      "I designed and built the whole website on my own — storefront, admin console, database, email and hosting — and took it to production. Beyond the site, I designed the සයරු Publishers logo, and I do the book layout and cover design for Sayaru's titles.",
+      "I designed and built the whole website on my own, from the storefront and admin console to the database, email and hosting, and took it to production. Beyond the site, I designed the සයරු Publishers logo, and I do the book layout and cover design for Sayaru's titles.",
     // TODO(verify): everything below is read from the `staging` branch (3d243d2, 2026-10-20), which goes to production on 2026-10-30.
     // Confirm the release has shipped before this site goes live.
     built: [
@@ -152,7 +152,7 @@ export const work: Work[] = [
       "Checkout by bank transfer or branch deposit, with the receipt size checked in the browser before upload and verified by hand",
       "Card and online-banking checkout through PayHere, built alongside the deposit flow and switching on with the next release",
       "English and Sinhala throughout, with a language toggle",
-      "Publishing services — editing, design, printing, publishing — with a manuscript enquiry",
+      "Publishing services (editing, design, printing and publishing) with a manuscript enquiry",
       "Admin dashboard with week, month, quarter and year history against the previous period, and a strip of what needs attention today",
       "Payments queue for deposit slips; orders with permanent numbers, Excel export and a printable A5 parcel label with packing slip",
       "Stock ledger: every change logged against a note or an order, with per-book history and an Excel stock report",
@@ -252,10 +252,10 @@ export const work: Work[] = [
       text: "Live at sayarupublishers.lk, selling direct with pre-orders and bank-transfer checkout, with card payments to follow. Behind the shop: 13 database models, 25 migrations, 46 API routes and 35 test files.",
       // TODO(verify): no orders, sales or traffic figures are in the code or on the site, so none are claimed. Add one only if you
       // are happy to share it.
-      placeholders: ["A result you can share — orders, titles listed, time saved"],
+      placeholders: ["A result you can share: orders, titles listed, time saved"],
     },
     forYou: {
-      text: "For businesses that want their own online shop rather than a marketplace listing — with the payment methods their customers already use, content in more than one language, and an admin side that keeps orders and stock under control.",
+      text: "For businesses that want their own online shop rather than a marketplace listing, with the payment methods their customers already use, content in more than one language, and an admin side that keeps orders and stock under control.",
       tags: ["Online shops", "Pre-orders & launches", "Bilingual sites", "Local payment flows", "Admin & stock tools"],
     },
   },
@@ -287,7 +287,7 @@ export const work: Work[] = [
       "Automated CDN caching to absorb traffic",
     ],
     diagram: "placeholder",
-    diagramCaption: "Architecture diagram — rendering, caching and auth.",
+    diagramCaption: "Architecture diagram: rendering, caching and auth.",
     screens: [
       { label: "HOME FEED", caption: "Stories and countries" },
       { label: "STORY PAGE", caption: "Reading view" },
@@ -332,7 +332,7 @@ export const work: Work[] = [
       "PostgreSQL storage for responses and results",
     ],
     diagram: "placeholder",
-    diagramCaption: "Pipeline diagram — responses to vectors to clusters.",
+    diagramCaption: "Pipeline diagram: responses to vectors to clusters.",
     screens: [
       { label: "UPLOAD", caption: "Bring in form responses" },
       { label: "CLUSTERS", caption: "Themes and their answers" },
@@ -354,7 +354,7 @@ export const work: Work[] = [
     title: "[ Cat boarding ] website",
     kind: "demo",
     badge: "Seedling · in progress",
-    summary: "Demo entry — a booking-first site for a cat boarding service. Swap in the real story, screens and link at launch.",
+    summary: "Demo entry: a booking-first site for a cat boarding service. Swap in the real story, screens and link at launch.",
     readout: { value: "Soon" },
     lead: "[ Demo entry ] A booking-first website for a cat boarding service. Replace this note with the real project when it launches.",
     facts: [
@@ -368,7 +368,7 @@ export const work: Work[] = [
     problem: "[ What made the old way of taking bookings hard. ]",
     built: ["[ Feature one ]", "[ Feature two ]", "[ Feature three ]"],
     diagram: "placeholder",
-    diagramCaption: "Booking flow — add when the site is built.",
+    diagramCaption: "Booking flow: add when the site is built.",
     screens: [
       { label: "HOME", caption: "First impression" },
       { label: "BOOKING", caption: "Dates, cats, confirmation" },
@@ -377,7 +377,7 @@ export const work: Work[] = [
       headline: "Coming",
       emphasis: "soon",
       text: "[ Launch date, link and one result you can share. ]",
-      placeholders: ["Live link at launch", "Client quote — only with their permission"],
+      placeholders: ["Live link at launch", "Client quote, only with their permission"],
     },
     forYou: {
       text: "[ Who else this kind of site would help. ]",

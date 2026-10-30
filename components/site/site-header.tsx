@@ -61,7 +61,7 @@ export function SiteHeader() {
         } ${scrolled ? "border-b border-line bg-canvas/80 backdrop-blur-md" : "border-b border-transparent"}`}
       >
         <div className="container-page flex items-center justify-between gap-4 py-3.5 lg:py-4">
-          <Link href={`${base}#top`} className="flex items-center gap-3 no-underline" aria-label={`${site.name} — home`}>
+          <Link href={`${base}#top`} className="flex items-center gap-3 no-underline" aria-label={`${site.name}, home`}>
             <LeafMark />
             <span className="font-display text-[1.5rem] leading-none tracking-[-0.01em] max-[380px]:hidden">{site.name}</span>
           </Link>

@@ -21,7 +21,7 @@ export function Hero() {
       <div className="relative z-[2] container-page flex min-h-[max(100svh,44rem)] flex-col pt-24 pb-10">
         <div className="eyebrow mt-6 flex animate-fade flex-wrap gap-x-8 gap-y-2 text-ink-muted lg:mt-10" style={d(0.1)}>
           <span>Field notes · No. 001</span>
-          <span>{site.role} — full-stack, backend depth</span>
+          <span>{site.role}, full-stack with backend depth</span>
           <span>
             {site.location} · {site.coordinates} · <LocalTime /> local
           </span>
@@ -54,7 +54,7 @@ export function Hero() {
         <div className="mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-10 md:mt-14">
           <div className="flex max-w-[31rem] flex-[1_1_21rem] animate-fade flex-col gap-6" style={d(0.55)}>
             <p className="text-lead">
-              I&apos;m Saumya, a software engineer in Colombo. I build web applications, APIs and event-driven backends with deep roots —
+              I&apos;m Saumya, a software engineer in Colombo. I build web applications, APIs and event-driven backends with deep roots:
               fast, dependable, and calm when traffic pours in.
             </p>
             <div className="flex flex-wrap gap-3">
