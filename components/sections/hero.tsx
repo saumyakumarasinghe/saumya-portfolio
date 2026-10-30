@@ -64,7 +64,7 @@ export function Hero() {
           </div>
 
           <div className="flex animate-fade items-end gap-7" style={d(0.75)}>
-            <div className="w-[min(18.75rem,100%)] border border-line-strong bg-canvas font-mono text-[0.72rem] leading-relaxed max-sm:hidden">
+            <div className="w-[min(18.75rem,100%)] border border-line-strong bg-canvas font-mono text-label leading-relaxed max-sm:hidden">
               <div className="flex justify-between border-b border-line-strong px-3 py-2 tracking-[0.06em]">
                 <span>HERBARIUM · SK</span>
                 <span>No. 001</span>
@@ -81,7 +81,7 @@ export function Hero() {
             <a
               href="#work"
               aria-label="Scroll to work"
-              className="-mx-3 flex flex-col items-center gap-2.5 px-3 font-mono text-[0.69rem] tracking-[0.08em] text-ink-muted no-underline"
+              className="-mx-4 flex flex-col items-center gap-2.5 px-4 font-mono text-label tracking-[0.08em] text-ink-muted no-underline"
             >
               <span className="[writing-mode:vertical-rl]">SCROLL</span>
               <span className="relative block h-[4.5rem] w-px bg-ink">

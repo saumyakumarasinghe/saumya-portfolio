@@ -180,7 +180,7 @@ export function ExperienceSection() {
             <ol className="border-t border-line-strong">
               {highlights.map((item) => (
                 <li data-reveal key={item.area} className="grid grid-cols-[7rem_minmax(0,1fr)] gap-4 border-b border-line py-4.5">
-                  <span className="pt-0.5 font-mono text-[0.72rem] tracking-[0.06em] text-ink-muted uppercase">{item.area}</span>
+                  <span className="pt-0.5 font-mono text-label tracking-[0.06em] text-ink-muted uppercase">{item.area}</span>
                   <span className="leading-relaxed">
                     <Highlighted text={item.text} />
                   </span>
@@ -222,7 +222,7 @@ export function ApproachSection() {
               </span>
               <span className="font-mono text-label text-ink-muted">0{index + 1}</span>
               <h3 className="font-display text-[2rem] leading-[1.05] font-normal">{item.title}</h3>
-              <p className="text-[0.97rem] text-ink-muted">{item.text}</p>
+              <p className="text-[0.97rem] text-ink-muted max-sm:text-base">{item.text}</p>
             </li>
           ))}
         </ol>
@@ -355,7 +355,7 @@ export function ContactSection() {
                   href={`mailto:${site.email}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-display text-[clamp(1.625rem,3vw,2.875rem)] tracking-[-0.01em] [overflow-wrap:anywhere] text-on-inverse decoration-spark decoration-2 underline-offset-8"
+                  className="inline-flex min-h-11 items-center font-display text-[clamp(1.625rem,3vw,2.875rem)] tracking-[-0.01em] [overflow-wrap:anywhere] text-on-inverse decoration-spark decoration-2 underline-offset-8"
                 >
                   {site.email}
                   <span className="sr-only"> (opens in a new tab)</span>
@@ -408,7 +408,7 @@ export function ContactSection() {
           <p className="pt-4 pr-4">© 2026 {site.name}</p>
           <p className="pt-4 pr-4">{site.role} · Colombo</p>
           <p className="pt-4 pr-4">Field notes · Rev. 3</p>
-          <a href="#top" className="pt-4 text-on-inverse no-underline hover:text-spark">
+          <a href="#top" className="pt-4 pb-3 text-on-inverse no-underline hover:text-spark">
             Back to the mist ↑
           </a>
         </div>

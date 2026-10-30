@@ -408,19 +408,34 @@ function CaseStudyFooter() {
         </div>
         <div className="mt-[clamp(4rem,8vw,7rem)] grid grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] border-t border-inverse-line font-mono text-label tracking-[0.04em] text-inverse-muted uppercase">
           <p className="pt-4 pr-4">© 2026 {site.name}</p>
-          <a href={`mailto:${site.email}`} target="_blank" rel="noreferrer" className="pt-4 pr-4 normal-case no-underline hover:text-spark">
+          <a
+            href={`mailto:${site.email}`}
+            target="_blank"
+            rel="noreferrer"
+            className="pt-4 pr-4 pb-3 normal-case no-underline hover:text-spark"
+          >
             {site.email}
           </a>
-          <p className="pt-4 pr-4">
-            <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">
+          <p className="pt-1 pr-4">
+            <a
+              href={site.links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center no-underline hover:text-spark"
+            >
               LinkedIn ↗
             </a>{" "}
             ·{" "}
-            <a href={site.links.github} target="_blank" rel="noreferrer" className="inline-block py-1 no-underline hover:text-spark">
+            <a
+              href={site.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center no-underline hover:text-spark"
+            >
               GitHub ↗
             </a>
           </p>
-          <a href="#cs-title" className="pt-4 text-on-inverse no-underline hover:text-spark">
+          <a href="#cs-title" className="pt-4 pb-3 text-on-inverse no-underline hover:text-spark">
             Back to the top ↑
           </a>
         </div>

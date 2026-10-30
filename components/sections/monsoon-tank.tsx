@@ -179,7 +179,7 @@ export function MonsoonTank() {
                 type="button"
                 aria-pressed={mode === value}
                 onClick={() => choose(value)}
-                className="min-h-[2.4rem] rounded-full px-4 text-[0.92rem] text-storm-foam transition-colors duration-200 aria-pressed:bg-storm-foam aria-pressed:font-medium aria-pressed:text-storm"
+                className="min-h-11 rounded-full px-4 text-[0.92rem] text-storm-foam max-sm:text-base transition-colors duration-200 aria-pressed:bg-storm-foam aria-pressed:font-medium aria-pressed:text-storm"
               >
                 {label}
               </button>
@@ -189,7 +189,7 @@ export function MonsoonTank() {
             type="button"
             onClick={() => run(mode === "tank")}
             disabled={raining}
-            className="inline-flex min-h-[2.9rem] items-center gap-2.5 rounded-full bg-accent px-5 text-[0.95rem] font-semibold text-on-accent transition-[opacity,transform] duration-200 active:scale-[0.97] disabled:opacity-60"
+            className="inline-flex min-h-[2.9rem] items-center gap-2.5 rounded-full bg-accent px-5 text-[0.95rem] font-semibold max-sm:text-base text-on-accent transition-[opacity,transform] duration-200 active:scale-[0.97] disabled:opacity-60"
           >
             <Drop className="text-on-accent" />
             {raining ? "Raining…" : "Bring the monsoon"}
@@ -308,7 +308,7 @@ export function MonsoonTank() {
           )}
         </g>
       </svg>
-      <ul className="flex flex-wrap gap-x-5 gap-y-1.5 border-t border-storm-line px-5 py-3 font-mono text-[0.69rem] tracking-[0.06em] whitespace-nowrap text-storm-mist uppercase lg:hidden">
+      <ul className="flex flex-wrap gap-x-5 gap-y-1.5 border-t border-storm-line px-5 py-3 font-mono text-label tracking-[0.06em] whitespace-nowrap text-storm-mist uppercase lg:hidden">
         <li>Monsoon · requests</li>
         <li>Tank · queue (SQS)</li>
         <li>Sluice · workers (Lambda)</li>
@@ -323,7 +323,7 @@ export function MonsoonTank() {
             key={item.label}
             className="min-w-0 border-storm-line px-4 py-4 odd:border-r sm:px-5 max-md:[&:nth-child(-n+2)]:border-b md:border-r md:last:border-r-0"
           >
-            <dt className="eyebrow text-[0.69rem] text-storm-mist">
+            <dt className="eyebrow text-label text-storm-mist">
               {/* Wrap at spaces only, never at the hyphen in "run-off" */}
               {item.label.split(" ").map((word, index) => (
                 <Fragment key={word}>

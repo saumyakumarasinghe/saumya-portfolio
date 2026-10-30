@@ -249,7 +249,7 @@ export function Capabilities() {
             <li
               key={item.part}
               data-capability
-              className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-4.5 gap-y-1 border-b border-line py-7"
+              className="grid grid-cols-1 gap-y-3 border-b border-line py-7 sm:grid-cols-[2.75rem_minmax(0,1fr)] sm:gap-x-4.5 sm:gap-y-1"
             >
               <span
                 className={`grid size-8 place-items-center rounded-full border-[1.5px] border-line-strong font-mono text-label transition-colors duration-300 ${
@@ -259,14 +259,14 @@ export function Capabilities() {
                 {index + 1}
               </span>
               <div>
-                <p className="eyebrow text-[0.72rem] tracking-[0.08em] text-ink-muted">{item.label}</p>
+                <p className="eyebrow text-label tracking-[0.08em] text-ink-muted">{item.label}</p>
                 <h3 className={`mt-1.5 font-display text-title transition-colors duration-300 ${on ? "text-emphasis italic" : ""}`}>
                   {item.title}
                 </h3>
                 <p className="mt-2.5 text-lg leading-snug font-medium">{item.problem}</p>
                 <p className="mt-1.5 text-ink-muted">{item.offer}</p>
                 <p className="mt-2.5 text-small">
-                  <span className="font-mono text-[0.69rem] tracking-[0.06em] text-ink-muted">EVIDENCE: </span>
+                  <span className="font-mono text-label tracking-[0.06em] text-ink-muted">EVIDENCE: </span>
                   {item.evidence}
                 </p>
               </div>

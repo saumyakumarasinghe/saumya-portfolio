@@ -13,7 +13,7 @@ type Row = Pick<Work, "slug" | "number" | "title" | "kind" | "badge" | "summary"
 function Badge({ kind, children }: { kind: Row["kind"]; children: string }) {
   if (kind === "client") {
     return (
-      <span className="inline-flex items-center gap-2 rounded-full bg-ink px-3 py-1 font-mono text-[0.72rem] tracking-[0.04em] text-canvas">
+      <span className="inline-flex items-center gap-2 rounded-full bg-ink px-3 py-1 font-mono text-label tracking-[0.04em] text-canvas">
         <span aria-hidden="true" className="size-[7px] animate-pulse-soft rounded-full bg-accent" />
         {children}
       </span>
@@ -21,13 +21,13 @@ function Badge({ kind, children }: { kind: Row["kind"]; children: string }) {
   }
   if (kind === "demo") {
     return (
-      <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-line-strong px-3 py-1 font-mono text-[0.72rem] tracking-[0.04em]">
+      <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-line-strong px-3 py-1 font-mono text-label tracking-[0.04em]">
         <Seedling />
         {children}
       </span>
     );
   }
-  return <span className="rounded-full border border-line-strong px-3 py-1 font-mono text-[0.72rem] tracking-[0.04em]">{children}</span>;
+  return <span className="rounded-full border border-line-strong px-3 py-1 font-mono text-label tracking-[0.04em]">{children}</span>;
 }
 
 /**
@@ -100,7 +100,7 @@ export function WorkList({ items }: { items: Row[] }) {
                   </span>
                   <span className="mt-2 block max-w-[60ch] text-ink-muted">{item.summary}</span>
                 </span>
-                <span className="flex flex-wrap items-center justify-end gap-5">
+                <span className="flex flex-wrap items-center justify-end gap-5 max-sm:w-full max-sm:justify-between max-sm:gap-3">
                   <Badge kind={item.kind}>{item.badge}</Badge>
                   <span
                     className={`min-w-[8.75rem] text-right font-display text-[2.25rem] leading-none max-sm:min-w-0 ${demo ? "text-ink-subtle" : ""}`}
@@ -110,7 +110,7 @@ export function WorkList({ items }: { items: Row[] }) {
                   </span>
                   <span
                     aria-hidden="true"
-                    className={`grid size-14 place-items-center rounded-full border-[1.5px] border-line-strong transition-[background-color,transform] duration-300 ease-settle group-hover:-rotate-45 group-hover:bg-accent group-hover:text-on-accent ${
+                    className={`grid size-14 place-items-center rounded-full max-sm:size-11 border-[1.5px] border-line-strong transition-[background-color,transform] duration-300 ease-settle group-hover:-rotate-45 group-hover:bg-accent group-hover:text-on-accent ${
                       demo ? "border-dashed" : ""
                     }`}
                   >
@@ -157,7 +157,7 @@ export function WorkList({ items }: { items: Row[] }) {
             </div>
           ))}
         </div>
-        <span className="absolute -top-6 -right-6 grid size-[4.75rem] place-items-center rounded-full bg-ink font-mono text-[0.69rem] tracking-[0.08em] text-canvas">
+        <span className="absolute -top-6 -right-6 grid size-[4.75rem] place-items-center rounded-full bg-ink font-mono text-label tracking-[0.08em] text-canvas">
           VIEW
         </span>
       </div>

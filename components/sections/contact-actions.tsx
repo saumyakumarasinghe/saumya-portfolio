@@ -32,7 +32,7 @@ export function EnquiryPicker() {
               type="button"
               aria-pressed={topic === item}
               onClick={() => setTopic(topic === item ? null : item)}
-              className="min-h-[2.6rem] rounded-full border border-[#5e7a66] px-4 text-[0.92rem] text-on-inverse transition-colors duration-200 ease-respond hover:border-spark aria-pressed:border-spark aria-pressed:bg-spark aria-pressed:font-medium aria-pressed:text-inverse"
+              className="min-h-11 rounded-full border border-[#5e7a66] px-4 text-[0.92rem] text-on-inverse max-sm:text-base transition-colors duration-200 ease-respond hover:border-spark aria-pressed:border-spark aria-pressed:bg-spark aria-pressed:font-medium aria-pressed:text-inverse"
             >
               {item}
             </button>
@@ -72,7 +72,7 @@ export function CopyEmail() {
     <button
       type="button"
       onClick={copy}
-      className="eyebrow min-h-[2.6rem] rounded-full border border-[#5e7a66] px-4 text-on-inverse transition-colors duration-200 hover:border-spark"
+      className="eyebrow min-h-11 rounded-full border border-[#5e7a66] px-4 text-on-inverse transition-colors duration-200 hover:border-spark"
     >
       <span aria-live="polite">{copied ? "Copied ✓" : "Copy"}</span>
     </button>

@@ -380,6 +380,13 @@
   }
 }
 
+/* Small text is body text on a phone: 16px there, the 15px step from the sm breakpoint up. */
+@media (max-width: 39.9375rem) {
+  :root {
+    --text-small: 1rem;
+  }
+}
+
 /* ── 5. BASE ────────────────────────────────────────────────────────────── */
 @layer base {
   html {
