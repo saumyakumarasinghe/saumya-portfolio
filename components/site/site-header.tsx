@@ -68,7 +68,7 @@ export function SiteHeader() {
         } ${scrolled ? "border-b border-line bg-canvas/80 backdrop-blur-md" : "border-b border-transparent"}`}
       >
         <div className="container-page flex items-center justify-between gap-4 py-3.5 lg:py-4">
-          <Link href={`${base}#top`} className="flex min-h-11 items-center gap-3 no-underline" aria-label={`${site.name}, home`}>
+          <Link href={`${base}#top`} className="flex min-h-11 min-w-11 items-center gap-3 no-underline" aria-label={`${site.name}, home`}>
             <LeafMark />
             <span className="font-display text-[1.5rem] leading-none tracking-[-0.01em] whitespace-nowrap max-[380px]:hidden">
               {site.name}
@@ -80,7 +80,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={`${base}${item.href}`}
-                className="relative flex min-h-11 items-center no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
+                className="relative flex min-h-11 min-w-11 items-center justify-center no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
               >
                 {item.label}
               </Link>
