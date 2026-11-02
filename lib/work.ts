@@ -214,53 +214,8 @@ export const work: Work[] = [
     },
   },
   {
-    slug: "traveltales",
-    number: "02",
-    title: "TravelTales",
-    emphasis: "Tales",
-    kind: "project",
-    badge: "Selected project",
-    summary: "A server-rendered blogging platform with OAuth2, real-time country data and automated CDN caching.",
-    readout: { value: "10k+", unit: "sessions" },
-    lead: "A server-rendered blogging platform for travel stories, built to stay quick with thousands of readers at once.",
-    facts: [
-      { label: "Type", value: "Selected project" },
-      { label: "Stack", value: "React · Next.js · Node.js" },
-      { label: "Auth", value: "OAuth2" },
-      { label: "Scale", value: "10,000+ concurrent sessions" },
-    ],
-    cover: { label: "COVER · 21:9", caption: "Screenshot of the home feed or a story page." },
-    overview:
-      "TravelTales is a dynamic, server-side rendered web application where people publish and read travel stories, with live information about the countries they visit.",
-    problem:
-      "A blog that gets shared widely has to serve sudden crowds without slowing down, while still showing fresh, personalised pages to signed-in writers.",
-    built: [
-      "Server-side rendering with React and Next.js on a Node.js backend",
-      "OAuth2 sign-in",
-      "Real-time country data alongside each story",
-      "Automated CDN caching to absorb traffic",
-    ],
-    diagram: "placeholder",
-    diagramCaption: "Architecture diagram: rendering, caching and auth.",
-    screens: [
-      { label: "HOME FEED", caption: "Stories and countries" },
-      { label: "STORY PAGE", caption: "Reading view" },
-      { label: "PHONE", caption: "Mobile layout" },
-    ],
-    outcome: {
-      headline: "10,000+",
-      emphasis: "sessions",
-      text: "Built to handle more than 10,000 concurrent user sessions.",
-      placeholders: ["Live demo or repository link, if public"],
-    },
-    forYou: {
-      text: "For content sites and publications that need to be fast for readers, simple for writers, and ready for a busy day.",
-      tags: ["Content platforms", "Next.js SSR", "Authentication", "Caching"],
-    },
-  },
-  {
     slug: "cluster-forms",
-    number: "03",
+    number: "02",
     title: "Cluster Forms",
     emphasis: "Forms",
     kind: "project",
@@ -304,7 +259,7 @@ export const work: Work[] = [
   },
   {
     slug: "cat-boarding",
-    number: "04",
+    number: "03",
     title: "[ Cat boarding ] website",
     kind: "demo",
     badge: "Seedling · in progress",

@@ -80,7 +80,7 @@ export const capabilities: {
     problem: "You need a website, an MVP or a SaaS product built end to end.",
     offer: "I take a product from data model to interface: React and Next.js in front, Node.js or Python behind.",
     evidence:
-      "A React and Next.js component library that sped up delivery across three product teams; TravelTales, built for 10,000+ concurrent sessions.",
+      "A React and Next.js component library that sped up delivery across three product teams.",
   },
   {
     part: "rings",
