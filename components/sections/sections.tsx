@@ -3,11 +3,12 @@ import { Capabilities } from "./capabilities";
 import { CopyEmail, EnquiryPicker } from "./contact-actions";
 import { GrowthRings } from "./growth-rings";
 import { MonsoonTank } from "./monsoon-tank";
+import { PortraitPixel } from "./portrait-pixel";
 import { WorkList } from "./work-list";
 import { Reveal } from "@/components/motion/reveal";
 import { LocalTime, SkyNote } from "@/components/site/local-time";
 import { ApproachIcon, ArrowUpRight, Drop } from "@/components/ui/icons";
-import { Fireflies, Highlighted, Placeholder, SectionLabel } from "@/components/ui/primitives";
+import { Fireflies, Highlighted, SectionLabel } from "@/components/ui/primitives";
 import { teaRows } from "@/lib/art";
 import { approach, education, highlights, marquee } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -250,16 +251,7 @@ export function AboutSection() {
               ]}
             />
           </div>
-          {/* Replace with <Image> of a real portrait, or delete this block — the layout closes up. */}
-          <Placeholder
-            label="Portrait (optional)"
-            shape="rounded-[58%_42%_48%_52%/46%_54%_46%_54%]"
-            className="aspect-[4/5] max-w-[22.5rem] items-center justify-center p-6 text-center"
-          >
-            <span className="max-w-[22ch] text-small text-ink-muted">
-              A real photo builds trust. Leave it out and the layout closes up.
-            </span>
-          </Placeholder>
+          <PortraitPixel />
         </div>
         <div className="flex max-w-[47.5rem] flex-[999_1_32rem] flex-col gap-10">
           <p data-reveal className="font-display text-[clamp(2rem,3vw,2.875rem)] leading-[1.15]">
