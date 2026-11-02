@@ -65,7 +65,7 @@ export function WorkSection() {
             />
           </div>
           <p data-reveal className="max-w-[42ch] text-ink-muted">
-            Product engineering at Dinetap, live client work, and selected projects. Hover a note to preview it. On team projects I describe
+            Live client work and selected projects. Hover a note to preview it. On team projects I describe
             my part, not the whole product.
           </p>
         </div>

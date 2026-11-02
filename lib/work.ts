@@ -62,54 +62,8 @@ export type Work = {
 
 export const work: Work[] = [
   {
-    slug: "dinetap-wallet",
-    number: "01",
-    title: "DineTap Wallet",
-    emphasis: "Wallet",
-    kind: "professional",
-    badge: "Professional · Dinetap",
-    summary: "Distributed wallet platform with ledger mechanics and wallet workflows under strict concurrency controls.",
-    readout: { value: "<100", unit: "ms" },
-    lead: "Transactional ledger mechanics and secure wallet workflows for the DineTap platform, built to keep every balance correct under load.",
-    facts: [
-      { label: "Where", value: "Dinetap, Colombo" },
-      { label: "Type", value: "Product team" },
-      { label: "Stack", value: "TypeScript · Node.js · AWS Lambda · SQS · MongoDB" },
-      { label: "Latency", value: "Sub-100 ms API responses" },
-    ],
-    cover: { label: "COVER · 21:9", caption: "A permitted product view or architecture diagram of the wallet platform." },
-    overview:
-      "DineTap's wallet platform handles high-volume weekly transactions. The ledger has to stay correct while many requests touch the same balances at once.",
-    problem:
-      "Money movement can't be approximately right. Concurrent writes to one wallet must never double-spend or lose an update, and the API still has to answer quickly.",
-    myPart:
-      "I built the transactional ledger mechanics and secure wallet workflows, with strict data-concurrency controls. The wider product is a team effort; this note covers my part.",
-    built: [
-      "Transactional ledger mechanics for wallet balances",
-      "Secure wallet workflows with strict data-concurrency controls",
-      "Event-driven processing on AWS Lambda and SQS",
-      "MongoDB data model for high-volume weekly transactions",
-    ],
-    diagram: "placeholder",
-    diagramCaption: "Architecture diagram: add one only if Dinetap permits it.",
-    screens: [
-      { label: "PERMITTED SCREEN", caption: "Wallet view, if it can be shown" },
-      { label: "DIAGRAM", caption: "Ledger flow, if permitted" },
-    ],
-    outcome: {
-      headline: "Under",
-      emphasis: "100 ms",
-      text: "Sub-100 ms API response latencies while processing high-volume weekly transactions.",
-      placeholders: [],
-    },
-    forYou: {
-      text: "For products that move money or credits, such as wallets, loyalty points and prepaid balances, where every transaction has to add up.",
-      tags: ["Wallets & ledgers", "Payments", "Event-driven AWS", "Concurrency"],
-    },
-  },
-  {
     slug: "sayaru-publishers",
-    number: "02",
+    number: "01",
     title: "Sayaru Publishers",
     emphasis: "Publishers",
     kind: "client",
@@ -261,7 +215,7 @@ export const work: Work[] = [
   },
   {
     slug: "traveltales",
-    number: "03",
+    number: "02",
     title: "TravelTales",
     emphasis: "Tales",
     kind: "project",
@@ -306,7 +260,7 @@ export const work: Work[] = [
   },
   {
     slug: "cluster-forms",
-    number: "04",
+    number: "03",
     title: "Cluster Forms",
     emphasis: "Forms",
     kind: "project",
@@ -350,7 +304,7 @@ export const work: Work[] = [
   },
   {
     slug: "cat-boarding",
-    number: "05",
+    number: "04",
     title: "[ Cat boarding ] website",
     kind: "demo",
     badge: "Seedling · in progress",
