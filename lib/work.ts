@@ -6,7 +6,8 @@
  * can't slip through as fact. Replace placeholders here; the pages follow.
  */
 
-export type WorkKind = "client" | "professional" | "project" | "demo";
+/** "wip" is real work still being built: shown with the seedling badge, but indexed (unlike "demo"). */
+export type WorkKind = "client" | "professional" | "project" | "wip" | "demo";
 
 export type Screen = {
   /** Short label shown in the frame, e.g. "Checkout". */
@@ -76,19 +77,18 @@ export const work: Work[] = [
     title: "Sayaru Publishers",
     emphasis: "Publishers",
     kind: "client",
-    badge: "Co-founder · Live",
+    badge: "Head of IT · Live",
     summary: "A bilingual bookshop and publishing website, from catalogue to doorstep. Live at sayarupublishers.lk.",
     readout: { value: "In bloom" },
     url: "https://sayarupublishers.lk/",
-    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house I co-founded. It sells its own titles directly, from catalogue to doorstep.",
+    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house where I am Head of IT. It sells its own titles directly, from catalogue to doorstep.",
     facts: [
-      { label: "Business", value: "Sayaru Publishers, co-founded with five others" },
-      { label: "Role", value: "Co-founder and sole developer: site design, build and launch" },
+      { label: "Business", value: "Sayaru Publishers, a Sri Lankan publishing house" },
+      { label: "Role", value: "Head of IT and sole developer: site design, build, launch and running it" },
       { label: "Stack", value: "Next.js 14 · TypeScript · PostgreSQL · Prisma · Supabase · Auth.js · Tailwind · Netlify" },
       { label: "Languages", value: "English · Sinhala" },
-      // TODO(verify): CARD_PAYMENTS_ENABLED is still false on `staging`. Card checkout is described as arriving with the next release;
-      // update this row and the "built" line once the flag is on and the PayHere merchant account is live.
-      { label: "Payments", value: "Bank transfer · branch deposit · cards via PayHere from the next release" },
+      // TODO(verify): update this row and the "built" line once Payzy approves the merchant account and card payments go live.
+      { label: "Payments", value: "Bank transfer · branch deposit · Payzy card payments awaiting provider approval" },
       // TODO(verify): launch date. Git history starts 2026-10-09, but the database migrations start 2026-09-07 and there is an
       // `archive/landing-page` tag, so the real start is earlier. Add a "Launched" row once the date is confirmed.
       { label: "Status", value: "Live at sayarupublishers.lk" },
@@ -100,11 +100,11 @@ export const work: Work[] = [
       alt: "Three Sayaru Publishers book covers side by side: White Camellia, Limerence and යදම්.",
     },
     overview:
-      "Sayaru Publishers is a book-selling and publishing business started by six co-founders, me included. It edits, designs, prints and publishes books, and sells every title directly through its own online bookshop. The site carries both sides of the business: a shop for readers and a services page for authors with a manuscript. Behind it sits an admin console the team runs the shop from.",
+      "Sayaru Publishers is a book-selling and publishing business. It edits, designs, prints and publishes books, and sells every title directly through its own online bookshop. The site carries both sides of the business: a shop for readers and a services page for authors with a manuscript. Behind it sits an admin console the team runs the shop from.",
     problem:
       "A publisher selling direct needs more than a catalogue. Readers browse in English or Sinhala, new titles take pre-orders before release, and payments arrive as bank transfers that someone has to check before a book ships. Pre-orders also tell the publisher how many copies to print, so every copy owed has to be counted and held back for the buyer who paid.",
     myPart:
-      "I designed and built the whole website on my own, from the storefront and admin console to the database, email and hosting, and took it to production. Beyond the site, I designed the සයරු Publishers logo, and I do the book layout and cover design for Sayaru's titles.",
+      "As Head of IT I am Sayaru's only developer. I designed and built the whole website on my own, from the storefront and admin console to the database, email and hosting, took it to production, and keep it running.",
     // TODO(verify): everything below is read from the `staging` branch (3d243d2, 2026-10-20), which goes to production on 2026-10-30.
     // Confirm the release has shipped before this site goes live.
     built: [
@@ -113,7 +113,7 @@ export const work: Work[] = [
       "Pre-orders that open and close at set times in Sri Lanka time, with a release countdown, a release calendar, and a pre-order or sale discount per book",
       "Pre-orders counted as print-run demand: copies owed to paid pre-orders are held back, and stock can run below zero while a title is still being printed",
       "Checkout by bank transfer or branch deposit, with the receipt size checked in the browser before upload and verified by hand",
-      "Card and online-banking checkout through PayHere, built alongside the deposit flow and switching on with the next release",
+      "Card payments through Payzy, waiting on the provider's approval to go live",
       "English and Sinhala throughout, with a language toggle",
       "Publishing services (editing, design, printing and publishing) with a manuscript enquiry",
       "Admin dashboard with week, month, quarter and year history against the previous period, and a strip of what needs attention today",
@@ -209,34 +209,6 @@ export const work: Work[] = [
         ratio: "780 / 1688",
       },
     ],
-<<<<<<< Updated upstream
-    // TODO(verify): the captions below name the titles only. Say which covers and layouts are yours before claiming them one by one.
-    design: [
-      {
-        label: "LOGO",
-        caption: "The සයරු Publishers mark",
-        src: "/work/sayaru/logo.webp",
-        alt: "The සයරු Publishers logo: a gold fountain pen rising from an open book, framed by crimson petals.",
-        tone: "paper",
-      },
-      {
-        label: "COVER",
-        caption: "White Camellia · Aurora Writes",
-        src: "/work/sayaru/cover-white-camellia.webp",
-        alt: "White Camellia book cover: a young couple holding white camellias against a plum background with falling petals.",
-      },
-      {
-        label: "COVER",
-        caption: "Limerence · M.N.K. Sathsarani",
-        src: "/work/sayaru/cover-limerence.webp",
-        alt: "Limerence book cover: a silhouetted woman beneath a crescent moon, with the title in gold lettering on a dusk-purple ground.",
-      },
-      {
-        label: "COVER",
-        caption: "යදම් · Mihiranga Lakmal",
-        src: "/work/sayaru/cover-yadam.webp",
-        alt: "යදම් book cover: the title in gold Sinhala lettering, with a gold chain and red roses on cream paper.",
-=======
     galleries: [
       {
         number: "05a",
@@ -301,7 +273,6 @@ export const work: Work[] = [
             ratio: "1440 / 832",
           },
         ],
->>>>>>> Stashed changes
       },
     ],
     outcome: {
@@ -476,31 +447,17 @@ export const work: Work[] = [
     },
   },
   {
-    slug: "cat-boarding",
+    slug: "fluffinton",
     number: "03",
-    title: "[ Cat boarding ] website",
-    kind: "demo",
-    badge: "Seedling · in progress",
-    summary: "Demo entry: a booking-first site for a cat boarding service. Swap in the real story, screens and link at launch.",
+    title: "Fluffinton",
+    kind: "wip",
+    badge: "In progress",
+    summary:
+      "A booking-first website for a cat hotel in Maharagama, with an animated mascot, a custom date picker and cat sounds made in the browser.",
     readout: { value: "Soon" },
-    lead: "[ Demo entry ] A booking-first website for a cat boarding service. Replace this note with the real project when it launches.",
+    url: "https://fluffinton.netlify.app/",
+    lead: "A website for Fluffinton, a cat hotel in Maharagama. It shows the suites and a day at the hotel, introduces the care team, and takes booking requests.",
     facts: [
-<<<<<<< Updated upstream
-      { label: "Client", value: "[ Client name ]", confirm: true },
-      { label: "Role", value: "[ Your role ]", confirm: true },
-      { label: "Stack", value: "[ Stack ]", confirm: true },
-      { label: "Status", value: "In progress" },
-    ],
-    cover: { label: "COVER · 21:9", caption: "Home page of the cat boarding site, once it is live." },
-    overview: "[ What the business does and who the site is for. ]",
-    problem: "[ What made the old way of taking bookings hard. ]",
-    built: ["[ Feature one ]", "[ Feature two ]", "[ Feature three ]"],
-    diagram: "placeholder",
-    diagramCaption: "Booking flow: add when the site is built.",
-    screens: [
-      { label: "HOME", caption: "First impression" },
-      { label: "BOOKING", caption: "Dates, cats, confirmation" },
-=======
       { label: "Business", value: "Fluffinton, a cat boarding service in Maharagama" },
       { label: "Role", value: "Developer, built with Heshan Rajapaksha" },
       { label: "Stack", value: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · GSAP · Lenis · Google Maps · Netlify" },
@@ -609,17 +566,16 @@ export const work: Work[] = [
         alt: "The suites rail on a phone.",
         ratio: "780 / 1688",
       },
->>>>>>> Stashed changes
     ],
     outcome: {
-      headline: "Coming",
-      emphasis: "soon",
-      text: "[ Launch date, link and one result you can share. ]",
-      placeholders: ["Live link at launch", "Client quote, only with their permission"],
+      headline: "Almost",
+      emphasis: "there",
+      text: "The design is done and most of the site is built. Next come the booking backend, the final content and a domain of its own.",
+      placeholders: ["Live link on its own domain at launch"],
     },
     forYou: {
-      text: "[ Who else this kind of site would help. ]",
-      tags: ["Booking sites", "Small businesses"],
+      text: "For small service businesses, such as boarding, grooming or studios, that want a site with character that still makes booking easy.",
+      tags: ["Booking sites", "Small businesses", "Animation & motion", "Responsive builds"],
     },
   },
 ];

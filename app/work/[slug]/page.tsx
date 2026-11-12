@@ -226,7 +226,7 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
             Field note {item.number} of 0{work.length}
           </span>
           <span
-            className={`inline-flex items-center gap-2 rounded-full px-3 py-1 ${item.kind === "client" ? "bg-ink text-canvas" : "border border-line-strong text-ink"} ${item.kind === "demo" ? "border-dashed" : ""}`}
+            className={`inline-flex items-center gap-2 rounded-full px-3 py-1 ${item.kind === "client" ? "bg-ink text-canvas" : "border border-line-strong text-ink"} ${item.kind === "demo" || item.kind === "wip" ? "border-dashed" : ""}`}
           >
             {item.kind === "client" && <span aria-hidden="true" className="size-[7px] animate-pulse-soft rounded-full bg-accent" />}
             {item.badge}

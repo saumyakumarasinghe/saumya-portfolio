@@ -27,5 +27,5 @@ export const site = {
    * Shown as a small "available" note only when set. Leave null unless it
    * is true right now, e.g. "Taking on projects from January".
    */
-  availability: null as string | null,
+  availability: "Open to full-time backend and full-stack roles · on-site or remote" as string | null,
 } as const;

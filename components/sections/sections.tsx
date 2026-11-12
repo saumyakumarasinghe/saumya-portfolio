@@ -10,7 +10,7 @@ import { LocalTime, SkyNote } from "@/components/site/local-time";
 import { ApproachIcon, ArrowUpRight, Drop } from "@/components/ui/icons";
 import { Fireflies, Highlighted, SectionLabel } from "@/components/ui/primitives";
 import { teaRows } from "@/lib/art";
-import { approach, education, highlights, marquee } from "@/lib/content";
+import { approach, currentRole, education, highlights, marquee } from "@/lib/content";
 import { site } from "@/lib/site";
 import { work } from "@/lib/work";
 
@@ -66,7 +66,7 @@ export function WorkSection() {
             />
           </div>
           <p data-reveal className="max-w-[42ch] text-ink-muted">
-            Live client work and selected projects. Hover a note to preview it. On team projects I describe
+            Live work and selected projects. Hover a note to preview it. Where others were involved, I describe
             my part, not the whole product.
           </p>
         </div>
@@ -154,19 +154,49 @@ export function ExperienceSection() {
             <Title
               id="exp-title"
               lines={[
-                "Three rings,",
+                "New growth,",
                 <>
-                  <em className="emphasis">one</em> tree.
+                  three <em className="emphasis">rings</em>.
                 </>,
               ]}
             />
           </div>
-          <div data-reveal className="max-w-[44ch]">
-            <p className="font-display text-[2.25rem] leading-none">Dinetap</p>
-            <p className="mt-1.5 text-ink-muted">
-              Formerly EatMe Global Lanka (Pvt) Ltd · Colombo. Each ring is a role; the outermost is still growing.
+          <p data-reveal className="max-w-[44ch] text-ink-muted">
+            Now at {currentRole.company}. Before that, three roles at Dinetap, drawn below as growth rings.
+          </p>
+        </Reveal>
+
+        <Reveal className="mb-[clamp(3.5rem,6vw,5.5rem)] grid gap-x-16 gap-y-6 border-y border-line-strong py-8 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
+          <div data-reveal>
+            <p className="eyebrow mb-3 flex items-center gap-2 text-ink-muted">
+              <span aria-hidden="true" className="size-[7px] animate-pulse-soft rounded-full bg-accent" />
+              Now
+            </p>
+            <h3 className="font-display text-[2.25rem] leading-none font-normal">{currentRole.company}</h3>
+            <p className="mt-2 font-semibold">{currentRole.title}</p>
+            <p className="mt-1 font-mono text-label tracking-[0.04em] text-ink-muted uppercase">
+              {currentRole.dates} · {currentRole.place}
             </p>
           </div>
+          <ul data-reveal className="flex flex-col">
+            {currentRole.points.map((point) => (
+              <li key={point} className="border-b border-line py-3.5 leading-relaxed first:pt-0 last:border-b-0 last:pb-0">
+                <Highlighted text={point} />
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal className="pb-12">
+          <p data-reveal className="eyebrow mb-3 text-ink-muted">
+            Jun 2022 to Jan 2026
+          </p>
+          <h3 data-reveal className="font-display text-[2.25rem] leading-none font-normal">
+            Dinetap
+          </h3>
+          <p data-reveal className="mt-1.5 max-w-[60ch] text-ink-muted">
+            Formerly EatMe Global Lanka (Pvt) Ltd · Colombo. Each ring is a role, from intern to software engineer.
+          </p>
         </Reveal>
 
         <div className="flex flex-wrap items-start gap-x-[clamp(2.5rem,6vw,7rem)] gap-y-12">
@@ -259,8 +289,12 @@ export function AboutSection() {
           </p>
           <div data-reveal className="flex flex-col gap-4.5 text-[clamp(1.0625rem,1.3vw,1.1875rem)] leading-[1.65]">
             <p>
-              I joined Dinetap (then EatMe Global Lanka) as an intern in June 2022 and have grown with the product since: from associate
-              engineer to backend lead on the DineTap application and code owner for several of its services.
+              I joined Dinetap (then EatMe Global Lanka) as an intern in June 2022 and grew with the product until January 2026: from
+              associate engineer to backend lead on the DineTap application and code owner for several of its services.
+            </p>
+            <p>
+              Since February 2026 I&apos;ve been Head of IT at Sayaru Publishers, a Sri Lankan publishing house. As its only developer I
+              designed, built and launched its online bookshop, and I keep it running in production.
             </p>
             <p>
               Over the same years I completed a BEng (Hons) in Software Engineering with the University of Westminster, studying part-time
@@ -333,7 +367,8 @@ export function ContactSection() {
           <div data-reveal className="flex max-w-[32.5rem] flex-[1_1_21rem] flex-col gap-7">
             <p className="text-[clamp(1.125rem,1.4vw,1.25rem)] leading-[1.55] text-inverse-muted">
               Got a new product, a business website, a backend that needs to scale, or a codebase that needs care? Send a few lines about
-              what you&apos;re building and where it hurts. Freelance and contract enquiries welcome.
+              what you&apos;re building and where it hurts. Hiring? I&apos;m looking for a full-time role, and freelance and contract
+              enquiries are welcome too.
             </p>
             {site.availability && <p className="eyebrow text-spark">{site.availability}</p>}
             <EnquiryPicker />

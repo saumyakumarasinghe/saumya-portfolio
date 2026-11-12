@@ -19,7 +19,7 @@ function Badge({ kind, children }: { kind: Row["kind"]; children: string }) {
       </span>
     );
   }
-  if (kind === "demo") {
+  if (kind === "demo" || kind === "wip") {
     return (
       <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-line-strong px-3 py-1 font-mono text-label tracking-[0.04em]">
         <Seedling />

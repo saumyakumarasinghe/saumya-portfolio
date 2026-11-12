@@ -11,11 +11,11 @@ export const readouts = [
     text: "Success rate on event-driven Adyen and Stripe payments, with 40% more throughput.",
   },
   {
-    value: 100,
+    value: 46,
     decimals: 0,
-    prefix: "<",
-    unit: "ms",
-    text: "API latency on the DineTap wallet platform at high weekly transaction volume.",
+    prefix: "",
+    unit: "",
+    text: "API routes behind sayarupublishers.lk, a live bilingual bookshop I built on my own.",
   },
   { value: 45, decimals: 0, prefix: "", unit: "%", text: "Faster reporting queries after MySQL schema optimizations." },
   { value: 94, decimals: 0, prefix: "", unit: "%", text: "Test coverage with Jest, Cypress and JUnit; deploys in under 15 minutes." },
@@ -80,7 +80,7 @@ export const capabilities: {
     problem: "You need a website, an MVP or a SaaS product built end to end.",
     offer: "I take a product from data model to interface: React and Next.js in front, Node.js or Python behind.",
     evidence:
-      "A React and Next.js component library that sped up delivery across three product teams.",
+      "Designed, built and launched sayarupublishers.lk on my own, from storefront and admin console to database and deploys; a React and Next.js component library that sped up delivery across three product teams.",
   },
   {
     part: "rings",
@@ -93,7 +93,7 @@ export const capabilities: {
 ];
 
 export const roles = [
-  { title: "Software Engineer", dates: "Jul 2025 to Present", note: "Growing" },
+  { title: "Software Engineer", dates: "Jul 2025 to Jan 2026" },
   { title: "Associate Software Engineer", dates: "Jul 2023 to Jul 2025" },
   { title: "Software Engineer Intern", dates: "Jun 2022 to Jun 2023", note: "The core" },
 ] as const;
@@ -104,7 +104,10 @@ export const highlights = [
     area: "Architecture",
     text: "Led the backend migration of legacy Node.js APIs to TypeScript microservices; code owner for several microservices and BFF applications.",
   },
-  { area: "Backend", text: "Backend lead for the DineTap application; designed **11+** RESTful APIs for the EatMe Admin Portal." },
+  {
+    area: "Backend",
+    text: "Backend lead for the DineTap application; designed **11+** RESTful APIs for the EatMe Admin Portal; worked on the DineTap wallet's endpoints, Adyen integration and query optimisation.",
+  },
   {
     area: "Payments",
     text: "Event-driven Adyen and Stripe gateways and Postmark on AWS SQS and Lambda: **+40%** throughput at **99.99%** success.",
@@ -120,6 +123,19 @@ export const highlights = [
     text: "Swagger and ApiDog documentation; system-design workshops that sped up onboarding by **25%**.",
   },
 ] as const;
+
+/** The current role, shown above the Dinetap rings. `**x**` marks a figure to highlight. */
+export const currentRole = {
+  company: "Sayaru Publishers",
+  title: "Head of IT",
+  dates: "Feb 2026 to Present",
+  place: "Colombo · full-time",
+  points: [
+    "Sole developer: designed, built and launched sayarupublishers.lk, a bilingual English and Sinhala bookshop with pre-orders and bank-transfer checkout.",
+    "Built the admin console the team runs the shop from: payments queue, orders, an audited stock ledger and a sales dashboard.",
+    "Run it in production: Sentry monitoring, automated tests, and GitHub Actions deploys to Netlify with migrations before every release.",
+  ],
+} as const;
 
 export const approach = [
   {
