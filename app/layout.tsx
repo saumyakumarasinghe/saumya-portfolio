@@ -35,18 +35,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light dark",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eceedf" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1912" },
-  ],
+  // The site opens in mist whatever the system setting; night is opt-in via the toggle.
+  colorScheme: "light",
+  themeColor: "#eceedf",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-theme={DEFAULT_THEME} className={fontVariables} suppressHydrationWarning>
       <head>
-        {/* Sets data-theme from the saved choice or the system setting before first paint. */}
+        {/* Sets data-theme from the saved choice (or mist) before first paint. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="bg-canvas font-sans text-ink" suppressHydrationWarning>

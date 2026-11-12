@@ -161,6 +161,38 @@ function OrderFlow() {
   );
 }
 
+/** A row of steps for `diagram: "pipeline"`. Wraps on narrow screens instead of shrinking. */
+function Pipeline({ label, steps }: NonNullable<Work["pipeline"]>) {
+  return (
+    <div className="rounded-plate bg-surface p-[clamp(1.25rem,3vw,2rem)]">
+      <p className="mb-5 font-mono text-label tracking-[0.06em] text-ink-muted uppercase">{label}</p>
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-3 font-mono text-[0.8125rem]">
+        {steps.map((step, index) => (
+          <li key={step.text} className="flex items-center gap-2">
+            <span
+              className={`inline-flex min-h-11 items-center rounded-full border-[1.5px] px-4 ${
+                step.accent
+                  ? "border-ink bg-accent text-on-accent"
+                  : step.planned
+                    ? "border-dashed border-ink-subtle text-ink-muted"
+                    : "border-ink bg-canvas text-ink"
+              }`}
+            >
+              {step.text}
+              {step.planned && <span className="sr-only"> (planned)</span>}
+            </span>
+            {index < steps.length - 1 && (
+              <span aria-hidden="true" className="text-water">
+                →
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 export default function CaseStudy({ params }: PageProps<"/work/[slug]">) {
   return (
     <>
@@ -303,12 +335,14 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
               ))}
             </ul>
           </Block>
-          <Block number="04" title={item.diagram === "flow" ? "Catalogue to doorstep" : "How it fits together"}>
+          <Block number="04" title={item.diagramTitle ?? (item.diagram === "flow" ? "Catalogue to doorstep" : "How it fits together")}>
             <figure className="m-0">
               {item.diagram === "flow" ? (
                 <div className="overflow-hidden rounded-plate bg-surface">
                   <OrderFlow />
                 </div>
+              ) : item.diagram === "pipeline" && item.pipeline ? (
+                <Pipeline {...item.pipeline} />
               ) : (
                 <Placeholder
                   label="Architecture diagram, only if permitted"
@@ -317,7 +351,7 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
                   className="aspect-[17/6] max-sm:aspect-[4/3]"
                 />
               )}
-              {item.diagram === "flow" && (
+              {item.diagram !== "placeholder" && (
                 <figcaption className="pt-3 font-mono text-label text-ink-muted">Fig. 05: {item.diagramCaption}</figcaption>
               )}
             </figure>
@@ -329,6 +363,24 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
               ))}
             </div>
           </Block>
+          {item.galleries?.map((gallery) => (
+            <Block
+              key={gallery.number}
+              number={gallery.number}
+              title={
+                <>
+                  {gallery.lead} <em className="emphasis">{gallery.emphasis}</em>
+                </>
+              }
+            >
+              {gallery.note && <p className="mb-5 font-mono text-label text-ink-muted">{gallery.note}</p>}
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(min(16.25rem,100%),1fr))] gap-4">
+                {gallery.items.map((screen) => (
+                  <Media key={screen.src ?? screen.label} screen={screen} className="aspect-[16/10]" />
+                ))}
+              </div>
+            </Block>
+          ))}
           {item.design && item.design.length > 0 && (
             <Block
               number="05b"

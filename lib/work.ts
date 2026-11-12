@@ -50,12 +50,21 @@ export type Work = {
   /** For team work: what Saumya did, kept separate from the product as a whole. */
   myPart?: string;
   built: string[];
-  /** "flow" draws the Sayaru order flow; "placeholder" reserves a frame for a permitted diagram. */
-  diagram: "flow" | "placeholder";
+  /**
+   * "flow" draws the Sayaru order flow; "pipeline" draws `pipeline` as a row of steps;
+   * "placeholder" reserves a frame for a permitted diagram.
+   */
+  diagram: "flow" | "pipeline" | "placeholder";
+  /** Heading for the diagram block; defaults to "How it fits together". */
+  diagramTitle?: string;
+  /** Steps for `diagram: "pipeline"`. `accent` marks the key step; `planned` a step not built yet. */
+  pipeline?: { label: string; steps: { text: string; accent?: boolean; planned?: boolean }[] };
   diagramCaption: string;
   screens: Screen[];
   /** Design work made for the project — logo, covers, layouts. Shown under the screens when present. */
   design?: Screen[];
+  /** Extra galleries after the screens, e.g. an admin console or figures from a thesis. */
+  galleries?: { number: string; lead: string; emphasis: string; note?: string; items: Screen[] }[];
   outcome: { headline: string; emphasis: string; text: string; placeholders: string[] };
   forYou: { text: string; tags: string[] };
 };
@@ -116,62 +125,91 @@ export const work: Work[] = [
     ],
     diagram: "flow",
     diagramCaption: "A receipt is checked by hand before an order ships; pre-orders wait for release day.",
-    // Captured from the live site on 2026-10-30, before the staging release. The phone numbers in the top bar are hidden.
-    // TODO(verify): re-capture after the release so the screens match what is live. Checkout, order and admin screens need an
-    // account and an order, so they are not captured yet.
+    // Storefront stills: the live site on 2026-11-10, phone numbers in the top bar hidden.
+    // Walkthrough, cart, checkout and admin: a local copy with a temporary database and sample data (fictional customers,
+    // sample deposit slips), captured 2026-11-10. Production was not touched.
     screens: [
       {
         label: "WALKTHROUGH",
-        caption: "Home, catalogue and a book page",
-        video: "/work/sayaru/walkthrough.mp4",
-        poster: "/work/sayaru/shot-home.webp",
-        alt: "Screen recording of sayarupublishers.lk: scrolling the home page, opening the catalogue, then a book page.",
+        caption: "Shop, sign in, then the admin console",
+        video: "/work/sayaru/v2/walkthrough.mp4",
+        poster: "/work/sayaru/v2/poster.webp",
+        alt: "Screen recording: the home page with the book-of-the-month banner, the catalogue, a book page, signing in, then the admin dashboard, payments queue, orders and stock.",
         ratio: "1280 / 760",
         wide: true,
       },
       {
         label: "HOME",
-        caption: "The book of the month and its pre-order status",
-        src: "/work/sayaru/shot-home.webp",
-        alt: "Sayaru home page showing White Camellia as the October book of the month, with a closed pre-order notice.",
+        caption: "Hero and what's coming up next",
+        src: "/work/sayaru/v2/shot-home.webp",
+        alt: "Sayaru home page: the headline 'Bringing stories to life, inspiring generations', catalogue and sign-up buttons, and a 'Coming up' card for the Cherry Blossom pre-order.",
         ratio: "1440 / 832",
       },
       {
         label: "CATALOGUE",
         caption: "Search, categories and stock labels",
-        src: "/work/sayaru/shot-catalogue.webp",
+        src: "/work/sayaru/v2/shot-catalogue.webp",
         alt: "Sayaru catalogue page with a search box, category chips and book cards.",
         ratio: "1440 / 832",
       },
       {
         label: "BOOK PAGE",
         caption: "Price, stock, wishlist",
-        src: "/work/sayaru/shot-book.webp",
+        src: "/work/sayaru/v2/shot-book.webp",
         alt: "Limerence book page showing the cover, description, price and a sold-out label.",
         ratio: "1440 / 832",
       },
       {
         label: "SINHALA VIEW",
         caption: "Same page, other language",
-        src: "/work/sayaru/shot-book-si.webp",
+        src: "/work/sayaru/v2/shot-book-si.webp",
         alt: "The Limerence book page with the whole interface switched to Sinhala.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "RELEASE CALENDAR",
+        caption: "Countdown to the next pre-order",
+        src: "/work/sayaru/v2/shot-calendar.webp",
+        alt: "Sayaru release calendar: a countdown to Cherry Blossom pre-orders opening, a month calendar and the list of upcoming events.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "CART",
+        caption: "Basket, delivery and total",
+        src: "/work/sayaru/v2/c-cart.webp",
+        alt: "Cart with one copy of Limerence, the delivery charge and a Continue to checkout button.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "CHECKOUT",
+        caption: "Saved address and delivery method",
+        src: "/work/sayaru/v2/c-checkout.webp",
+        alt: "Checkout delivery step with a saved home address selected, standard delivery and an order summary.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "ORDER HISTORY",
+        caption: "Pre-orders and delivered orders",
+        src: "/work/sayaru/v2/c-orders.webp",
+        alt: "Customer order history listing a White Camellia pre-order being packed and a delivered order, each with a receipt link.",
         ratio: "1440 / 832",
       },
       {
         label: "PHONE · BOOK",
         caption: "Mobile layout",
-        src: "/work/sayaru/shot-mobile-book.webp",
+        src: "/work/sayaru/v2/shot-mobile-book.webp",
         alt: "White Camellia book page on a phone.",
         ratio: "780 / 1688",
       },
       {
         label: "PHONE · CATALOGUE",
         caption: "Mobile catalogue with a search button",
-        src: "/work/sayaru/shot-mobile-catalogue.webp",
+        src: "/work/sayaru/v2/shot-mobile-catalogue.webp",
         alt: "Sayaru catalogue on a phone, with category chips and two book cards.",
         ratio: "780 / 1688",
       },
     ],
+<<<<<<< Updated upstream
     // TODO(verify): the captions below name the titles only. Say which covers and layouts are yours before claiming them one by one.
     design: [
       {
@@ -198,6 +236,72 @@ export const work: Work[] = [
         caption: "යදම් · Mihiranga Lakmal",
         src: "/work/sayaru/cover-yadam.webp",
         alt: "යදම් book cover: the title in gold Sinhala lettering, with a gold chain and red roses on cream paper.",
+=======
+    galleries: [
+      {
+        number: "05a",
+        lead: "Admin",
+        emphasis: "console",
+        note: "From a local copy with sample data: the customers and deposit slips are fictional.",
+        items: [
+          {
+            label: "DASHBOARD",
+            caption: "What needs attention today, and the month so far",
+            src: "/work/sayaru/v2/a-dashboard.webp",
+            alt: "Admin dashboard: tiles for slips to verify, orders to pack, sold-out and running-low titles, and revenue, orders and copies sold for November against October.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "REVENUE",
+            caption: "Month against month, and best sellers",
+            src: "/work/sayaru/v2/a-dashboard-chart.webp",
+            alt: "Dashboard revenue chart comparing November with October, with best sellers and revenue by category below.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "PAYMENTS",
+            caption: "Deposit slips waiting to be checked",
+            src: "/work/sayaru/v2/a-payments.webp",
+            alt: "Payments queue with two bank deposits pending review, each with amount, reference and Mark paid or Reject buttons.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "ORDERS",
+            caption: "Every order, filterable and exportable",
+            src: "/work/sayaru/v2/a-orders.webp",
+            alt: "Admin orders table with order numbers, customers, totals, books, status and payment review, plus filters and an Excel download.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "ORDER DETAIL",
+            caption: "Status, tracking and delivery details",
+            src: "/work/sayaru/v2/a-order-drawer.webp",
+            alt: "Order drawer for a shipped order: status, edit tracking, customer and delivery details, and a timeline.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "STOCK",
+            caption: "A ledger behind every copy",
+            src: "/work/sayaru/v2/a-stock.webp",
+            alt: "Stock page: copies on the shelves, shelf value and earnings, with per-title sold, pre-order and add or remove stock controls.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "BOOKS",
+            caption: "Publish, hide and end pre-orders",
+            src: "/work/sayaru/v2/a-books.webp",
+            alt: "Admin books list with price, stock and status for White Camellia, Limerence and යදම්.",
+            ratio: "1440 / 832",
+          },
+          {
+            label: "PARCEL LABEL",
+            caption: "Printable invoice and label",
+            src: "/work/sayaru/v2/a-invoice.webp",
+            alt: "Printable invoice and parcel label with the delivery address, items and a prepaid, do-not-collect-cash note.",
+            ratio: "1440 / 832",
+          },
+        ],
+>>>>>>> Stashed changes
       },
     ],
     outcome: {
@@ -219,42 +323,156 @@ export const work: Work[] = [
     title: "Cluster Forms",
     emphasis: "Forms",
     kind: "project",
-    badge: "Selected project",
-    summary: "TF-IDF and K-Means clustering that turns millions of open-ended form responses into themes.",
-    readout: { value: "−65%" },
-    lead: "A text-clustering web app that groups millions of open-ended form responses into themes, so people read patterns instead of rows.",
+    badge: "Final-year project",
+    summary: "A Flask API and Next.js app that groups open-ended Google Form answers into themes with NLP and K-Means.",
+    readout: { value: "FYP" },
+    lead: "My final-year project: paste a Google Sheet link and pick a column, and it groups the free-text answers into clusters, writes each group back to the sheet as its own tab and returns a chart of how they split.",
     facts: [
-      { label: "Type", value: "Selected project" },
-      { label: "Stack", value: "Next.js · Python · Flask · PostgreSQL" },
-      { label: "Methods", value: "TF-IDF · K-Means" },
-      { label: "Result", value: "65% less manual analysis" },
+      { label: "Type", value: "Final-year project · BEng (Hons) Software Engineering, University of Westminster (through IIT)" },
+      { label: "Thesis", value: "ClusterForm: Automated categorization of form textual responses using K-means" },
+      { label: "Supervisor", value: "Dr. Ruvan Weerasinghe" },
+      { label: "Role", value: "Sole developer: API, clustering pipeline and front end" },
+      { label: "Built", value: "January to July 2025" },
+      { label: "API", value: "Python · Flask · Flask-RESTX (Swagger) · scikit-learn · NLTK · pandas · Matplotlib" },
+      { label: "Front end", value: "Next.js · React · TypeScript · Tailwind CSS · React Hook Form · Zod" },
+      { label: "Data", value: "Google Sheets API through a service account" },
+      { label: "Evaluated by", value: "10 experts (5 technical, 5 domain) and a focus group of 4 form administrators" },
     ],
-    cover: { label: "COVER · 21:9", caption: "Screenshot of clustered responses and their themes." },
+    cover: {
+      label: "COVER · 21:9",
+      caption: "The ClusterForm landing page.",
+      src: "/work/cluster-forms/cover.webp",
+      alt: "ClusterForm landing page: 'Welcome to ClusterForm', a short description, a 'Try it out' button and a network graph of clustered points.",
+    },
     overview:
-      "Cluster Forms is a full-stack application that reads free-text answers from forms and sorts them into groups of similar responses automatically.",
+      "ClusterForm reads the answers to one open-ended question straight from the Google Sheet behind a form. It cleans them, turns them into vectors, finds a sensible number of groups on its own and sorts every answer into one. The results go back into the same spreadsheet, one tab per cluster, with a chart and summary figures in the app.",
     problem:
-      "Open-ended questions get the most honest answers and the most work: reading and tagging millions of them by hand is slow and inconsistent.",
+      "Open-ended questions get the most honest answers and the most work. Reading and tagging hundreds of responses by hand is slow and inconsistent, so most of what people write in a form's free-text boxes is never properly read.",
+    myPart:
+      "This was an individual project. I designed and built both parts on my own: the Flask API with its clustering pipeline, and the Next.js front end that walks people through sharing their sheet.",
     built: [
-      "Full-stack app with a Next.js front end and a Python and Flask backend",
-      "TF-IDF vectorisation of free-text responses",
-      "K-Means clustering to group similar answers",
-      "PostgreSQL storage for responses and results",
+      "A Flask REST API with interactive Swagger documentation (Flask-RESTX), request validation and a health check",
+      "Reads the chosen column straight from Google Sheets through a service account, and writes each cluster back as its own tab",
+      "Text preparation with NLTK: cleaning, stop-word removal and Porter stemming, with a summary of what was dropped",
+      "TF-IDF vectors over one- to three-word phrases, standardised and reduced with PCA",
+      "Chooses the number of clusters automatically by silhouette score, then reports Calinski–Harabasz and Davies–Bouldin scores",
+      "A cluster-distribution chart drawn with Matplotlib and compressed to WebP before it is sent back",
+      "A Next.js and TypeScript front end with form validation (React Hook Form and Zod) and a guided sharing step",
+      "Started on DBSCAN, then moved to K-Means with automatic cluster selection after a technical review",
     ],
-    diagram: "placeholder",
-    diagramCaption: "Pipeline diagram: responses to vectors to clusters.",
+    diagram: "pipeline",
+    diagramTitle: "From sheet to themes",
+    pipeline: {
+      label: "Clustering pipeline · API",
+      steps: [
+        { text: "Google Sheet" },
+        { text: "Clean · stem" },
+        { text: "TF-IDF" },
+        { text: "PCA" },
+        { text: "K-Means", accent: true },
+        { text: "Sheet + chart" },
+      ],
+    },
+    diagramCaption: "The number of clusters is chosen by silhouette score; results go back into the same sheet.",
+    // Captured on 2026-11-10 from a local run with sample data; Google Sheets was swapped for a local file for the capture only.
+    // Evaluation figures below are from the thesis (Chapters 8 and 9, July 2025).
     screens: [
-      { label: "UPLOAD", caption: "Bring in form responses" },
-      { label: "CLUSTERS", caption: "Themes and their answers" },
+      {
+        label: "WALKTHROUGH",
+        caption: "From the landing page to the results",
+        video: "/work/cluster-forms/v2/walkthrough.mp4",
+        poster: "/work/cluster-forms/v2/poster.webp",
+        alt: "Screen recording with sample data: the landing page, the sharing instructions, entering a sheet link and column, the loading spinner, then the cluster chart.",
+        ratio: "1280 / 760",
+        wide: true,
+      },
+      {
+        label: "LANDING",
+        caption: "What it does, in one screen",
+        src: "/work/cluster-forms/shot-landing.webp",
+        alt: "ClusterForm landing page with a description of the tool and a 'Try it out' button.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "INPUT",
+        caption: "A sheet link and the column to cluster",
+        src: "/work/cluster-forms/shot-form.webp",
+        alt: "ClusterForm input form with a Google Sheets link and column B filled in, and a Submit button.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "API DOCS",
+        caption: "Swagger docs for the clustering endpoint",
+        src: "/work/cluster-forms/shot-api-docs.webp",
+        alt: "Swagger UI for the ClusterForm API showing POST /form/clustering with request and response examples.",
+        ratio: "1440 / 832",
+      },
+    ],
+    galleries: [
+      {
+        number: "05a",
+        lead: "From the",
+        emphasis: "thesis",
+        note: "Figures from my dissertation, July 2025.",
+        items: [
+          {
+            label: "ARCHITECTURE",
+            caption: "Presentation, logic and data layers",
+            src: "/work/cluster-forms/thesis/architecture.webp",
+            alt: "Three-layer architecture: Next.js pages in the presentation layer; Google service API, data fetch, preprocessing and clustering modules in the logic layer; the Google Sheet as the data layer.",
+            ratio: "1287 / 1470",
+            tone: "paper",
+          },
+          {
+            label: "PROCESS",
+            caption: "From sheet link to clustered output",
+            src: "/work/cluster-forms/thesis/workflow.webp",
+            alt: "Process flowchart: open the home page, give access to the spreadsheet, enter the sheet link and column, fetch data, preprocess, cluster and output the results.",
+            ratio: "1106 / 1267",
+            tone: "paper",
+          },
+          {
+            label: "USE CASES",
+            caption: "What a form admin can do",
+            src: "/work/cluster-forms/thesis/usecase.webp",
+            alt: "Use case diagram: a user uploads a sheet link, selects a column and views clustered responses; validation, preprocessing and error handling sit behind them.",
+            ratio: "1459 / 1096",
+            tone: "paper",
+          },
+          {
+            label: "STACK",
+            caption: "Three tiers of tools",
+            src: "/work/cluster-forms/thesis/stack.webp",
+            alt: "Technology stack by tier: Next.js, JavaScript, HTML, CSS and Tailwind; Python, Flask, Swagger, Postman, NumPy and Google APIs; GitHub, Git and Google Drive.",
+            ratio: "1302 / 1302",
+            tone: "paper",
+          },
+          {
+            label: "DATA CLEANING",
+            caption: "Printed by the API on each run",
+            src: "/work/cluster-forms/thesis/data-cleaning.webp",
+            alt: "Terminal output: a data cleaning summary with null and empty counts before and after cleaning, and the final dataset size.",
+            ratio: "510 / 190",
+          },
+          {
+            label: "QUALITY METRICS",
+            caption: "Scores reported for each run",
+            src: "/work/cluster-forms/thesis/quality-metrics.webp",
+            alt: "Terminal output: the number of clusters chosen and the silhouette, Calinski–Harabasz and Davies–Bouldin scores for a run.",
+            ratio: "417 / 119",
+          },
+        ],
+      },
     ],
     outcome: {
-      headline: "−65%",
-      emphasis: "manual work",
-      text: "Reduced manual analysis overhead by 65%.",
-      placeholders: ["Live demo or repository link, if public"],
+      headline: "Rated",
+      emphasis: "easy to use",
+      text: "Submitted in July 2025 and evaluated by ten experts and a focus group of four non-technical Google Form administrators. Usability was rated high: the group called the input “clear and straightforward” and processing “quick and seamless”. In performance testing the API returned results in about 2.6 seconds. I’m now preparing it for publication.",
+      placeholders: [],
     },
     forYou: {
       text: "For teams sitting on survey answers, support tickets or feedback they never have time to read properly.",
-      tags: ["Data tools", "Python & Flask", "Text analysis", "Dashboards"],
+      tags: ["Data tools", "Python & Flask", "Text analysis", "REST APIs"],
     },
   },
   {
@@ -267,6 +485,7 @@ export const work: Work[] = [
     readout: { value: "Soon" },
     lead: "[ Demo entry ] A booking-first website for a cat boarding service. Replace this note with the real project when it launches.",
     facts: [
+<<<<<<< Updated upstream
       { label: "Client", value: "[ Client name ]", confirm: true },
       { label: "Role", value: "[ Your role ]", confirm: true },
       { label: "Stack", value: "[ Stack ]", confirm: true },
@@ -281,6 +500,116 @@ export const work: Work[] = [
     screens: [
       { label: "HOME", caption: "First impression" },
       { label: "BOOKING", caption: "Dates, cats, confirmation" },
+=======
+      { label: "Business", value: "Fluffinton, a cat boarding service in Maharagama" },
+      { label: "Role", value: "Developer, built with Heshan Rajapaksha" },
+      { label: "Stack", value: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · GSAP · Lenis · Google Maps · Netlify" },
+      { label: "Status", value: "Design done, most of the site built; booking backend and custom domain next" },
+    ],
+    cover: {
+      label: "COVER · 21:9",
+      caption: "The Fluffinton home page, with the mascot on its cloud.",
+      src: "/work/fluffinton/cover.webp",
+      alt: "Fluffinton home page: the headline 'The Purrfect Getaway', Book a stay and Tour the suites buttons, and the white kitten mascot sitting on a cloud under a ball of yarn.",
+    },
+    overview:
+      "Fluffinton is an everyday cat hotel that any cat can enjoy. The site is its front door: four suites, a day at the hotel from morning to evening, the care team, and a booking request with a map.",
+    problem:
+      "Cat owners book on trust. Before they hand over their cat they want to see where it will sleep and who will look after it. The site has to feel warm and calm, work on any phone, and make asking for dates quick.",
+    myPart:
+      "Heshan Rajapaksha and I are building Fluffinton together. I write the code: the sections, the animated mascot, the booking form and date picker, the map, and the responsive and accessibility pass.",
+    built: [
+      "An animated SVG mascot drawn in code from the logo: it blinks, follows the pointer and meows when petted",
+      "A suites rail that drags and swipes, and slides a card into view when it gets keyboard focus",
+      '"A day at Fluffinton": morning-to-evening cat sounds synthesised with the Web Audio API, with no audio files',
+      "A booking request form with a custom date-range picker and a live stay summary; the booking backend comes next",
+      "A Google Map styled to the brand, with a paw pin",
+      "Day and night themes, smooth scrolling with Lenis, and GSAP animation that respects reduced motion",
+      "A responsive audit at 12 screen sizes, from 320 px phones to 2560 px wide screens, with 44 px touch targets",
+      "Prettier and ESLint, and a script that rebuilds the logo, favicon and app icons from one source file",
+    ],
+    diagram: "pipeline",
+    diagramTitle: "Asking for a stay",
+    pipeline: {
+      label: "Booking request · as it works today",
+      steps: [
+        { text: "Cat's name" },
+        { text: "Check-in → check-out" },
+        { text: "Suite" },
+        { text: "Stay summary", accent: true },
+        { text: "Send request" },
+        { text: "Booking backend", planned: true },
+      ],
+    },
+    diagramCaption: "The form shows a confirmation today; saving requests to a booking backend is the next step.",
+    // Captured on 2026-11-10 from a local production build of the `staging` branch. The map needs an API key, so it shows its fallback.
+    screens: [
+      {
+        label: "WALKTHROUGH",
+        caption: "Hero, suites, a day at Fluffinton, booking and the footer cat",
+        video: "/work/fluffinton/v2/walkthrough.mp4",
+        poster: "/work/fluffinton/v2/poster.webp",
+        alt: "Screen recording: the hero with the mascot, dragging the suites rail, the daily rituals, filling in the booking form with the date picker, and the footer cat peeking up.",
+        ratio: "1280 / 760",
+        wide: true,
+      },
+      {
+        label: "HOME",
+        caption: "The Purrfect Getaway, and the mascot",
+        src: "/work/fluffinton/shot-home.webp",
+        alt: "Fluffinton home page with the headline 'The Purrfect Getaway' and the kitten mascot on a cloud.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "SUITES",
+        caption: "A rail you can drag or swipe",
+        src: "/work/fluffinton/shot-suites.webp",
+        alt: "Suites section: 'Suites they'll pretend not to love', with cards for The Window Seat, The Cloud Loft and The Reading Nook.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "DAILY RITUALS",
+        caption: "Morning to evening, with sound",
+        src: "/work/fluffinton/shot-rituals.webp",
+        alt: "'A day at Fluffinton' section: a list of morning, midday, afternoon and evening rituals beside an illustrated kitten stretching in the sun.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "CARE TEAM",
+        caption: "The people behind it",
+        src: "/work/fluffinton/shot-care.webp",
+        alt: "'Every whisker, noticed' care team section with illustrated portraits of Heshan and Saumya.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "BOOKING",
+        caption: "Custom date-range picker",
+        src: "/work/fluffinton/shot-booking.webp",
+        alt: "Booking form with the cat's name filled in and a two-month date picker showing a four-night stay selected.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "FOOTER",
+        caption: "The cat that peeks over the edge",
+        src: "/work/fluffinton/shot-footer.webp",
+        alt: "Night-blue footer with the mascot peeking over a frosted glass panel of links, address and contact details.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "PHONE · HOME",
+        caption: "Mobile layout",
+        src: "/work/fluffinton/shot-mobile-home.webp",
+        alt: "Fluffinton home page on a phone.",
+        ratio: "780 / 1688",
+      },
+      {
+        label: "PHONE · SUITES",
+        caption: "Swipe through the suites",
+        src: "/work/fluffinton/shot-mobile-suites.webp",
+        alt: "The suites rail on a phone.",
+        ratio: "780 / 1688",
+      },
+>>>>>>> Stashed changes
     ],
     outcome: {
       headline: "Coming",
