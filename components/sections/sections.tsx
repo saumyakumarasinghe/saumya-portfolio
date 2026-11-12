@@ -66,8 +66,8 @@ export function WorkSection() {
             />
           </div>
           <p data-reveal className="max-w-[42ch] text-ink-muted">
-            Live work and selected projects. Hover a note to preview it. Where others were involved, I describe
-            my part, not the whole product.
+            Live work and selected projects. Hover a note to preview it. Where others were involved, I describe my part, not the whole
+            product.
           </p>
         </div>
         <WorkList items={work} />

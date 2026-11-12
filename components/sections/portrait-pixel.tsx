@@ -64,7 +64,8 @@ export function PortraitPixel() {
         last = now;
         const to = on ? Math.min(target, from + delta) : Math.max(target, from - delta);
         for (let i = Math.floor(Math.min(from, to)); i < Math.floor(Math.max(from, to)); i++) {
-          const x = (blocks[i] % cols) * block, y = Math.floor(blocks[i] / cols) * block;
+          const x = (blocks[i] % cols) * block,
+            y = Math.floor(blocks[i] / cols) * block;
           if (on) ctx.drawImage(img, x, y, block, block, x, y, block, block);
           else ctx.clearRect(x, y, block, block);
         }
@@ -96,18 +97,9 @@ export function PortraitPixel() {
           sizes="(min-width: 640px) 360px, calc(100vw - 2rem)"
           className="object-cover"
         />
-        <canvas
-          ref={canvas}
-          width={avatar.width}
-          height={avatar.height}
-          aria-hidden="true"
-          className="absolute inset-0 size-full"
-        />
+        <canvas ref={canvas} width={avatar.width} height={avatar.height} aria-hidden="true" className="absolute inset-0 size-full" />
       </div>
-      <PixelSticker
-        rows={leaf}
-        className="-top-[2%] -left-[2%] w-[24%] -rotate-[10deg] group-data-[on=true]:delay-150 sm:-left-[7%]"
-      />
+      <PixelSticker rows={leaf} className="-top-[2%] -left-[2%] w-[24%] -rotate-[10deg] group-data-[on=true]:delay-150 sm:-left-[7%]" />
       <PixelSticker
         rows={codeTag}
         className="right-[-1%] bottom-[14%] w-[30%] rotate-[8deg] group-data-[on=true]:delay-200 sm:right-[-6%]"
@@ -166,7 +158,7 @@ const codeTag = [
 function PixelSticker({ rows, className }: { rows: string[]; className: string }) {
   const runs: { x: number; y: number; w: number; key: string }[] = [];
   rows.forEach((row, y) => {
-    for (let x = 0; x < row.length; ) {
+    for (let x = 0; x < row.length;) {
       const key = row[x];
       let end = x + 1;
       while (end < row.length && row[end] === key) end++;
