@@ -2,12 +2,11 @@ import type { ReactNode } from "react";
 import { Capabilities } from "./capabilities";
 import { CopyEmail, EnquiryPicker } from "./contact-actions";
 import { GrowthRings } from "./growth-rings";
-import { MonsoonTank } from "./monsoon-tank";
 import { PortraitPixel } from "./portrait-pixel";
 import { WorkList } from "./work-list";
 import { Reveal } from "@/components/motion/reveal";
 import { LocalTime, SkyNote } from "@/components/site/local-time";
-import { ApproachIcon, ArrowUpRight, Drop } from "@/components/ui/icons";
+import { ApproachIcon, ArrowUpRight } from "@/components/ui/icons";
 import { Fireflies, Highlighted, SectionLabel } from "@/components/ui/primitives";
 import { teaRows } from "@/lib/art";
 import { approach, currentRole, education, highlights, marquee } from "@/lib/content";
@@ -55,7 +54,7 @@ export function WorkSection() {
       <Reveal className="container-page py-section">
         <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-10">
           <div>
-            <SectionLabel className="mb-5">01 · Field notes</SectionLabel>
+            <SectionLabel className="mb-5">01 · Projects</SectionLabel>
             <Title
               id="work-title"
               lines={[
@@ -76,44 +75,7 @@ export function WorkSection() {
   );
 }
 
-/* ── 02 The tank ──────────────────────────────────────────────────────────── */
-
-export function TankSection() {
-  return (
-    <section id="tank" aria-labelledby="tank-title" className="bg-storm text-storm-foam">
-      <Reveal className="container-page py-section">
-        <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-7">
-          <div className="flex-[1_1_32rem]">
-            <SectionLabel className="mb-5 !text-storm-mist" icon={<Drop className="text-monsoon-glow" />}>
-              02 · The tank
-            </SectionLabel>
-            <Title
-              id="tank-title"
-              lines={[
-                "Built for the",
-                <>
-                  <em className="font-display text-spark italic">monsoon</em>.
-                </>,
-              ]}
-            />
-          </div>
-          <div data-reveal className="flex max-w-[32.5rem] flex-[1_1_24rem] flex-col gap-3.5 text-storm-mist">
-            <p>
-              Sri Lanka&apos;s ancient tanks caught the monsoon and released it slowly to the paddy fields. A message queue does the same
-              for traffic: it catches a burst, and workers drain it at a pace they can handle.
-            </p>
-            <p className="text-storm-foam">It&apos;s the pattern behind the event-driven payment flows I built on AWS SQS and Lambda.</p>
-          </div>
-        </div>
-        <div data-reveal>
-          <MonsoonTank />
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-/* ── 03 Capabilities ──────────────────────────────────────────────────────── */
+/* ── 02 Capabilities ──────────────────────────────────────────────────────── */
 
 export function CapabilitiesSection() {
   return (
@@ -121,7 +83,7 @@ export function CapabilitiesSection() {
       <div className="container-page py-section">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
-            <SectionLabel className="mb-5">03 · Capabilities</SectionLabel>
+            <SectionLabel className="mb-5">02 · Capabilities</SectionLabel>
             <Title
               id="cap-title"
               lines={[
@@ -142,7 +104,7 @@ export function CapabilitiesSection() {
   );
 }
 
-/* ── 04 Experience ────────────────────────────────────────────────────────── */
+/* ── 03 Experience ────────────────────────────────────────────────────────── */
 
 export function ExperienceSection() {
   return (
@@ -150,14 +112,13 @@ export function ExperienceSection() {
       <div className="container-page py-section">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
-            <SectionLabel className="mb-5">04 · Experience</SectionLabel>
+            <SectionLabel className="mb-5">03 · Experience</SectionLabel>
             <Title
               id="exp-title"
               lines={[
-                "New growth,",
-                <>
-                  three <em className="emphasis">rings</em>.
-                </>,
+                <em key="t" className="emphasis">
+                  Experience
+                </em>,
               ]}
             />
           </div>
@@ -203,7 +164,7 @@ export function ExperienceSection() {
           <figure className="m-0 max-w-[47.5rem] flex-[1_1_26rem]">
             <GrowthRings />
             <figcaption className="pt-3 font-mono text-label text-ink-muted">
-              Fig. 04: Career as growth rings, where ring width follows time in each role. Point at a ring to bring it forward.
+              Fig. 03: Each ring is a role at Dinetap, as wide as the time spent in it. Point at a ring to bring it forward.
             </figcaption>
           </figure>
           <Reveal className="flex-[1_1_26rem]">
@@ -225,13 +186,13 @@ export function ExperienceSection() {
   );
 }
 
-/* ── 05 Approach ──────────────────────────────────────────────────────────── */
+/* ── 04 Approach ──────────────────────────────────────────────────────────── */
 
 export function ApproachSection() {
   return (
     <section id="approach" aria-labelledby="approach-title" className="border-b border-line bg-surface">
       <Reveal className="container-page py-section">
-        <SectionLabel className="mb-5">05 · Approach</SectionLabel>
+        <SectionLabel className="mb-5">04 · Approach</SectionLabel>
         <Title
           id="approach-title"
           className="mb-14"
@@ -262,7 +223,7 @@ export function ApproachSection() {
   );
 }
 
-/* ── 06 About ─────────────────────────────────────────────────────────────── */
+/* ── 05 About ─────────────────────────────────────────────────────────────── */
 
 export function AboutSection() {
   return (
@@ -270,7 +231,7 @@ export function AboutSection() {
       <Reveal className="container-page flex flex-wrap items-start gap-x-[clamp(2.5rem,6vw,7.5rem)] gap-y-12 py-section">
         <div className="flex max-w-[27.5rem] flex-[1_1_18rem] flex-col gap-8">
           <div>
-            <SectionLabel className="mb-5">06 · About</SectionLabel>
+            <SectionLabel className="mb-5">05 · About</SectionLabel>
             <Title
               id="about-title"
               lines={[
@@ -341,7 +302,7 @@ export function DuskBand() {
   );
 }
 
-/* ── 07 Contact ───────────────────────────────────────────────────────────── */
+/* ── 06 Contact ───────────────────────────────────────────────────────────── */
 
 export function ContactSection() {
   return (
@@ -350,7 +311,7 @@ export function ContactSection() {
       <Reveal className="relative container-page pt-[clamp(5rem,9vw,8.75rem)]">
         <p className="eyebrow mb-5 flex items-center gap-2.5 text-inverse-muted">
           <span aria-hidden="true" className="size-2 rounded-full bg-spark shadow-[0_0_10px_3px_rgb(217_242_107/0.5)]" />
-          07 · Contact
+          06 · Contact
         </p>
         <h2 id="contact-title" className="font-display text-[clamp(3.75rem,10vw,10.5rem)] leading-[0.88] font-normal tracking-[-0.035em]">
           <span className="line-mask">
@@ -434,9 +395,8 @@ export function ContactSection() {
         <div className="mt-[clamp(4.5rem,9vw,8rem)] grid grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] border-t border-inverse-line font-mono text-label tracking-[0.04em] text-inverse-muted uppercase">
           <p className="pt-4 pr-4">© 2026 {site.name}</p>
           <p className="pt-4 pr-4">{site.role} · Colombo</p>
-          <p className="pt-4 pr-4">Field notes · Rev. 3</p>
           <a href="#top" className="pt-4 pb-3 text-on-inverse no-underline hover:text-spark">
-            Back to the mist ↑
+            Back to top ↑
           </a>
         </div>
       </Reveal>

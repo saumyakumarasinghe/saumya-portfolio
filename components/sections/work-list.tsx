@@ -31,7 +31,7 @@ function Badge({ kind, children }: { kind: Row["kind"]; children: string }) {
 }
 
 /**
- * Selected work as a ledger of field notes. On devices with a fine pointer,
+ * Selected work as a list of projects. On devices with a fine pointer,
  * a tilted preview plate follows the cursor and swaps per row; on touch it
  * stays out of the way and each row is simply a large link.
  */

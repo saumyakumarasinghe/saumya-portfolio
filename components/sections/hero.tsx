@@ -4,10 +4,10 @@ import { OutlineLink, PillLink } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
 
 const herbarium = [
-  ["Specimen", "Software engineer"],
-  ["Habitat", site.location],
-  ["Growing since", "June 2022"],
-  ["Thrives in", "APIs, payments, AWS"],
+  ["Role", "Software engineer"],
+  ["Based in", site.location],
+  ["Building since", "June 2022"],
+  ["Focus", "APIs, payments, AWS"],
 ] as const;
 
 /** Entrance delays, in seconds: the page settles in like mist lifting. */
@@ -20,7 +20,6 @@ export function Hero() {
 
       <div className="relative z-[2] container-page flex min-h-[max(100svh,44rem)] flex-col pt-24 pb-10">
         <div className="eyebrow mt-6 flex animate-fade flex-wrap gap-x-8 gap-y-2 text-ink-muted lg:mt-10" style={d(0.1)}>
-          <span>Field notes · No. 001</span>
           <span>{site.role}, full-stack with backend depth</span>
           <span>
             {site.location} · {site.coordinates} · <LocalTime /> local
@@ -66,8 +65,7 @@ export function Hero() {
           <div className="flex animate-fade items-end gap-7" style={d(0.75)}>
             <div className="w-[min(18.75rem,100%)] border border-line-strong bg-canvas font-mono text-label leading-relaxed max-sm:hidden">
               <div className="flex justify-between border-b border-line-strong px-3 py-2 tracking-[0.06em]">
-                <span>HERBARIUM · SK</span>
-                <span>No. 001</span>
+                <span>AT A GLANCE</span>
               </div>
               <dl className="grid grid-cols-[6rem_minmax(0,1fr)] gap-x-2.5 gap-y-1 px-3 py-2.5">
                 {herbarium.map(([term, value]) => (

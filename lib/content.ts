@@ -167,7 +167,7 @@ export const approach = [
 
 export const education = [
   { title: "BEng (Hons) Software Engineering", detail: "University of Westminster, London · 2020 to 2025 · part-time" },
-  { title: "Foundation Certificate in Higher Education", detail: "Institute of Technology, Sri Lanka · 2019 to 2020" },
+  { title: "Foundation Certificate in Higher Education", detail: "Informatics Institute of Technology, Colombo · 2019 to 2020" },
 ] as const;
 
 export const enquiryTopics = [

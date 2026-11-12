@@ -238,7 +238,7 @@ export function Capabilities() {
           </svg>
         </div>
         <figcaption className="pt-3 font-mono text-label text-ink-muted">
-          Fig. 03: The stack, as a plant. Scroll the list and the plant grows with it.
+          Fig. 02: The stack, as a plant. Scroll the list and the plant grows with it.
         </figcaption>
       </figure>
 
@@ -259,8 +259,7 @@ export function Capabilities() {
                 {index + 1}
               </span>
               <div>
-                <p className="eyebrow text-label tracking-[0.08em] text-ink-muted">{item.label}</p>
-                <h3 className={`mt-1.5 font-display text-title transition-colors duration-300 ${on ? "text-emphasis italic" : ""}`}>
+                <h3 className={`font-display text-title transition-colors duration-300 ${on ? "text-emphasis italic" : ""}`}>
                   {item.title}
                 </h3>
                 <p className="mt-2.5 text-lg leading-snug font-medium">{item.problem}</p>

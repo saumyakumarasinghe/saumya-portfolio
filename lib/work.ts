@@ -1,5 +1,5 @@
 /**
- * Field notes: the work shown on the home page and at /work/[slug].
+ * Projects: the work shown on the home page and at /work/[slug].
  *
  * Every claim comes from the CV, the live client site or the project's own source. Anything that
  * still needs confirming is written as a visible "[ … ]" placeholder, so it
@@ -79,7 +79,7 @@ export const work: Work[] = [
     kind: "client",
     badge: "Head of IT · Live",
     summary: "A bilingual bookshop and publishing website, from catalogue to doorstep. Live at sayarupublishers.lk.",
-    readout: { value: "In bloom" },
+    readout: { value: "Live" },
     url: "https://sayarupublishers.lk/",
     lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house where I am Head of IT. It sells its own titles directly, from catalogue to doorstep.",
     facts: [
@@ -276,8 +276,8 @@ export const work: Work[] = [
       },
     ],
     outcome: {
-      headline: "In",
-      emphasis: "bloom",
+      headline: "Live and",
+      emphasis: "selling",
       text: "Live at sayarupublishers.lk, selling direct with pre-orders and bank-transfer checkout, with card payments to follow. Behind the shop: 13 database models, 25 migrations, 46 API routes and 35 test files.",
       // TODO(verify): no orders, sales or traffic figures are in the code or on the site, so none are claimed. Add one only if you
       // are happy to share it.

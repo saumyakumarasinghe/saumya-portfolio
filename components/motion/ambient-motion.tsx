@@ -14,7 +14,6 @@ const AMBIENT = [
   ".animate-bob",
   ".animate-marquee",
   ".animate-flow",
-  ".animate-rain",
 ].join(",");
 
 /**

@@ -51,7 +51,7 @@ export function OutlineLink({ children, className = "", ...props }: LinkProps) {
   );
 }
 
-/** "01 — Field notes": the mono label above every section title. */
+/** "01 · Projects": the mono label above every section title. */
 export function SectionLabel({ children, className = "", icon }: { children: ReactNode; className?: string; icon?: ReactNode }) {
   return (
     <p className={`eyebrow flex items-center gap-2.5 text-ink-muted ${className}`}>

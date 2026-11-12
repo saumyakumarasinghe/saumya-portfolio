@@ -209,7 +209,6 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
   const item = getWork(slug);
   if (!item) notFound();
   const next = nextWork(item.slug);
-  const index = work.indexOf(item) + 1;
 
   return (
     <>
@@ -218,12 +217,12 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
           href="/#work"
           className="eyebrow inline-flex min-h-11 items-center gap-2.5 rounded-full border border-line-strong px-4 no-underline hover:bg-surface"
         >
-          <ArrowLeft /> All field notes
+          <ArrowLeft /> All projects
         </Link>
 
         <div className="eyebrow mt-10 flex animate-fade flex-wrap items-center gap-x-4 gap-y-2.5 text-ink-muted">
           <span>
-            Field note {item.number} of 0{work.length}
+            Project {item.number} of 0{work.length}
           </span>
           <span
             className={`inline-flex items-center gap-2 rounded-full px-3 py-1 ${item.kind === "client" ? "bg-ink text-canvas" : "border border-line-strong text-ink"} ${item.kind === "demo" || item.kind === "wip" ? "border-dashed" : ""}`}
@@ -251,8 +250,8 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
           </div>
           <div className="w-full max-w-[21.25rem] border border-line-strong font-mono text-label leading-relaxed">
             <div className="flex justify-between border-b border-line-strong px-3.5 py-2.5 tracking-[0.06em]">
-              <span>HERBARIUM · SK</span>
-              <span>No. 00{index + 1}</span>
+              <span>PROJECT FACTS</span>
+              <span>{item.number}</span>
             </div>
             <dl className="grid grid-cols-[6rem_minmax(0,1fr)] gap-x-3 gap-y-1.5 px-3.5 py-3">
               {item.facts.map((fact) => (
@@ -437,7 +436,7 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
         >
           <span className="flex flex-col gap-3">
             <span className="eyebrow text-ink-muted">
-              Next field note {next.number} · {next.badge}
+              Next project {next.number} · {next.badge}
             </span>
             <span className="font-display text-section transition-transform duration-500 ease-settle group-hover:translate-x-4">
               {next.title}

@@ -8,7 +8,7 @@ import { useGsap } from "@/lib/use-gsap";
 const format = (value: number, decimals: number) => value.toFixed(decimals);
 
 /**
- * "Measured in the field": four CV figures that count up once, the first
+ * "Results": four CV figures that count up once, the first
  * time they scroll into view. The real numbers are in the server HTML, and
  * stay as they are if the section is already on screen when motion is ready.
  */
@@ -55,7 +55,7 @@ export function Readouts() {
       <div className="container-page py-14 md:py-20">
         <h2 id="readouts-title" className="eyebrow mb-7 flex items-center gap-2.5 font-normal text-ink-muted">
           <Leaf />
-          Measured in the field
+          Results
         </h2>
         <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-y-10">
           {readouts.map((item, index) => (
