@@ -459,7 +459,7 @@ export const work: Work[] = [
     lead: "A website for Fluffinton, a cat hotel in Maharagama. It shows the suites and a day at the hotel, introduces the care team, and takes booking requests.",
     facts: [
       { label: "Business", value: "Fluffinton, a cat boarding service in Maharagama" },
-      { label: "Role", value: "Developer, built with Heshan Rajapaksha" },
+      { label: "Role", value: "Developer" },
       { label: "Stack", value: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · GSAP · Lenis · Google Maps · Netlify" },
       { label: "Status", value: "Design done, most of the site built; booking backend and custom domain next" },
     ],
@@ -474,7 +474,7 @@ export const work: Work[] = [
     problem:
       "Cat owners book on trust. Before they hand over their cat they want to see where it will sleep and who will look after it. The site has to feel warm and calm, work on any phone, and make asking for dates quick.",
     myPart:
-      "Heshan Rajapaksha and I are building Fluffinton together. I write the code: the sections, the animated mascot, the booking form and date picker, the map, and the responsive and accessibility pass.",
+      "I'm building the Fluffinton website. I write the code: the sections, the animated mascot, the booking form and date picker, the map, and the responsive and accessibility pass.",
     built: [
       "An animated SVG mascot drawn in code from the logo: it blinks, follows the pointer and meows when petted",
       "A suites rail that drags and swipes, and slides a card into view when it gets keyboard focus",
@@ -499,12 +499,12 @@ export const work: Work[] = [
       ],
     },
     diagramCaption: "The form shows a confirmation today; saving requests to a booking backend is the next step.",
-    // Captured on 2026-11-10 from a local production build of the `staging` branch. The map needs an API key, so it shows its fallback.
+    // Captured on 2026-11-10 from a local production build of the `staging` branch (night mode, footer and walkthrough re-captured on 2026-11-16). The map needs an API key, so it shows its fallback.
     screens: [
       {
         label: "WALKTHROUGH",
         caption: "Hero, suites, a day at Fluffinton, booking and the footer cat",
-        video: "/work/fluffinton/v2/walkthrough.mp4",
+        video: "/work/fluffinton/v3/walkthrough.mp4",
         poster: "/work/fluffinton/v2/poster.webp",
         alt: "Screen recording: the hero with the mascot, dragging the suites rail, the daily rituals, filling in the booking form with the date picker, and the footer cat peeking up.",
         ratio: "1280 / 760",
@@ -515,6 +515,13 @@ export const work: Work[] = [
         caption: "The Purrfect Getaway, and the mascot",
         src: "/work/fluffinton/shot-home.webp",
         alt: "Fluffinton home page with the headline 'The Purrfect Getaway' and the kitten mascot on a cloud.",
+        ratio: "1440 / 832",
+      },
+      {
+        label: "NIGHT MODE",
+        caption: "The same hero after dark",
+        src: "/work/fluffinton/v3/shot-home-night.webp",
+        alt: "Fluffinton home page in night mode: the headline on deep navy, a moon toggle in the header, and the kitten mascot asleep on its cloud.",
         ratio: "1440 / 832",
       },
       {
@@ -532,13 +539,6 @@ export const work: Work[] = [
         ratio: "1440 / 832",
       },
       {
-        label: "CARE TEAM",
-        caption: "The people behind it",
-        src: "/work/fluffinton/shot-care.webp",
-        alt: "'Every whisker, noticed' care team section with illustrated portraits of Heshan and Saumya.",
-        ratio: "1440 / 832",
-      },
-      {
         label: "BOOKING",
         caption: "Custom date-range picker",
         src: "/work/fluffinton/shot-booking.webp",
@@ -548,7 +548,7 @@ export const work: Work[] = [
       {
         label: "FOOTER",
         caption: "The cat that peeks over the edge",
-        src: "/work/fluffinton/shot-footer.webp",
+        src: "/work/fluffinton/v3/shot-footer.webp",
         alt: "Night-blue footer with the mascot peeking over a frosted glass panel of links, address and contact details.",
         ratio: "1440 / 832",
       },
