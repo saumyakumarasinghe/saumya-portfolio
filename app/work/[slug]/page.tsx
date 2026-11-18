@@ -64,6 +64,12 @@ function posterUrl(src?: string) {
   return getImageProps({ src, alt: "", width: 540, height: 321 }).props.src;
 }
 
+/** A screen taller than it is wide (a phone shot), read from its `ratio` such as "780 / 1688". */
+function isPortrait(screen: Screen) {
+  const [width, height] = (screen.ratio ?? "").split("/").map(Number);
+  return height > width;
+}
+
 /** A screenshot, recording or design piece; falls back to a dashed placeholder until the file exists. */
 function Media({ screen, className }: { screen: Screen; className: string }) {
   if (!screen.src && !screen.video) {
@@ -364,10 +370,22 @@ async function CaseStudyArticle({ params }: { params: PageProps<"/work/[slug]">[
           </Block>
           <Block number="05" title="Screens">
             <div className="grid grid-cols-[repeat(auto-fit,minmax(min(16.25rem,100%),1fr))] gap-4">
-              {item.screens.map((screen) => (
-                <Media key={screen.label} screen={screen} className="aspect-[16/10]" />
-              ))}
+              {item.screens
+                .filter((screen) => !isPortrait(screen))
+                .map((screen) => (
+                  <Media key={screen.label} screen={screen} className="aspect-[16/10]" />
+                ))}
             </div>
+            {/* Phone shots get their own row: in the grid, one tall phone stretches a row of desktop shots and leaves gaps. */}
+            {item.screens.some(isPortrait) && (
+              <div className="mt-4 flex flex-wrap justify-center gap-4">
+                {item.screens.filter(isPortrait).map((screen) => (
+                  <div key={screen.label} className="w-[min(15rem,calc(50%-0.5rem))]">
+                    <Media screen={screen} className="aspect-[9/19]" />
+                  </div>
+                ))}
+              </div>
+            )}
           </Block>
           {item.galleries?.map((gallery) => (
             <Block
