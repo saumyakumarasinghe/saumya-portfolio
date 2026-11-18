@@ -311,9 +311,9 @@ export const work: Work[] = [
     ],
     cover: {
       label: "COVER · 21:9",
-      caption: "The ClusterForm landing page.",
-      src: "/work/cluster-forms/cover.webp",
-      alt: "ClusterForm landing page: 'Welcome to ClusterForm', a short description, a 'Try it out' button and a network graph of clustered points.",
+      caption: "The landing page, the clustering form and the API docs behind them.",
+      src: "/work/cluster-forms/v3/cover.webp",
+      alt: "Cluster Forms: the 'Welcome to ClusterForm' landing page with a network graph of clustered points, the form that takes a Google Sheet link and a column, and the Swagger API docs for the clustering endpoint behind them.",
     },
     overview:
       "ClusterForm reads the answers to one open-ended question straight from the Google Sheet behind a form. It cleans them, turns them into vectors, finds a sensible number of groups on its own and sorts every answer into one. The results go back into the same spreadsheet, one tab per cluster, with a chart and summary figures in the app.",
@@ -465,9 +465,9 @@ export const work: Work[] = [
     ],
     cover: {
       label: "COVER · 21:9",
-      caption: "The Fluffinton home page, with the mascot on its cloud.",
-      src: "/work/fluffinton/cover.webp",
-      alt: "Fluffinton home page: the headline 'The Purrfect Getaway', Book a stay and Tour the suites buttons, and the white kitten mascot sitting on a cloud under a ball of yarn.",
+      caption: "The home page, the booking form with its date picker, and the site on a phone.",
+      src: "/work/fluffinton/v3/cover.webp",
+      alt: "Fluffinton website: the home page with the headline 'The Purrfect Getaway' and the kitten mascot on a cloud, the booking form with its date picker behind it, and the home page on a phone.",
     },
     overview:
       "Fluffinton is an everyday cat hotel that any cat can enjoy. The site is its front door: four suites, a day at the hotel from morning to evening, the care team, and a booking request with a map.",
