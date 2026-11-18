@@ -94,9 +94,9 @@ export const work: Work[] = [
     ],
     cover: {
       label: "COVER · 21:9",
-      caption: "Three titles from the Sayaru shelf: White Camellia, Limerence and යදම්.",
-      src: "/work/sayaru/cover-montage.webp",
-      alt: "Three Sayaru Publishers book covers side by side: White Camellia, Limerence and යදම්.",
+      caption: "The storefront, the admin dashboard behind it, and the shop on a phone.",
+      src: "/work/sayaru/v3/cover.webp",
+      alt: "Sayaru Publishers website: the storefront home page with the headline 'Bringing stories to life, inspiring generations', the admin dashboard with sales figures behind it, and the book catalogue on a phone.",
     },
     overview:
       "Sayaru Publishers is a book-selling and publishing business. It edits, designs, prints and publishes books, and sells every title directly through its own online bookshop. The site carries both sides of the business: a shop for readers and a services page for authors with a manuscript. Behind it sits an admin console the team runs the shop from.",
