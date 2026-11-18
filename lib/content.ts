@@ -2,25 +2,6 @@
  * Home page copy. Every figure here is taken from the CV.
  */
 
-export const readouts = [
-  {
-    value: 3.5,
-    decimals: 1,
-    prefix: "",
-    unit: "+",
-    text: "Years building backend services, APIs and full-stack apps, from intern to backend lead.",
-  },
-  {
-    value: 46,
-    decimals: 0,
-    prefix: "",
-    unit: "",
-    text: "API routes behind sayarupublishers.lk, a live bilingual bookshop I built on my own.",
-  },
-  { value: 11, decimals: 0, prefix: "", unit: "+", text: "RESTful APIs designed for the EatMe Admin Portal at Dinetap." },
-  { value: 2, decimals: 0, prefix: "", unit: "", text: "Languages, Sinhala and English, across the whole Sayaru bookshop." },
-] as const;
-
 export const marquee = [
   "Backend & APIs",
   "Payments & integrations",
@@ -55,7 +36,7 @@ export const capabilities: {
     title: "Backend engineering & APIs",
     problem: "Your web and mobile apps need an API they can depend on.",
     offer: "I design and build REST APIs and services in Node.js, TypeScript and Spring Boot, documented in Swagger.",
-    evidence: "Designed 11+ RESTful APIs for the EatMe Admin Portal; backend lead for the DineTap application.",
+    evidence: "Designed 11+ RESTful APIs for the EatMe Admin Portal and led the development of several of the DineTap app's APIs.",
   },
   {
     part: "sap",
@@ -108,7 +89,7 @@ export const highlights = [
   },
   {
     area: "Backend",
-    text: "Backend lead for the DineTap application; designed **11+** RESTful APIs for the EatMe Admin Portal; worked on the DineTap wallet's endpoints, Adyen integration and query optimisation.",
+    text: "Led the development of several of the DineTap app's APIs; designed **11+** RESTful APIs for the EatMe Admin Portal; worked on the DineTap wallet's endpoints, Adyen integration and query optimisation.",
   },
   {
     area: "Payments",

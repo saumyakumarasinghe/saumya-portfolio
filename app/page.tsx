@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/hero";
-import { Readouts } from "@/components/sections/readouts";
 import {
   AboutSection,
   ApproachSection,
@@ -19,7 +18,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Readouts />
       <Marquee />
       <WorkSection />
       <CapabilitiesSection />

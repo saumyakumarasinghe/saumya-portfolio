@@ -250,8 +250,8 @@ export function AboutSection() {
           </p>
           <div data-reveal className="flex flex-col gap-4.5 text-[clamp(1.0625rem,1.3vw,1.1875rem)] leading-[1.65]">
             <p>
-              I joined Dinetap (then EatMe Global Lanka) as an intern in June 2022 and grew with the product until January 2026: from
-              associate engineer to backend lead on the DineTap application and code owner for several of its services.
+              I joined Dinetap (then EatMe Global Lanka) as an intern in June 2022 and grew with the product until January 2026: from intern
+              to software engineer, leading development on several of the DineTap app&apos;s APIs and owning a number of its services.
             </p>
             <p>
               Since February 2026 I&apos;ve worked as a software consultant for Sayaru Publishers, a Sri Lankan publishing house. As its

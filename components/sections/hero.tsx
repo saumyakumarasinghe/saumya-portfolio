@@ -6,7 +6,7 @@ const herbarium = [
   ["Role", "Software engineer"],
   ["Based in", site.location],
   ["Building since", "June 2022"],
-  ["Focus", "APIs, payments, AWS"],
+  ["Focus", "APIs, payments, full-stack web"],
 ] as const;
 
 /** Entrance delays, in seconds: the page settles in like mist lifting. */
@@ -50,8 +50,9 @@ export function Hero() {
         <div className="mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-10 md:mt-14">
           <div className="flex max-w-[31rem] flex-[1_1_21rem] animate-fade flex-col gap-6" style={d(0.55)}>
             <p className="text-lead">
-              I&apos;m Saumya, a software engineer in Colombo. I build web applications, APIs and event-driven backends with deep roots:
-              fast, dependable, and calm when traffic pours in.
+              I&apos;m Saumya, a software engineer in Colombo. I build web apps and the backends behind them, the kind that stay calm when
+              traffic doesn&apos;t. In 3.5+ years I&apos;ve led a move to microservices, built payments on AWS and launched a live online
+              bookshop on my own.
             </p>
             <div className="flex flex-wrap gap-3">
               <PillLink href="#contact">Let&apos;s discuss your project</PillLink>
