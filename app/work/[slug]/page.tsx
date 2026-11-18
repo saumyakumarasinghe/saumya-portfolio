@@ -18,10 +18,17 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const { slug } = await params;
   const item = getWork(slug);
   if (!item) return {};
+  const url = `/work/${item.slug}`;
+  const title = `${item.title} | ${site.name}`;
+  const images = item.ogImage ? [{ url: item.ogImage, width: 1200, height: 630, alt: item.cover.alt ?? item.title }] : undefined;
   return {
     title: item.title,
     description: item.summary,
-    alternates: { canonical: `/work/${item.slug}` },
+    alternates: { canonical: url },
+    // Without its own card, a case study shares as the home page in link previews (LinkedIn, WhatsApp, Slack):
+    // the layout's openGraph would carry over with the home URL, title and picture.
+    openGraph: { type: "article", locale: "en_GB", siteName: site.name, url, title, description: item.summary, images },
+    twitter: { card: "summary_large_image", title, description: item.summary, images },
     robots: item.kind === "demo" ? { index: false } : undefined,
   };
 }
