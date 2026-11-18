@@ -77,18 +77,17 @@ export const work: Work[] = [
     title: "Sayaru Publishers",
     emphasis: "Publishers",
     kind: "client",
-    badge: "Head of IT · Live",
+    badge: "Software Consultant · Live",
     summary: "A bilingual bookshop and publishing website, from catalogue to doorstep. Live at sayarupublishers.lk.",
     readout: { value: "Live" },
     url: "https://sayarupublishers.lk/",
-    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house where I am Head of IT. It sells its own titles directly, from catalogue to doorstep.",
+    lead: "A bilingual bookshop and publishing website for Sayaru Publishers, the Sri Lankan publishing house I work with as a software consultant. It sells its own titles directly, from catalogue to doorstep.",
     facts: [
       { label: "Business", value: "Sayaru Publishers, a Sri Lankan publishing house" },
-      { label: "Role", value: "Head of IT and sole developer: site design, build, launch and running it" },
+      { label: "Role", value: "Software consultant and sole developer: site design, build, launch and running it" },
       { label: "Stack", value: "Next.js 14 · TypeScript · PostgreSQL · Prisma · Supabase · Auth.js · Tailwind · Netlify" },
       { label: "Languages", value: "English · Sinhala" },
-      // TODO(verify): update this row and the "built" line once Payzy approves the merchant account and card payments go live.
-      { label: "Payments", value: "Bank transfer · branch deposit · Payzy card payments awaiting provider approval" },
+      { label: "Payments", value: "Card payments · bank transfer · branch deposit" },
       // TODO(verify): launch date. Git history starts 2026-10-09, but the database migrations start 2026-09-07 and there is an
       // `archive/landing-page` tag, so the real start is earlier. Add a "Launched" row once the date is confirmed.
       { label: "Status", value: "Live at sayarupublishers.lk" },
@@ -104,7 +103,7 @@ export const work: Work[] = [
     problem:
       "A publisher selling direct needs more than a catalogue. Readers browse in English or Sinhala, new titles take pre-orders before release, and payments arrive as bank transfers that someone has to check before a book ships. Pre-orders also tell the publisher how many copies to print, so every copy owed has to be counted and held back for the buyer who paid.",
     myPart:
-      "As Head of IT I am Sayaru's only developer. I designed and built the whole website on my own, from the storefront and admin console to the database, email and hosting, took it to production, and keep it running.",
+      "As Sayaru's software consultant I am its only developer. I designed and built the whole website on my own, from the storefront and admin console to the database, email and hosting, took it to production, and keep it running.",
     // TODO(verify): everything below is read from the `staging` branch (3d243d2, 2026-10-20), which goes to production on 2026-10-30.
     // Confirm the release has shipped before this site goes live.
     built: [
@@ -113,7 +112,7 @@ export const work: Work[] = [
       "Pre-orders that open and close at set times in Sri Lanka time, with a release countdown, a release calendar, and a pre-order or sale discount per book",
       "Pre-orders counted as print-run demand: copies owed to paid pre-orders are held back, and stock can run below zero while a title is still being printed",
       "Checkout by bank transfer or branch deposit, with the receipt size checked in the browser before upload and verified by hand",
-      "Card payments through Payzy, waiting on the provider's approval to go live",
+      "Card payments at checkout",
       "English and Sinhala throughout, with a language toggle",
       "Publishing services (editing, design, printing and publishing) with a manuscript enquiry",
       "Admin dashboard with week, month, quarter and year history against the previous period, and a strip of what needs attention today",

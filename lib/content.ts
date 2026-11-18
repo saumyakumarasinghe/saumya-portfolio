@@ -4,11 +4,11 @@
 
 export const readouts = [
   {
-    value: 99.99,
-    decimals: 2,
+    value: 3.5,
+    decimals: 1,
     prefix: "",
-    unit: "%",
-    text: "Success rate on event-driven Adyen and Stripe payments, with 40% more throughput.",
+    unit: "+",
+    text: "Years building backend services, APIs and full-stack apps, from intern to backend lead.",
   },
   {
     value: 46,
@@ -17,8 +17,8 @@ export const readouts = [
     unit: "",
     text: "API routes behind sayarupublishers.lk, a live bilingual bookshop I built on my own.",
   },
-  { value: 45, decimals: 0, prefix: "", unit: "%", text: "Faster reporting queries after MySQL schema optimizations." },
-  { value: 94, decimals: 0, prefix: "", unit: "%", text: "Test coverage with Jest, Cypress and JUnit; deploys in under 15 minutes." },
+  { value: 11, decimals: 0, prefix: "", unit: "+", text: "RESTful APIs designed for the EatMe Admin Portal at Dinetap." },
+  { value: 2, decimals: 0, prefix: "", unit: "", text: "Languages, Sinhala and English, across the whole Sayaru bookshop." },
 ] as const;
 
 export const marquee = [
@@ -47,7 +47,7 @@ export const capabilities: {
     problem: "Reports crawl and the database bill keeps growing.",
     offer: "I find the slow queries, fix schemas and indexes, and add caching where it pays for itself.",
     evidence:
-      "MySQL schema work cut reporting query times by 45%; indexing and Redis caching on PostgreSQL and MongoDB lowered cloud costs.",
+      "Tuned MySQL, PostgreSQL and MongoDB queries with schema changes, indexing and Redis caching, speeding up reports and API responses and lowering cloud costs.",
   },
   {
     part: "trunk",
@@ -71,7 +71,8 @@ export const capabilities: {
     title: "Payments & integrations",
     problem: "You need Stripe, Adyen or an email provider wired in without losing transactions.",
     offer: "I integrate payment gateways and third-party services through event-driven processing that copes with spikes.",
-    evidence: "Adyen and Stripe gateways plus Postmark on AWS SQS and Lambda: 40% more throughput at a 99.99% success rate.",
+    evidence:
+      "Event-driven Adyen and Stripe payments plus Postmark emails on AWS SQS and Lambda, so the system handles more payments, more reliably.",
   },
   {
     part: "canopy",
@@ -80,7 +81,7 @@ export const capabilities: {
     problem: "You need a website, an MVP or a SaaS product built end to end.",
     offer: "I take a product from data model to interface: React and Next.js in front, Node.js or Python behind.",
     evidence:
-      "Designed, built and launched sayarupublishers.lk on my own, from storefront and admin console to database and deploys; a React and Next.js component library that sped up delivery across three product teams.",
+      "Designed, built and launched sayarupublishers.lk on my own, from storefront and admin console to database and deploys; a React and Next.js component library adopted by three product teams.",
   },
   {
     part: "rings",
@@ -88,7 +89,8 @@ export const capabilities: {
     title: "Testing, CI/CD & reliability",
     problem: "Releases are slow, manual and a little scary.",
     offer: "I set up automated tests and pipelines so small, frequent releases become the safe default and each one adds another ring.",
-    evidence: "GitHub Actions and Docker pipelines with deploys under 15 minutes; Jest, Cypress and JUnit suites at 94% coverage.",
+    evidence:
+      "GitHub Actions and Docker CI/CD pipelines, automated tests with Jest and Cypress, and monitoring with Sentry and AWS CloudWatch.",
   },
 ];
 
@@ -102,7 +104,7 @@ export const roles = [
 export const highlights = [
   {
     area: "Architecture",
-    text: "Led the backend migration of legacy Node.js APIs to TypeScript microservices; code owner for several microservices and BFF applications.",
+    text: "Led the migration of legacy Node.js APIs to TypeScript microservices; owned several microservices and Backend-for-Frontend (BFF) services.",
   },
   {
     area: "Backend",
@@ -110,30 +112,34 @@ export const highlights = [
   },
   {
     area: "Payments",
-    text: "Event-driven Adyen and Stripe gateways and Postmark on AWS SQS and Lambda: **+40%** throughput at **99.99%** success.",
+    text: "Event-driven Adyen and Stripe payments and Postmark emails on AWS SQS and Lambda, so the system handles more payments, more reliably.",
   },
-  { area: "Frontend", text: "A reusable React and Next.js component library used by **3** cross-functional product teams." },
+  { area: "Frontend", text: "A reusable React and Next.js UI component library adopted by **3** product teams." },
   {
     area: "Data",
-    text: "MySQL schema optimizations cut reporting query times by **45%**; indexing and Redis caching lowered cloud costs.",
+    text: "Tuned MySQL, PostgreSQL and MongoDB queries with schema changes, indexing and Redis caching: faster reports and API responses, lower cloud costs.",
   },
-  { area: "Delivery", text: "CI/CD with GitHub Actions and Docker: deploys in **<15 min**; coverage raised to **94%**." },
+  { area: "Delivery", text: "GitHub Actions and Docker CI/CD pipelines for faster deploys; automated testing with Jest and Cypress." },
+  {
+    area: "Monitoring",
+    text: "Sentry and AWS CloudWatch monitoring and SonarQube code-quality checks, to find and fix production issues faster.",
+  },
   {
     area: "People",
-    text: "Swagger and ApiDog documentation; system-design workshops that sped up onboarding by **25%**.",
+    text: "Mentored junior and mid-level engineers through pair programming and system-design workshops; wrote Swagger and Apidog API docs.",
   },
 ] as const;
 
 /** The current role, shown above the Dinetap rings. `**x**` marks a figure to highlight. */
 export const currentRole = {
   company: "Sayaru Publishers",
-  title: "Head of IT",
+  title: "Software Consultant",
   dates: "Feb 2026 to Present",
-  place: "Colombo · full-time",
+  place: "Colombo",
   points: [
-    "Sole developer: designed, built and launched sayarupublishers.lk, a bilingual English and Sinhala bookshop with pre-orders and bank-transfer checkout.",
-    "Built the admin console the team runs the shop from: payments queue, orders, an audited stock ledger and a sales dashboard.",
-    "Run it in production: Sentry monitoring, automated tests, and GitHub Actions deploys to Netlify with migrations before every release.",
+    "Sole developer: designed, built and launched sayarupublishers.lk, a bilingual English and Sinhala online bookshop with customer accounts, pre-orders and checkout.",
+    "Built the admin console that runs the store: payment checks, order management, stock tracking and sales reporting.",
+    "Card payments and automatic order and account emails; automated tests, GitHub Actions CI/CD and Sentry monitoring.",
   ],
 } as const;
 
@@ -141,7 +147,7 @@ export const approach = [
   {
     icon: "gauge",
     title: "Measure, then change.",
-    text: "Performance work starts with a number and ends with one. “Reports run 45% faster” is something you can check.",
+    text: "Performance work starts with a measurement and ends with one, so every improvement is something you can check.",
   },
   {
     icon: "cloud",

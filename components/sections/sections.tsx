@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { Capabilities } from "./capabilities";
 import { CopyEmail, EnquiryPicker } from "./contact-actions";
@@ -254,8 +255,15 @@ export function AboutSection() {
               associate engineer to backend lead on the DineTap application and code owner for several of its services.
             </p>
             <p>
-              Since February 2026 I&apos;ve been Head of IT at Sayaru Publishers, a Sri Lankan publishing house. As its only developer I
-              designed, built and launched its online bookshop, and I keep it running in production.
+              Since February 2026 I&apos;ve worked as a software consultant for Sayaru Publishers, a Sri Lankan publishing house. As its
+              only developer I designed, built and launched its online bookshop, and I keep it running in production.
+            </p>
+            <p>
+              I also build affordable websites for small businesses, online sellers and personal brands as{" "}
+              <Link href="/websites" className="text-emphasis underline decoration-1 underline-offset-4">
+                {site.freelance.brand}
+              </Link>
+              .
             </p>
             <p>
               Over the same years I completed a BEng (Hons) in Software Engineering with the University of Westminster, studying part-time
