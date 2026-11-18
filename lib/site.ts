@@ -28,4 +28,18 @@ export const site = {
    * is true right now, e.g. "Taking on projects from January".
    */
   availability: "Open to full-time backend and full-stack roles · on-site or remote" as string | null,
+  /**
+   * Freelance website service (the /websites page). Change the brand here and
+   * every page and link follows. The number is the business WhatsApp line.
+   */
+  freelance: {
+    brand: "Websites by Saumya",
+    description:
+      "Affordable websites for small businesses, online sellers and personal brands: business sites, online stores, portfolios and redesigns, in Sinhala and English.",
+    whatsapp: "074 079 4255",
+    whatsappE164: "+94740794255",
+    whatsappLink: "https://wa.me/94740794255",
+    offer: "Free domain for your first year",
+    offerNote: "for my first 5 clients",
+  },
 } as const;
