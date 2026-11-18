@@ -1,5 +1,4 @@
 import { HeroField } from "./hero-field";
-import { LocalTime } from "@/components/site/local-time";
 import { OutlineLink, PillLink } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
 
@@ -20,10 +19,8 @@ export function Hero() {
 
       <div className="relative z-[2] container-page flex min-h-[max(100svh,44rem)] flex-col pt-24 pb-10">
         <div className="eyebrow mt-6 flex animate-fade flex-wrap gap-x-8 gap-y-2 text-ink-muted lg:mt-10" style={d(0.1)}>
-          <span>{site.role}, full-stack with backend depth</span>
-          <span>
-            {site.location} · {site.coordinates} · <LocalTime /> local
-          </span>
+          <span>{site.role} · Backend & Full-Stack</span>
+          <span>{site.location}</span>
         </div>
 
         <h1 id="hero-title" aria-label={site.tagline} className="mt-auto pt-12 font-display text-hero font-normal">

@@ -10,7 +10,6 @@ export const site = {
   description:
     "Software engineer in Colombo, Sri Lanka, building web applications, APIs and event-driven backends that stay fast and dependable when traffic pours in.",
   location: "Colombo, Sri Lanka",
-  coordinates: "6.93° N 79.86° E",
   timeZone: "Asia/Colombo",
   email: "saumyakumarasinghe9@gmail.com",
   phone: "070 145 4255",
