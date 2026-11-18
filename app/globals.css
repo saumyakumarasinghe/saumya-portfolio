@@ -63,6 +63,15 @@
   --color-bark-pale: #c9a98a;
   --color-deep-sage: #2e5440;
 
+  /* Storm — monsoon clouds over the tank (02 Capabilities on Mist) */
+  --color-storm: #1f383c;
+  --color-storm-deep: #182e32;
+  --color-storm-hollow: #27444a;
+  --color-storm-line: #35575b;
+  --color-storm-mist: #a9c1c0;
+  --color-storm-foam: #e6ede4;
+  --color-storm-ground: #223a36;
+
   /* Night — the estate under a full moon, lit by a clay lamp (pahana) */
   --color-estate-night: #0f1f1b;
   --color-estate-shade: #152923;
@@ -172,9 +181,11 @@
 }
 
 /* ── Section tones ────────────────────────────────────────────────────────────
- * The home sections take turns between two greens: tea mist (01, 03, 05) and
- * lichen (02, 04), so no section is the odd one out. A tone re-points the
- * surface tokens for its section only, so panels and lines inside follow it.  */
+ * The home sections take turns: tea mist (01, 03, 05) and lichen (02, 04).
+ * On Mist, 02 Capabilities goes dark instead, in monsoon teal (tone-storm),
+ * as the one dark break between the projects and the rest of the page.
+ * A tone re-points the tokens for its section only, so panels, lines and
+ * drawings inside follow it.                                                */
 .tone-lichen {
   --canvas: var(--color-lichen-pale);
   --surface: var(--color-tea-mist); /* panels swap to the other green */
@@ -186,6 +197,38 @@
   --surface: var(--color-estate-night);
   --surface-2: #233c34;
   --line: var(--color-estate-line);
+}
+/* Mist only. Night keeps the section on lichen, so the night palette is untouched. */
+html:not([data-theme="night"]) .tone-storm {
+  color: var(--ink);
+
+  --canvas: var(--color-storm);
+  --surface: var(--color-storm-deep); /* the plant plate */
+  --surface-2: var(--color-storm-hollow);
+
+  --ink: var(--color-storm-foam);
+  --ink-muted: var(--color-storm-mist);
+  --ink-subtle: var(--color-storm-mist);
+
+  --line: var(--color-storm-line);
+  --line-strong: var(--color-storm-foam);
+
+  --emphasis: var(--color-firefly); /* lime italics, as on the old tank */
+  --accent: var(--color-tea-bud);
+  --on-accent: var(--color-pine);
+  --focus: var(--color-firefly);
+
+  --diagram: var(--color-fern-glow);
+  --diagram-soft: var(--color-deep-sage);
+  --water: var(--color-monsoon-glow);
+  --earth: var(--color-laterite-glow);
+  --wood: var(--color-bark-pale);
+
+  --ground: var(--color-storm-ground);
+  --trunk: #8a6f55;
+  --ring-outer: #2c2a1f;
+  --ring-mid: #3a3426;
+  --ring-core: #4d412f;
 }
 
 /* Theme-independent motion timings, shared with GSAP via lib/motion.ts */

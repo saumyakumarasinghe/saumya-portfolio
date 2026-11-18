@@ -78,7 +78,7 @@ export function WorkSection() {
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" aria-labelledby="cap-title" className="tone-lichen border-b border-line bg-canvas">
+    <section id="capabilities" aria-labelledby="cap-title" className="tone-lichen tone-storm border-b border-line bg-canvas">
       <div className="container-page py-section">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
