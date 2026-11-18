@@ -46,6 +46,8 @@ export type Work = {
   lead: string;
   facts: { label: string; value: string; confirm?: boolean }[];
   cover: { label: string; caption: string; src?: string; alt?: string };
+  /** 1200 x 630 link-preview picture (LinkedIn, WhatsApp, Slack): the cover with the title under it. */
+  ogImage?: string;
   overview: string;
   problem: string;
   /** For team work: what Saumya did, kept separate from the product as a whole. */
@@ -98,6 +100,7 @@ export const work: Work[] = [
       src: "/work/sayaru/v3/cover.webp",
       alt: "Sayaru Publishers website: the storefront home page with the headline 'Bringing stories to life, inspiring generations', the admin dashboard with sales figures behind it, and the book catalogue on a phone.",
     },
+    ogImage: "/work/sayaru/og.jpg",
     overview:
       "Sayaru Publishers is a book-selling and publishing business. It edits, designs, prints and publishes books, and sells every title directly through its own online bookshop. The site carries both sides of the business: a shop for readers and a services page for authors with a manuscript. Behind it sits an admin console the team runs the shop from.",
     problem:
@@ -315,6 +318,7 @@ export const work: Work[] = [
       src: "/work/cluster-forms/v3/cover.webp",
       alt: "Cluster Forms: the 'Welcome to ClusterForm' landing page with a network graph of clustered points, the form that takes a Google Sheet link and a column, and the Swagger API docs for the clustering endpoint behind them.",
     },
+    ogImage: "/work/cluster-forms/og.jpg",
     overview:
       "ClusterForm reads the answers to one open-ended question straight from the Google Sheet behind a form. It cleans them, turns them into vectors, finds a sensible number of groups on its own and sorts every answer into one. The results go back into the same spreadsheet, one tab per cluster, with a chart and summary figures in the app.",
     problem:
@@ -469,6 +473,7 @@ export const work: Work[] = [
       src: "/work/fluffinton/v3/cover.webp",
       alt: "Fluffinton website: the home page with the headline 'The Purrfect Getaway' and the kitten mascot on a cloud, the booking form with its date picker behind it, and the home page on a phone.",
     },
+    ogImage: "/work/fluffinton/og.jpg",
     overview:
       "Fluffinton is an everyday cat hotel that any cat can enjoy. The site is its front door: four suites, a day at the hotel from morning to evening, the care team, and a booking request with a map.",
     problem:
