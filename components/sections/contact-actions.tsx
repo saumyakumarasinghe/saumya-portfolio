@@ -24,7 +24,7 @@ export function EnquiryPicker() {
   return (
     <>
       <fieldset className="m-0 border-0 p-0">
-        <legend className="eyebrow mb-3 text-inverse-muted">What do you need? (optional)</legend>
+        <legend className="eyebrow mb-3 text-inverse-muted">What do you need?</legend>
         <div className="flex flex-wrap gap-2">
           {enquiryTopics.map((item) => (
             <button
