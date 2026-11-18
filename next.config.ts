@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  experimental: {
+    // Upgrade reminders in `next dev` / `next build` only flag releases that fix a security advisory.
+    agentUpgrade: "security",
+  },
   images: {
     // AVIF first, WebP as the fallback; browsers without either get the original file.
     formats: ["image/avif", "image/webp"],
