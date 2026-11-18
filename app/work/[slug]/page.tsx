@@ -463,8 +463,8 @@ function CaseStudyFooter() {
           <h2 className="max-w-[14ch] font-display text-[clamp(3rem,7vw,7rem)] leading-[0.9] font-normal tracking-[-0.03em]">
             Need a site like this for your <em className="text-spark italic">business</em>?
           </h2>
-          <PillLink href="/websites" tone="spark">
-            See website services
+          <PillLink href="/#contact" tone="spark">
+            Let&apos;s discuss your project
           </PillLink>
         </div>
         <div className="mt-[clamp(4rem,8vw,7rem)] grid grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] border-t border-inverse-line font-mono text-label tracking-[0.04em] text-inverse-muted uppercase">

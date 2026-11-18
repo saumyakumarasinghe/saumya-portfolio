@@ -13,13 +13,7 @@ const nav = [
   { href: "#capabilities", label: "Capabilities" },
   { href: "#experience", label: "Experience" },
   { href: "#about", label: "About" },
-  { href: "/websites", label: "Websites" },
 ] as const;
-
-/** Section anchors live on the home page; full paths (like /websites) work from anywhere. */
-function navHref(href: string, base: string) {
-  return href.startsWith("/") ? href : `${base}${href}`;
-}
 
 /**
  * Floating header. Transparent over the hero, a frosted bar once the page
@@ -84,7 +78,7 @@ export function SiteHeader() {
             {nav.map((item) => (
               <Link
                 key={item.href}
-                href={navHref(item.href, base)}
+                href={`${base}${item.href}`}
                 className="relative flex min-h-11 min-w-11 items-center justify-center no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
               >
                 {item.label}
@@ -152,7 +146,7 @@ export function SiteHeader() {
             {[...nav, { href: "#contact", label: "Contact" }].map((item, index) => (
               <Link
                 key={item.href}
-                href={navHref(item.href, base)}
+                href={`${base}${item.href}`}
                 onClick={closeMenu}
                 className="flex items-baseline justify-between border-b border-line py-[min(1rem,2svh)] font-display text-[clamp(2.25rem,min(11vw,7svh),4rem)] leading-none no-underline"
               >
