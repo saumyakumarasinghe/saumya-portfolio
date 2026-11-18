@@ -81,9 +81,9 @@ export function HeroField() {
           </g>
         </svg>
       </div>
-      {/* Drifting banks of mist */}
+      {/* Drifting banks of mist. At night the upper one is thinner, so the moon shows through it. */}
       <div className="absolute top-[46%] left-[-12%] h-[300px] w-[86%] animate-drift bg-[radial-gradient(closest-side,var(--canvas),transparent)] opacity-95 blur-[6px]" />
-      <div className="absolute top-[8%] right-[-18%] h-[240px] w-[70%] animate-drift bg-[radial-gradient(closest-side,var(--canvas),transparent)] opacity-85 blur-[8px] [animation-delay:-9s] [animation-direction:alternate-reverse] [animation-duration:34s]" />
+      <div className="absolute top-[8%] right-[-18%] h-[240px] w-[70%] animate-drift bg-[radial-gradient(closest-side,var(--canvas),transparent)] opacity-85 blur-[8px] dark:opacity-40 [animation-delay:-9s] [animation-direction:alternate-reverse] [animation-duration:34s]" />
     </div>
   );
 }

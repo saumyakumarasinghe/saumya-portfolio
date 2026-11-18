@@ -5,8 +5,7 @@ import { GrowthRings } from "./growth-rings";
 import { PortraitPixel } from "./portrait-pixel";
 import { WorkList } from "./work-list";
 import { Reveal } from "@/components/motion/reveal";
-import { LocalTime, SkyNote } from "@/components/site/local-time";
-import { ApproachIcon, ArrowUpRight } from "@/components/ui/icons";
+import { ApproachIcon, ArrowUpRight, Download } from "@/components/ui/icons";
 import { Fireflies, Highlighted, SectionLabel } from "@/components/ui/primitives";
 import { teaRows } from "@/lib/art";
 import { approach, currentRole, education, highlights, marquee } from "@/lib/content";
@@ -31,7 +30,7 @@ function Title({ id, lines, className = "" }: { id: string; lines: ReactNode[]; 
 export function Marquee() {
   const row = [...marquee, ...marquee];
   return (
-    <div aria-hidden="true" className="overflow-hidden border-b border-line bg-diagram text-canvas">
+    <div aria-hidden="true" className="overflow-hidden border-b border-line bg-band text-on-band">
       <div className="flex w-max animate-marquee items-center gap-9 py-6 font-display text-[clamp(2.5rem,4.4vw,4.25rem)] leading-none whitespace-nowrap italic hover:[animation-play-state:paused]">
         {row.map((item, index) => (
           <span key={index} className="flex items-center gap-9">
@@ -79,7 +78,7 @@ export function WorkSection() {
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" aria-labelledby="cap-title" className="border-b border-line">
+    <section id="capabilities" aria-labelledby="cap-title" className="tone-lichen border-b border-line bg-canvas">
       <div className="container-page py-section">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-16 gap-y-6 pb-12">
           <div>
@@ -190,7 +189,7 @@ export function ExperienceSection() {
 
 export function ApproachSection() {
   return (
-    <section id="approach" aria-labelledby="approach-title" className="border-b border-line bg-surface">
+    <section id="approach" aria-labelledby="approach-title" className="tone-lichen border-b border-line bg-canvas">
       <Reveal className="container-page py-section">
         <SectionLabel className="mb-5">04 · Approach</SectionLabel>
         <Title
@@ -274,6 +273,21 @@ export function AboutSection() {
               </div>
             ))}
           </dl>
+          <a
+            data-reveal
+            href={site.cv}
+            download
+            className="group inline-flex min-h-14 items-center gap-3.5 self-start rounded-full bg-ink py-1.5 pr-1.5 pl-6 font-medium text-canvas no-underline transition-transform duration-200 ease-respond active:scale-[0.98]"
+          >
+            Download my CV
+            <span className="font-mono text-label tracking-[0.04em] opacity-75">PDF · 2 pages</span>
+            <span
+              aria-hidden="true"
+              className="grid size-11 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-300 ease-settle group-hover:translate-y-0.5"
+            >
+              <Download />
+            </span>
+          </a>
         </div>
       </Reveal>
     </section>
@@ -310,7 +324,7 @@ export function ContactSection() {
       <Fireflies />
       <Reveal className="relative container-page pt-[clamp(5rem,9vw,8.75rem)]">
         <p className="eyebrow mb-5 flex items-center gap-2.5 text-inverse-muted">
-          <span aria-hidden="true" className="size-2 rounded-full bg-spark shadow-[0_0_10px_3px_rgb(217_242_107/0.5)]" />
+          <span aria-hidden="true" className="size-2 rounded-full bg-spark shadow-[0_0_10px_3px_var(--spark-glow)]" />
           06 · Contact
         </p>
         <h2 id="contact-title" className="font-display text-[clamp(3.75rem,10vw,10.5rem)] leading-[0.88] font-normal tracking-[-0.035em]">
@@ -385,10 +399,19 @@ export function ContactSection() {
                 ))}
               </div>
             ))}
-            <p className="py-5.5 font-mono text-label tracking-[0.04em] text-inverse-muted">
-              <LocalTime /> in Colombo · UTC+05:30
-              <SkyNote />
-            </p>
+            <a
+              href={site.cv}
+              download
+              className="group flex items-center justify-between gap-3 border-b border-inverse-line py-5.5 font-display text-[1.75rem] text-on-inverse no-underline"
+            >
+              Download my CV
+              <span className="flex items-center gap-3">
+                <span className="font-mono text-label tracking-[0.04em] text-inverse-muted">PDF · 2 pages</span>
+                <span className="transition-transform duration-300 ease-settle group-hover:translate-y-1">
+                  <Download size={18} />
+                </span>
+              </span>
+            </a>
           </div>
         </div>
 

@@ -15,6 +15,13 @@ const d = (seconds: number) => ({ animationDelay: `${seconds}s` });
 export function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="grain relative overflow-hidden border-b border-line">
+      {/* Night only: a full moon over the ridge, drawn under the contour lines so they cross it. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_55%_60%_at_80%_20%,rgb(236_229_200/0.09),transparent_70%)] dark:block"
+      >
+        <div className="absolute top-[17%] right-[9%] size-[clamp(3.5rem,8vw,8rem)] sm:top-[14%] sm:right-[15%] animate-fade rounded-full bg-[radial-gradient(circle_at_36%_34%,#fbf7e6_0%,#ece5c8_58%,#d3cba8_100%)] opacity-90 shadow-[0_0_60px_18px_rgb(236_229_200/0.14),0_0_220px_100px_rgb(236_229_200/0.06)] [animation-delay:0.4s]" />
+      </div>
       <HeroField />
 
       <div className="relative z-[2] container-page flex min-h-[max(100svh,44rem)] flex-col pt-24 pb-10">

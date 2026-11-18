@@ -44,6 +44,14 @@ export function ArrowUpRight({ size = 16, ...props }: IconProps) {
   );
 }
 
+export function Download({ size = 16, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M3 13.5h10" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 export function Plus({ size = 18, ...props }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>

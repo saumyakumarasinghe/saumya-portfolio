@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { Arrow, LeafMark } from "@/components/ui/icons";
+import { Arrow, Download, LeafMark } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -84,6 +84,15 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={site.cv}
+              download
+              className="relative flex min-h-11 items-center gap-1.5 no-underline after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100"
+            >
+              CV
+              <Download size={13} />
+              <span className="sr-only"> (PDF download)</span>
+            </a>
           </nav>
 
           <div className="flex items-center gap-2.5">
@@ -157,6 +166,10 @@ export function SiteHeader() {
           </nav>
           <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-10 pb-4">
             <ThemeToggle />
+            <a href={site.cv} download className="inline-flex min-h-11 items-center gap-2 text-small font-medium">
+              Download my CV
+              <Download size={14} />
+            </a>
             <a href={`mailto:${site.email}`} className="text-small text-ink-muted">
               {site.email}
             </a>

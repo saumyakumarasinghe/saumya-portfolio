@@ -127,7 +127,7 @@ export function Fireflies({ count = 12, className = "" }: { count?: number; clas
       {fireflyField.slice(0, count).map(([left, top, size, dur, delay], index) => (
         <span
           key={index}
-          className="absolute animate-firefly rounded-full bg-spark shadow-[0_0_12px_4px_rgb(217_242_107/0.5)]"
+          className="absolute animate-firefly rounded-full bg-spark shadow-[0_0_12px_4px_var(--spark-glow)]"
           style={{
             left: `${left}%`,
             top: `${top}%`,

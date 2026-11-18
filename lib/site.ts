@@ -10,11 +10,12 @@ export const site = {
   description:
     "Software engineer in Colombo, Sri Lanka, building web applications, APIs and event-driven backends that stay fast and dependable when traffic pours in.",
   location: "Colombo, Sri Lanka",
-  timeZone: "Asia/Colombo",
   email: "saumyakumarasinghe9@gmail.com",
   phone: "070 145 4255",
   /** International format, used for tel: and wa.me links. */
   phoneE164: "+94701454255",
+  /** The CV PDF in /public. Replace the file there whenever the CV changes. */
+  cv: "/Saumya-Kumarasinghe-CV.pdf",
   links: {
     linkedin: "https://linkedin.com/in/saumya-kumarasinghe",
     github: "https://github.com/saumyakumarasinghe",

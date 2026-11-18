@@ -120,7 +120,7 @@ export const work: Work[] = [
       "Stock ledger: every change logged against a note or an order, with per-book history and an Excel stock report",
       "Home banners the team schedules, themes and writes in Sinhala themselves, for a book of the month or any announcement",
       "Order-confirmation emails through Resend, password reset, and book covers uploaded straight to Supabase Storage",
-      "Error tracking with Sentry and 35 test files; deployed to Netlify through GitHub Actions, with database migrations applied before every release",
+      "Error tracking with Sentry and automated tests; deployed to Netlify through GitHub Actions, with database migrations applied before every release",
     ],
     diagram: "flow",
     diagramCaption:
@@ -278,10 +278,10 @@ export const work: Work[] = [
     outcome: {
       headline: "Live and",
       emphasis: "selling",
-      text: "Live at sayarupublishers.lk, selling direct with pre-orders and bank-transfer checkout, with card payments to follow. Behind the shop: 13 database models, 25 migrations, 46 API routes and 35 test files.",
+      text: "Live at sayarupublishers.lk, selling direct with pre-orders, card payments and bank-transfer checkout.",
       // TODO(verify): no orders, sales or traffic figures are in the code or on the site, so none are claimed. Add one only if you
       // are happy to share it.
-      placeholders: ["A result you can share: orders, titles listed, time saved"],
+      placeholders: [],
     },
     forYou: {
       text: "For businesses that want their own online shop rather than a marketplace listing, with the payment methods their customers already use, content in more than one language, and an admin side that keeps orders and stock under control.",
@@ -571,7 +571,7 @@ export const work: Work[] = [
       headline: "Almost",
       emphasis: "there",
       text: "The design is done and most of the site is built. Next come the booking backend, the final content and a domain of its own.",
-      placeholders: ["Live link on its own domain at launch"],
+      placeholders: [],
     },
     forYou: {
       text: "For small service businesses, such as boarding, grooming or studios, that want a site with character that still makes booking easy.",
