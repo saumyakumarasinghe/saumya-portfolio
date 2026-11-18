@@ -123,7 +123,8 @@ export const work: Work[] = [
       "Error tracking with Sentry and 35 test files; deployed to Netlify through GitHub Actions, with database migrations applied before every release",
     ],
     diagram: "flow",
-    diagramCaption: "A receipt is checked by hand before an order ships; pre-orders wait for release day.",
+    diagramCaption:
+      "Card payments are confirmed automatically; a bank-transfer receipt is checked by hand before an order ships; pre-orders wait for release day.",
     // Storefront stills: the live site on 2026-11-10, phone numbers in the top bar hidden.
     // Walkthrough, cart, checkout and admin: a local copy with a temporary database and sample data (fictional customers,
     // sample deposit slips), captured 2026-11-10. Production was not touched.

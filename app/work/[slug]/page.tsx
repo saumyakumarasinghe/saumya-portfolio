@@ -104,18 +104,21 @@ function Media({ screen, className }: { screen: Screen; className: string }) {
 }
 
 function OrderFlow() {
+  // [x, y, width, label, accent]: card payments confirm automatically, bank transfers by a hand-checked receipt.
   const steps = [
-    [24, 104, "Browse"],
-    [152, 94, "Cart"],
-    [270, 114, "Transfer"],
-    [408, 108, "Receipt ✓"],
-    [540, 112, "Dispatch"],
+    [24, 138, 104, "Browse", false],
+    [152, 138, 94, "Cart", false],
+    [264, 58, 126, "Card payment", false],
+    [408, 58, 108, "Paid ✓", true],
+    [264, 138, 126, "Bank transfer", false],
+    [408, 138, 108, "Receipt ✓", true],
+    [540, 138, 112, "Dispatch", false],
   ] as const;
   return (
     <svg
-      viewBox="0 0 680 240"
+      viewBox="0 0 680 310"
       role="img"
-      aria-label="Order flow: browse, cart, bank transfer, receipt check, dispatch; pre-orders are held until release day"
+      aria-label="Order flow: browse, cart, then either a card payment confirmed automatically or a bank transfer whose receipt is checked by hand, then dispatch; pre-orders are held until release day"
       className="block h-auto w-full"
     >
       <g
@@ -124,37 +127,41 @@ function OrderFlow() {
         strokeWidth="2.5"
         strokeDasharray="7 9"
         strokeLinecap="round"
+        strokeLinejoin="round"
       >
-        <path d="M128 92 H 152" />
-        <path d="M246 92 H 270" />
-        <path d="M384 92 H 408" />
-        <path d="M516 92 H 540" />
-        <path d="M200 112 V 164" />
-        <path d="M384 184 H 590 V 116" />
+        <path d="M128 160 H 152" />
+        <path d="M199 138 V 80 H 264" />
+        <path d="M390 80 H 408" />
+        <path d="M516 80 H 596 V 138" />
+        <path d="M246 160 H 264" />
+        <path d="M390 160 H 408" />
+        <path d="M516 160 H 540" />
+        <path d="M199 182 V 238" />
+        <path d="M384 260 H 596 V 182" />
       </g>
       <g fontFamily="var(--font-mono)" fontSize="13" className="fill-ink">
-        {steps.map(([x, w, label], i) => (
+        {steps.map(([x, y, w, label, accent]) => (
           <g key={label}>
             <rect
               x={x}
-              y="70"
+              y={y}
               width={w}
               height="44"
               rx="22"
-              className={`stroke-ink ${i === 3 ? "fill-accent" : "fill-canvas"}`}
+              className={`stroke-ink ${accent ? "fill-accent" : "fill-canvas"}`}
               strokeWidth="1.5"
             />
-            <text x={x + w / 2} y="97" textAnchor="middle" className={i === 3 ? "fill-on-accent" : "fill-ink"}>
+            <text x={x + w / 2} y={y + 27} textAnchor="middle" className={accent ? "fill-on-accent" : "fill-ink"}>
               {label}
             </text>
           </g>
         ))}
-        <rect x="152" y="164" width="232" height="44" rx="22" fill="none" className="stroke-ink" strokeWidth="1.5" strokeDasharray="5 4" />
-        <text x="268" y="191" textAnchor="middle">
+        <rect x="152" y="238" width="232" height="44" rx="22" fill="none" className="stroke-ink" strokeWidth="1.5" strokeDasharray="5 4" />
+        <text x="268" y="265" textAnchor="middle">
           Pre-order · held to release
         </text>
       </g>
-      <text x="24" y="40" fontFamily="var(--font-mono)" fontSize="12" letterSpacing="1" className="fill-ink-muted">
+      <text x="24" y="34" fontFamily="var(--font-mono)" fontSize="12" letterSpacing="1" className="fill-ink-muted">
         ORDER FLOW · AS IT RUNS ON THE LIVE SITE
       </text>
     </svg>
